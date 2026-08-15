@@ -34,7 +34,7 @@ and `params` (extension-specific configuration):
   "capabilities": {
     "extensions": [
       {
-        "uri": "https://example.com/ext/bilateral-delegation/v1",
+        "uri": "https://example.org/ext/bilateral-delegation/v1",
         "description": "Countersigned commitments to authorization scope and execution record",
         "required": false,
         "params": { "hashAlg": "sha256" }
@@ -59,7 +59,7 @@ request and the result:
 // On the principal's initial message (the delegation request)
 {
   "metadata": {
-    "https://example.com/ext/bilateral-delegation/v1/authorization": {
+    "https://example.org/ext/bilateral-delegation/v1/authorization": {
       "scopeRoot": "sha256:9c41...",
       "principalSignature": "..."
     }
@@ -71,10 +71,10 @@ request and the result:
 // On the executor's completing message (the result)
 {
   "metadata": {
-    "https://example.com/ext/bilateral-delegation/v1/authorization-receipt": {
+    "https://example.org/ext/bilateral-delegation/v1/authorization-receipt": {
       "executorReceipt": "..."
     },
-    "https://example.com/ext/bilateral-delegation/v1/execution": {
+    "https://example.org/ext/bilateral-delegation/v1/execution": {
       "actionsRoot": "sha256:4b7e...",
       "executorSignature": "..."
     }
@@ -86,7 +86,7 @@ request and the result:
 // On the principal's acknowledgement message, closing the loop
 {
   "metadata": {
-    "https://example.com/ext/bilateral-delegation/v1/execution-ack": {
+    "https://example.org/ext/bilateral-delegation/v1/execution-ack": {
       "principalAck": "..."
     }
   }
