@@ -142,7 +142,7 @@ is what makes most audit-trail evaluations uninformative.
 
 ### 3.4 Validation
 
-`validate.py` enforces scenario coherence: a record flagged altered must actually differ; a
+`src/validation/coherence.py` enforces scenario coherence: a record flagged altered must actually differ; a
 dishonest party must assert something false; a mistaken party must diverge without lying; an
 unadjudicable scenario must genuinely lack a settling artifact.
 
@@ -576,12 +576,12 @@ recomputation's failure is not wired to control the build.**
    (closes the residual by relocating it).
 
 9. **The scorer masked misses** — a mistaken co-party caused an unblamed wrongdoer to score as
-   correct. Found by `scorer_audit.py` property P3, written because the scorer was the largest
+   correct. Found by the [archived v0.9 scorer audit](results/archive-v0.9/scorer_audit.txt), written because the scorer was the largest
    surface with no structural check.
 
 **The pattern across all nine: errors flatter the hypothesis.** Every one made the scheme under test
 look better than it was. The countermeasures that have actually worked are structural rather than
-vigilant — the scenario validator, and `visibility.py`, which converts "remember not to read ground
+vigilant — the scenario validator, and `src/validation/visibility.py`, which converts "remember not to read ground
 truth" into something the code enforces. Anything relying on care alone has failed at least once.
 
 ---
@@ -787,7 +787,7 @@ before T10 is claimed in print.
 T10's chief threat was external attestation: have someone *else* commit, since the residual argument
 turns on a party's inability to commit about itself. Testing it required fixing two defects first —
 pairs that were never seeded as twins, and an "attestor" that read execution contents from an
-unproduced record, which makes it a custodian rather than an attestor. `src/visibility.py` now
+unproduced record, which makes it a custodian rather than an attestor. `src/validation/visibility.py` now
 enforces the visibility rule structurally: **availability gates everything else about a record.**
 Under it, all six adversarial/honest pairs verify as genuine twins, 25/25.
 
@@ -829,7 +829,8 @@ helped.
 
 ### Scorer audit and p₀ sensitivity (required-before-publication checks)
 
-**The scorer was wrong, and the bug was exactly where predicted.** `scorer_audit.py` enumerates the
+**The scorer was wrong, and the bug was exactly where predicted.** The
+[archived v0.9 scorer audit](results/archive-v0.9/scorer_audit.txt) enumerates the
 full cross-product of ground-truth states and verdict shapes (450 combinations) and asserts seven
 properties: totality, outcome reachability, no masked misses, party symmetry, blaming-an-honest-party,
 non-attributive exactness, and unadjudicable handling.

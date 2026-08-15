@@ -4,7 +4,7 @@
 
 ---
 
-In May I wrote [*Agent Workflows Are Rediscovering Durable Execution*](https://medium.com/beyond-localhost/agent-workflows-are-rediscovering-durable-execution-be110661ed8c), and I ended on this:
+In May I wrote [*Agent Workflows Are Rediscovering Durable Execution*](https://nittikkin.medium.com/agent-workflows-are-rediscovering-durable-execution-be110661ed8c), and I ended on this:
 
 > The genuinely new work is accountability for non-human, probabilistic actors that can act across
 > tools, systems, and organizational boundaries. That is the layer worth fighting for.

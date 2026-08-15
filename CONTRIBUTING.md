@@ -87,6 +87,8 @@ Two further stages guard the documents:
 
 - `docsync` - a document restating something the code already knows is generated from the code. A
   class table is a copy, not reasoning. Prose that reasons about the code stays hand-written.
+- `links` - every local Markdown target and heading fragment resolves, and every retained Markdown
+  document is reachable from `README.md`, `START-HERE.md`, or `INDEX.md`.
 - `staleness` - verifies declared figures against live code **and** requires any document
   asserting the old form of a corrected claim to point at its correction. The second half exists
   because the numeric check passed cleanly while five documents carried refuted arguments.

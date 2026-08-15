@@ -95,16 +95,15 @@ external evidence the conservation property is real rather than an artifact of t
 | **T8** | **Strengthen.** Independent confirmation from the fair-exchange family. This is now the best-supported result in the project. |
 | **T2** | Unchanged. Their guarantee concerns what the *adjudicator* learns; T2 bounds what the *complainant* learns. Still distinct. |
 
-## New baseline suggested
+## Baseline subsequently tested
 
 **B13 — witness-carrying messages.** Grant and execution each carry a publicly verifiable
-correctness witness; the adjudicator checks witnesses and never inspects records. Predicted:
-disclosure → 0 at full coverage, superseding B2–B6. If it holds, it is the single most useful
-thing left to build.
+correctness witness; the adjudicator checks witnesses and never inspects records. This prediction
+was subsequently implemented and tested. B13 materially improved the coverage/disclosure frontier,
+but retained a silence residual and later exposed an abort gap. See
+[finding 09](../findings/09-witness-messages.md) for the measured result.
 
-## Still unread
+## Subsequent reading
 
-Kremer, Markowitch & Zhou (2002), *An intensive survey of fair non-repudiation protocols* — and
-after this, its priority rises. If one paper from this family overturned a design conclusion, the
-survey of the whole family is likely to hold more. Its documented attacks on fairness and
-termination are also free M-classes.
+Kremer, Markowitch & Zhou (2002), *An intensive survey of fair non-repudiation protocols*, was
+later read in full. See the [reading note](kremer-markowitch-zhou-2002.md) for the resulting changes.

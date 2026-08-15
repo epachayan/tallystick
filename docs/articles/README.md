@@ -9,12 +9,13 @@ kind of drift: unlike a findings note, it cannot be quietly corrected after the 
 | file | audience | status |
 |---|---|---|
 | [`../../ARTICLE-MEDIUM.md`](../../ARTICLE-MEDIUM.md) | practitioners building agent infrastructure | **canonical technical/Medium draft.** Written as a sequel to the May 2026 durable-execution piece and opens by correcting it. |
-| `02-general-audience.md` | no technical background assumed | draft, unpublished |
+| [`02-general-audience.md`](02-general-audience.md) | no technical background assumed | draft, unpublished |
 
 ## Before publishing either
 
-1. **Add the verified public repository URL at publication time.** The packaged drafts intentionally omit a hard-coded public URL. The previously proposed `github.com/epachayan/tallystick` path
-   was assumed, not confirmed. Check it resolves, or correct it.
+1. **Add the verified public repository URL at publication time.** The packaged drafts intentionally
+   omit a hard-coded public URL. The private repository exists at `github.com/epachayan/tallystick`;
+   add the link only after it resolves while signed out.
 2. **Check every number against `results/canonical.txt`.** The articles quote figures in prose,
    where the staleness checker cannot parse them. The quoted claims are listed below so they can be
    re-verified by hand.
@@ -53,7 +54,7 @@ Background for both: [`../prior-art/2026-protocol-landscape.md`](../prior-art/20
 
 `../../ARTICLE-MEDIUM.md` was retitled and reopened as **"The Execution Record Is Not Evidence"**, a
 self-correction of the May 2026 article
-[*Agent Workflows Are Rediscovering Durable Execution*](https://medium.com/beyond-localhost/agent-workflows-are-rediscovering-durable-execution-be110661ed8c),
+[*Agent Workflows Are Rediscovering Durable Execution*](https://nittikkin.medium.com/agent-workflows-are-rediscovering-durable-execution-be110661ed8c),
 which asserted that the run record "is not just a debug log, it is evidence."
 
 That is true against **failure** and false against **disagreement**, and the distinction is the

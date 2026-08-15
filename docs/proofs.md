@@ -10,7 +10,8 @@
 > T5 the suspicion refuge, T6 attribution dominance, T7 scale invariance, T8 conservation (now bounded — see findings/12),
 > T9 key ≡ party, T10 the residual, T11 relocation, T12 level invariance.
 
-**Date:** 8 August 2026 · **Verified by:** `experiments.py` (E1, E2, E3)
+**Date:** 8 August 2026 · **Originally verified by:** the legacy E1–E3 experiment script;
+current reproduction lives in `src/reporting/run.py` and `src/reporting/sweep.py`
 
 Three claims that generalise beyond the measurements. Stated formally, tested empirically,
 with an explicit prior-art position on each. One is a reduction, one is novel, one is
@@ -54,7 +55,7 @@ weaker and more accurate reading than I gave previously.
 
 *(Finding that required fixing a real bug: the baselines were reading ground-truth actions
 even when the record was unavailable — the adjudicator was consulting evidence it could not
-have had. E1 surfaced it; the fix is in `baselines.py`.)*
+have had. E1 surfaced it; the fix is in `src/protocols/baselines.py`.)*
 
 ### Prior art — this is a reduction, not a new theorem
 

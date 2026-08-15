@@ -20,7 +20,7 @@ Primary sources: [2026-07-28 release](https://blog.modelcontextprotocol.io/posts
 
 ### Delegation Receipt Protocol (DRP)
 
-The active individual IETF Internet-Draft `draft-nelson-agent-delegation-receipts-09` (May 2026) is the closest current work to the assertional half of this project. Before execution, the user signs an Authorization Object containing scope and boundaries; the receipt is anchored to a tamper-evident append-only log before the agent receives control. That directly attacks operator-controlled-log ambiguity and makes authorization independently verifiable.
+The active individual IETF Internet-Draft `draft-nelson-agent-delegation-receipts` is the closest current work to the assertional half of this project. Before execution, the user signs an Authorization Object containing scope and boundaries; the receipt is anchored to a tamper-evident append-only log before the agent receives control. That directly attacks operator-controlled-log ambiguity and makes authorization independently verifiable. The unversioned draft name is intentional: consult the linked IETF page for the current revision.
 
 What DRP does **not** automatically settle is the full dispute model here: what execution occurred, what each side later produces or withholds, protocol abort, and honest mistake versus concealment. In Tallystick terms, DRP is highly relevant prior art for authorization commitment and assertional repudiation, not a substitute for the evidence-projection/twin analysis.
 
@@ -28,7 +28,7 @@ Primary source: [Delegation Receipt Protocol](https://datatracker.ietf.org/doc/d
 
 ### Human Delegation Provenance Protocol (HDP)
 
-The active individual Internet-Draft `draft-helixar-hdp-agentic-delegation-00` (March 2026) defines a signed human-delegation token and an append-only chain of signed agent hops, verifiable offline from the issuer's public key and session identifier. It is strong prior art for provenance across multi-agent delegation.
+The active individual Internet-Draft `draft-helixar-hdp-agentic-delegation` defines a signed human-delegation token and an append-only chain of signed agent hops, verifiable offline from the issuer's public key and session identifier. It is strong prior art for provenance across multi-agent delegation. The unversioned draft name is intentional: consult the linked IETF page for the current revision.
 
 Its primary question is provenance: who authorized what scope, and through which delegation chain? Tallystick's question is adjudication under disagreement: when parties present competing accounts, which worlds remain distinguishable from the evidence actually available?
 

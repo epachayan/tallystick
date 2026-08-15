@@ -1,6 +1,6 @@
 # Start here
 
-Everything for the Tallystick project is in this archive. Three routes in, depending on why you
+Everything for the Tallystick project is in this repository. Three routes in, depending on why you
 opened it.
 
 ## I want to understand what this is about
@@ -32,7 +32,9 @@ Then **[`README.md`](README.md)** for the repository proper.
 
 ## Two things to check before publishing anything
 
-1. **Add a verified public repository URL only at publication time.** The packaged article intentionally omits the previously assumed URL. Add the final repository link only after it resolves publicly.
+1. **Add a verified public repository URL only at publication time.** The repository currently
+   exists privately at `github.com/epachayan/tallystick`; add that link to the packaged article only
+   after it resolves while signed out.
 2. **The phase-1 article drafts are now wrong.** They predate the hardening phase and state the
    conservation property unbounded, F01 unscoped, and a claim about M22 that was later refuted. If
    either is already live, it needs correcting or withdrawing.
@@ -44,7 +46,7 @@ public repository URL caveat.
 
 ```bash
 python3 -m pip install -e ".[dev]"
-make check         # twelve gate stages; must pass before experiments will run
+make check         # thirteen gate stages; must pass before experiments will run
 make experiments   # regenerates results/
 make taxonomy      # regenerates docs/taxonomy.md from the code
 ```

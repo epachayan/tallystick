@@ -6,6 +6,7 @@ Start here. Everything below is regenerable or verified by `make check`.
 
 | | |
 |---|---|
+| [`START-HERE.md`](START-HERE.md) | audience-based routes into the repository |
 | [`README.md`](README.md) | what this is, in one page |
 | [`docs/what-is-established.md`](docs/what-is-established.md) | **claim-strength ledger, three tiers.** Read before quoting anything |
 | [`docs/findings/12-conservation-boundary.md`](docs/findings/12-conservation-boundary.md) | the central result |
@@ -23,18 +24,34 @@ of what was believed at the time, and are marked as such.
 
 | | |
 |---|---|
-| 01 | baselines and the F01 regression (scope corrected — see 13) |
-| 02 | selective disclosure, and the query-cost negative result |
-| 03 | mistake vs malice |
-| 05 | statefulness |
-| 06 | excuse ranking |
-| 07 | minimal commitment sets (criterion superseded — see 13) |
-| 08 | relocation |
-| 09 | witness-carrying messages |
-| 10 | the duty to answer, and a coverage gap |
-| 11 | symmetric withholding |
-| 12 | **the conservation boundary** |
-| 13 | abort, and the declaration audit |
+| [01](docs/findings/01-baselines.md) | baselines and the F01 regression (scope corrected — see 13) |
+| [02](docs/findings/02-selective-disclosure.md) | selective disclosure, and the query-cost negative result |
+| [03](docs/findings/03-mistake-vs-malice.md) | mistake vs malice |
+| [04](docs/assumptions.md#findings-04--outliers-pursued) | outliers pursued; retained with the historical assumption ledger |
+| [05](docs/findings/05-statefulness.md) | statefulness |
+| [06](docs/findings/06-excuse-ranking.md) | excuse ranking |
+| [07](docs/findings/07-minimal-commitment-sets.md) | minimal commitment sets (criterion superseded — see 13) |
+| [08](docs/findings/08-relocation.md) | relocation |
+| [09](docs/findings/09-witness-messages.md) | witness-carrying messages |
+| [10](docs/findings/10-duty-and-coverage.md) | the duty to answer, and a coverage gap |
+| [11](docs/findings/11-symmetric-withholding.md) | symmetric withholding |
+| [12](docs/findings/12-conservation-boundary.md) | **the conservation boundary** |
+| [13](docs/findings/13-abort-and-declarations.md) | abort, and the declaration audit |
+
+## Supporting documentation
+
+| document | role |
+|---|---|
+| [`docs/architecture.md`](docs/architecture.md) | module layout, evidence boundary, and extension points |
+| [`docs/proofs.md`](docs/proofs.md) | formal statements and proofs for T1–T4 |
+| [`docs/scorer-semantics.md`](docs/scorer-semantics.md) | outcome labels and scoring decisions |
+| [`docs/taxonomy.md`](docs/taxonomy.md) | generated adversarial-class catalogue |
+| [`docs/assumptions.md`](docs/assumptions.md) | frozen assumption ledger and historical Finding 04 |
+| [`docs/pruning.md`](docs/pruning.md) | dated pruning rationale and retained-protocol audit |
+| [`docs/prior-art/kremer-markowitch-zhou-2002.md`](docs/prior-art/kremer-markowitch-zhou-2002.md) | fair non-repudiation reading note |
+| [`docs/prior-art/rial-preneel-2010.md`](docs/prior-art/rial-preneel-2010.md) | privacy-preserving dispute-resolution reading note |
+| [`results/archive-v0.9/README.md`](results/archive-v0.9/README.md) | scope and meaning of archived pre-hardening outputs |
+| [`CONTRIBUTING.md`](CONTRIBUTING.md) | contribution and validation rules |
 
 ## Public-facing drafts
 
@@ -50,7 +67,7 @@ publication-specific checks and the public-repository-URL caveat.
 
 ```bash
 python3 -m pip install -e ".[dev]"
-make check         # twelve stages, including gate-failure propagation
+make check         # thirteen stages, including link reachability and gate-failure propagation
 make experiments   # depends on check; regenerates results/
 make taxonomy      # regenerates docs/taxonomy.md from the code
 ```

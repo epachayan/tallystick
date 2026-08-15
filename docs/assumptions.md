@@ -17,14 +17,14 @@ either confirmed or corrected. Live means still load-bearing and untested.
 | # | Assumption | Status | What happened |
 |---|---|---|---|
 | A1 | Mistake and malice occur at comparable rates | **LIVE — and it decides everything** | E7: at 5% mistakes, B7 makes one wrongful attribution per 13 correct. At 25%, one per three. **No published figure exists for how often a principal misremembers a delegation.** The parameter that determines whether these systems are safe to deploy has never been measured. |
-| A2 | Uniform M-class sampling is a fair metric | **DISCHARGED — false** | REVIEW Part 1: under adversarial class selection every baseline through B6 scores 0.00. Coverage, not accuracy, is the correct metric. |
+| A2 | Uniform M-class sampling is a fair metric | **DISCHARGED — false** | [RESEARCH §3.5](../RESEARCH.md#35-adversarial-scoring): under adversarial class selection every baseline through B6 scores 0.00. Coverage, not accuracy, is the correct metric. |
 | A3 | `record_intact` and `record_available` are independent | **DISCHARGED — false, and it was a bug** | Availability *gates* intactness: you cannot fail verification on a record never produced. Every baseline had this backwards, and fixing it produced T5 below. |
 | A4 | The adjudicator is a pure function of the presented view | **LIVE — internally inconsistent** | B6's oracle defence assumes the adjudicator remembers prior disputes, i.e. it is stateful. The model says otherwise. Unresolved contradiction. |
 | A5 | Signatures can be accounted rather than computed | **LIVE, low risk** | 96 B per signature, never executed. Matters for a systems paper, not for the claims made. |
 | A6 | Scope is a flat set of opaque labels | **LIVE** | No hierarchy, so semantic ambiguity (`write:records` ⊂ `write:*`) is untestable. Blocks the semantic-authorization vector entirely. |
 | A7 | One authorization, one execution, no clock | **LIVE** | Revocation, staleness and ordering are absent. Parakhin's result on TTL revocation was in the first sweep and is still unmodelled. |
 | A8 | Two parties, one adjudicator | **LIVE** | Equivocation degenerate; T2's bound is two-party and will change shape under colluding complainants. |
-| A9 | Detection and attribution are the same act | **DISCHARGED — false** | T4 (FINDINGS-03). Evidence establishes contradiction; culpability is a separate inference cryptography cannot make. |
+| A9 | Detection and attribution are the same act | **DISCHARGED — false** | [T4 in finding 03](findings/03-mistake-vs-malice.md). Evidence establishes contradiction; culpability is a separate inference cryptography cannot make. |
 | A10 | A more capable scheme is a better scheme | **DISCHARGED — false** | E8: every attributive baseline is Pareto-dominated. See below. |
 | A11 | The mistake classes reflect real behaviour | **LIVE** | Constructed, not observed. Plausible and matches ordinary experience; still an assumption and labelled as one. |
 
@@ -65,8 +65,8 @@ consequence-free. Both are true, and together they say something stronger than e
 
 An escape has to come from outside the evidence. Make unavailability *costly* rather than
 provable — bonded collateral forfeited on unresolved suspicion, or a reputation cost that
-accrues to repeated suspension. That is the incentive-based vector listed in REVIEW.md as
-merely missing. **The data now demands it**: T5 is the argument for economic mechanisms, and it
+accrues to repeated suspension. That is the incentive-based vector the initial internal review
+listed as merely missing. **The data now demands it**: T5 is the argument for economic mechanisms, and it
 was produced rather than assumed.
 
 ## T6 — Attribution is Pareto-dominated

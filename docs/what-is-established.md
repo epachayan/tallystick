@@ -186,9 +186,9 @@ live documents. A stale number now fails a build rather than surviving in a
 document.
 
 **RC-H12 is closed.** The four declarations it named — `PRINCIPAL_LIAR`,
-`mutation_family`, `ENTITLEMENTS`, and `commitments.py`'s vocabulary — are now
+`mutation_family`, `ENTITLEMENTS`, and `src/commitments.py`'s vocabulary — are now
 derived-and-diffed or pinned by regression tests. Two required correction; see
-`docs/findings/13-abort-and-declarations.md`.
+[finding 13](findings/13-abort-and-declarations.md).
 
 ---
 

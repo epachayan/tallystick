@@ -31,7 +31,8 @@ permitted — an open question must be named, with its blocker.
 
 **`src/experiments/legacy_experiments.py`** — 707 lines. Broken (imports the
 pre-refactor flat module layout and raises `ModuleNotFoundError`), referenced by
-nothing, and superseded by `run.py` / `sweep.py` / `regression.py`. Its E1–E12
+nothing, and superseded by `src/reporting/run.py` / `src/reporting/sweep.py` /
+`src/reporting/regression.py`. Its E1–E12
 results are recorded in the findings documents, which is where a result belongs;
 the code that produced them was replaced wholesale by the hardening refactor.
 

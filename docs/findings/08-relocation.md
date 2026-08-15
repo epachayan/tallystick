@@ -7,7 +7,7 @@
 
 
 **Corpus:** v0.9, 650 scenarios, 26 classes, 0 validator violations
-**Added:** M24/M25 (attestor twins), `visibility.py`, B16c (custodial) and B16d (digest-only)
+**Added:** M24/M25 (attestor twins), `src/validation/visibility.py`, B16c (custodial) and B16d (digest-only)
 **Status:** this document **supersedes an earlier version that over-claimed twice.** Both errors and
 their causes are recorded below, because they are the same class of error the project has now made
 four times.
@@ -28,7 +28,7 @@ closes if a third party keeps a full copy.
 
 Both errors pushed in the same direction: they made attestation look like it worked.
 
-The fix is now enforced structurally. `src/visibility.py` defines what the adjudicator can actually
+The fix is now enforced structurally. `src/validation/visibility.py` defines what the adjudicator can actually
 see, applying the A3 rule — **availability gates everything else about a record.** If a party cannot
 produce its record, the adjudicator learns neither its contents nor whether it was altered.
 
@@ -133,5 +133,5 @@ consistent: **errors flatter the hypothesis.** Every one of the four made the sc
 better than it was.
 
 The countermeasure that has actually worked is structural, not vigilance: the scenario validator, and
-now `visibility.py`. Both convert "remember not to read ground truth" into something the code
+now `src/validation/visibility.py`. Both convert "remember not to read ground truth" into something the code
 enforces. Anything relying on care alone has failed at least once.

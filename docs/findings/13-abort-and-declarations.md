@@ -17,7 +17,7 @@ rate going in was four defects in four audits. Two of these four were wrong.
 | `mutation_family` | agrees |
 | `ENTITLEMENTS` | agrees |
 | `PRINCIPAL_LIAR` | **wrong — and it was flattering F01** |
-| `commitments.py` BINDING/RESIDUAL | **wrong criterion** |
+| `src/commitments.py` BINDING/RESIDUAL | **wrong criterion** |
 
 ### PRINCIPAL_LIAR was measuring F01 on a favourable subset
 

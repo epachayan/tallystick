@@ -1,7 +1,7 @@
 SHELL := /bin/bash
 .SHELLFLAGS := -eu -o pipefail -c
 
-.PHONY: check gate-selftest experiments taxonomy docsync schema coherence visibility twins coverage conservation declarations pruning staleness unit scorer merkle canonical run sweep clean all
+.PHONY: check gate-selftest experiments taxonomy docsync links schema coherence visibility twins coverage conservation declarations pruning staleness unit scorer merkle canonical run sweep clean all
 
 # ---------------------------------------------------------------------------
 # One command for correctness, one for research.
@@ -11,7 +11,7 @@ SHELL := /bin/bash
 # that a script exited with status zero.
 # ---------------------------------------------------------------------------
 
-check: gate-selftest schema coherence unit visibility twins coverage conservation declarations pruning docsync staleness
+check: gate-selftest schema coherence unit visibility twins coverage conservation declarations pruning docsync links staleness
 	@echo
 	@echo "== correctness gate passed =="
 
@@ -64,6 +64,10 @@ taxonomy:
 docsync:
 	@echo "-- generated docs match the code"
 	@python3 -m src.validation.docsync
+
+links:
+	@echo "-- Markdown links and reachability"
+	@python3 -m src.validation.links
 
 declarations:
 	@echo "-- declaration audit (derive, then diff)"

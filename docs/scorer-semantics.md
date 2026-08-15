@@ -53,7 +53,7 @@ v0.9 scorer audit's property P3 and is preserved;
 
 ---
 
-## Open decisions — your call
+## Scoring decisions
 
 ### OPEN-1 — unadjudicable world, mechanism names a party
 
