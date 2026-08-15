@@ -38,6 +38,20 @@ Two rules learned the hard way:
 - **Never read ground truth the adjudicator could not have.** If `record_available` is false, the
   execution actions are not yours to inspect.
 
+## Reference extensions
+
+Reference libraries under `src/extensions/` are outside the scored protocol registry. Keep their
+tests beside the extension rather than under `tests/`, and give them separate Make targets so they
+cannot silently broaden what `make check` claims to cover. For the A2A reference library, run:
+
+```bash
+make ext-check
+make ext-experiments
+```
+
+The parity target checks that the adapter preserves B1 verdicts; it is not an independent protocol
+implementation or a new corpus score.
+
 ## Before any commit
 
 ```bash
@@ -83,7 +97,7 @@ correctness-gate stages exist for exactly this reason:
 | `declarations` | the F01 denominator excluded its unflattering classes (RC-H12) |
 | `pruning` | a protocol carried a negative result nobody had written down (RC-H14) |
 
-Two further stages guard the documents:
+Three further stages guard the documents:
 
 - `docsync` - a document restating something the code already knows is generated from the code. A
   class table is a copy, not reasoning. Prose that reasons about the code stays hand-written.

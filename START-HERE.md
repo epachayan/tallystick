@@ -16,7 +16,11 @@ About 1,700 words.
 Not Evidence". The measured findings, the historical argument, the implementation sketch, and the
 publication-review correction that caught a masked build failure.
 
-Then **[`README.md`](README.md)** for the repository proper.
+Then **[`README.md`](README.md)** for the repository proper. If you're specifically integrating
+with A2A, [`docs/prior-art/a2a-extension-sketch.md`](docs/prior-art/a2a-extension-sketch.md) maps
+the article's bilateral-commitment record onto A2A's extension mechanism, and the
+[`src/extensions/a2a_bilateral/`](src/extensions/a2a_bilateral/README.md) reference library makes
+that mapping runnable. It remains separate from corpus scoring.
 
 ## I want to evaluate the research
 
@@ -49,6 +53,8 @@ python3 -m pip install -e ".[dev]"
 make check         # thirteen gate stages; must pass before experiments will run
 make experiments   # regenerates results/
 make taxonomy      # regenerates docs/taxonomy.md from the code
+make ext-check     # standalone A2A reference-library tests
+make ext-experiments  # exact B1 adapter parity; no new protocol or score
 ```
 
 Runtime: Python 3.12+, standard library only. Development/test dependency: `pytest`.

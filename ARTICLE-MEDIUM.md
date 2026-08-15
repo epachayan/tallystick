@@ -192,6 +192,14 @@ The minimal change is small, and it is not a new cryptographic primitive:
 }
 ```
 
+If you're carrying this over A2A specifically, `docs/prior-art/a2a-extension-sketch.md` in the
+repository maps these fields onto A2A's own extension mechanism
+(`AgentCard.capabilities.extensions` plus namespaced message `metadata`) rather than a bespoke
+channel. `src/extensions/a2a_bilateral/` now contains the dependency-free reference library and a
+standalone adapter-parity check over the existing corpus. It is still not a new scored protocol:
+concrete SDK message parsing remains deployment-specific, and the canonical figures remain those
+produced by the existing harness.
+
 ### Why this is cheaper than it looks
 
 The useful property is not the countersigning. It is that **a commitment can be checked against a

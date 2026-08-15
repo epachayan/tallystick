@@ -1,6 +1,7 @@
 # Tallystick — index
 
-Start here. Everything below is regenerable or verified by `make check`.
+Start here. Core research artifacts are regenerable or verified by `make check`; standalone
+reference libraries identify their own separate checks.
 
 ## Read in this order
 
@@ -13,6 +14,7 @@ Start here. Everything below is regenerable or verified by `make check`.
 | [`RESEARCH.md`](RESEARCH.md) | full research record; §12 covers publication readiness |
 | [`docs/test-evidence-map.md`](docs/test-evidence-map.md) | claim → population → executable test → current result |
 | [`docs/prior-art/2026-protocol-landscape.md`](docs/prior-art/2026-protocol-landscape.md) | dated August-2026 positioning against DRP, HDP, AP2/VI, A2A, MCP and adjacent work |
+| [`docs/prior-art/a2a-extension-sketch.md`](docs/prior-art/a2a-extension-sketch.md) | design and limits of carrying bilateral commitment evidence as an A2A extension |
 
 ## Current figures
 
@@ -50,6 +52,7 @@ of what was believed at the time, and are marked as such.
 | [`docs/pruning.md`](docs/pruning.md) | dated pruning rationale and retained-protocol audit |
 | [`docs/prior-art/kremer-markowitch-zhou-2002.md`](docs/prior-art/kremer-markowitch-zhou-2002.md) | fair non-repudiation reading note |
 | [`docs/prior-art/rial-preneel-2010.md`](docs/prior-art/rial-preneel-2010.md) | privacy-preserving dispute-resolution reading note |
+| [`src/extensions/a2a_bilateral/README.md`](src/extensions/a2a_bilateral/README.md) | reference implementation of the A2A bilateral-commitment sketch |
 | [`results/archive-v0.9/README.md`](results/archive-v0.9/README.md) | scope and meaning of archived pre-hardening outputs |
 | [`CONTRIBUTING.md`](CONTRIBUTING.md) | contribution and validation rules |
 
@@ -70,6 +73,8 @@ python3 -m pip install -e ".[dev]"
 make check         # thirteen stages, including link reachability and gate-failure propagation
 make experiments   # depends on check; regenerates results/
 make taxonomy      # regenerates docs/taxonomy.md from the code
+make ext-check     # standalone A2A reference-library tests
+make ext-experiments  # adapter parity only; no protocol registration or score
 ```
 
 ## Known open items

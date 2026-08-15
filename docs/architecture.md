@@ -39,20 +39,23 @@ tallystick/
         scoring/    metrics.py  scorer.py
         validation/ coherence.py  conservation.py  coverage.py  declarations.py  pruning.py  schema.py  staleness.py  twins.py  visibility.py
         reporting/  harness.py  regression.py  run.py  sweep.py
+        extensions/ a2a_bilateral/  (standalone reference library and adapter)
         generator.py  commitments.py
     tests/          test_scorer.py  test_merkle.py  test_metrics.py  test_integration.py
+    examples/       a2a_bilateral_demo.py  a2a_harness_replay_demo.py
     results/
     docs/
 ```
 
-## Two commands
+## Command boundaries
 
 ```
-make check         schema, coherence, tests, visibility mutation, twin audit,
-                   coverage, conservation boundary, declaration audit,
-                   protocol pruning, documentation staleness
+make check         13-stage core correctness gate, including tests, structural
+                   audits, document synchronization, links, and staleness
 make experiments   depends on check; writes results/
 make taxonomy      regenerates docs/taxonomy.md from M_CLASSES
+make ext-check     runs isolated A2A reference-library tests
+make ext-experiments  checks exact B1 adapter parity over the corpus
 ```
 
 Five of those stages exist because a hand-maintained declaration was found
@@ -63,6 +66,10 @@ to be asserted in prose.
 `make experiments` will not run on a failed gate. A green experiment suite
 therefore means the experiment ran on verified machinery, not that a script
 exited zero.
+
+The `ext-*` targets are intentionally independent. The A2A library can import the existing Merkle
+and evidence machinery, but it does not register a protocol or contribute tests to `make check`.
+Its parity command checks projection fidelity against B1; it does not create a new research score.
 
 ## Disclosure policies
 
