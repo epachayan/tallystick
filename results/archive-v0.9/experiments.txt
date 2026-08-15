@@ -1,0 +1,344 @@
+==============================================================================
+E1  INDISTINGUISHABILITY
+==============================================================================
+adjudicator views identical across the world pair : True
+ground truth differs                              : none vs E
+
+baseline                      world A       world B       outcome
+B0_bearer_executor_log        none/-        none/-        MISSES world B
+B1_bilateral_commitment       E/-           E/-           FALSE-ACCUSES world A
+B2_commitment_only            none/-        none/-        MISSES world B
+B3_suspected_exposed          none/suspectednone/suspectedabstains via SUSPECTED (escapes)
+B4_scope_predicates           none/suspectednone/suspectedabstains via SUSPECTED (escapes)
+B5_dispute_driven             none/suspectednone/suspectedabstains via SUSPECTED (escapes)
+B6_accountable_queries        none/suspectednone/suspectedabstains via SUSPECTED (escapes)
+B7_verifiable_adjudication    none/suspectednone/suspectedabstains via SUSPECTED (escapes)
+B6c_under_collusion           none/suspectednone/suspectedabstains via SUSPECTED (escapes)
+B9_non_attributive            none/clear    none/clear    MISSES world B
+B10_composed                  none/clear    none/clear    MISSES world B
+B11_stateful                  none/clear    none/clear    MISSES world B
+B7r_under_revocation          none/suspectednone/suspectedabstains via SUSPECTED (escapes)
+B15_short_term_keys           none/clear    none/clear    MISSES world B
+B16c_custodial_attestor       none/clear    none/clear    MISSES world B
+B16d_digest_attestor          none/clear    none/clear    MISSES world B
+
+Every two-valued verdict function returns the same value on identical
+views, so it either misses B or false-accuses A. Widening the codomain
+to {exposed, suspected, clear} maps both to suspected -- neither blame
+nor clearance -- which is the only escape.
+
+==============================================================================
+E2  LEAKAGE UNDER ADAPTIVE PROBING
+==============================================================================
+vocabulary 64, committed scope 8, 2000 trials
+
+scheme                    mean bits learned   max     as % of set
+B5 dispute-driven         64.0                64      100.0%
+B6 accountable queries    7.2                 35      11.3%
+
+predicted mean probes before refutation  (V+1)/(k+1) = 7.22
+measured                                              = 7.21
+
+The bound is NOT the query budget. It is the adversary's supply of
+truthful grievances: probing stops at the first in-scope hit, which
+arrives after (V+1)/(k+1) probes in expectation. Denser scopes are
+cheaper to protect; sparse ones leak more before refutation.
+
+==============================================================================
+E3  CROSSOVER: CLOSED FORM vs MEASURED
+==============================================================================
+item length L = 13.9 B, roots 2R = 64 B, queries q = 1
+(2 signatures appear in both schemes and cancel)
+
+    n   full 2nL+M   selective      winner
+    2           96         124        full
+    4          151         155        full
+    8          263         187   selective
+   12          374         223   selective
+   16          485         365   selective
+   24          708         254   selective
+   32          931         429   selective
+   64         1821         496   selective
+
+predicted crossover  n* = 8
+Empirical sweep placed it between 4 and 8 (1.06x at 4, 0.90x at 8).
+
+Closed form, q queries:
+    n* = smallest n with   2nL + M  >  2R + q*P(n),
+    P(n) = 2 + L + ceil(log2 n)*32 + ceil(log2 n)/8   per non-membership proof
+
+Reading: the threshold is set by the FIXED commitment overhead (2R),
+not by the log factor. Selective adjudication pays once the record
+exceeds a few items, and degrades linearly in q -- so the design rule
+is to bound q, which is exactly what B5 does and B4 does not.
+
+==============================================================================
+E4  T2 WORST CASE -- TAIL AND BUDGET
+==============================================================================
+V=64, k=8, 20000 trials
+
+quantile    measured probes   closed-form P(>t)   
+p50         5                 0.5010              
+p90         16                0.0853              
+p95         19                0.0487              
+p99         27                0.0087              
+max         47                
+
+Closed form for a high-percentile bound: the smallest t with
+    C(V-k, t) / C(V, t)  <=  1 - p
+    p95: leakage <= 19 probes  (30% of vocabulary)
+    p99: leakage <= 27 probes  (42% of vocabulary)
+
+BUDGETED DEFENCE (B8): cap probes per epoch at b.
+budget b    mean leaked   p99 leaked    % of vocab
+1           1.00          1             1.6%
+2           1.87          2             3.1%
+4           3.28          4             6.2%
+8           5.14          8             12.5%
+16          6.72          16            25.0%
+
+A per-epoch budget converts an expectation guarantee into a hard cap.
+Accountability costs nothing: an honest complainant needs one query per
+real grievance, so b can be small without impeding legitimate disputes.
+
+==============================================================================
+E5  T1 UNDER A RANDOMISED ADJUDICATOR
+==============================================================================
+blame prob p    detection rate (B)    false-acc rate (A)    ROC gain
+0.00            0.000                 0.000                 +0.000
+0.10            0.100                 0.099                 +0.001
+0.25            0.252                 0.250                 +0.002
+0.50            0.499                 0.500                 -0.000
+0.75            0.747                 0.750                 -0.003
+0.90            0.901                 0.900                 +0.001
+1.00            1.000                 1.000                 +0.000
+
+Detection rate minus false-accusation rate is zero at every p, to
+sampling error. Randomisation buys no discrimination on an
+indistinguishable view class -- the ROC is the diagonal.
+
+T1 therefore survives the randomised objection: a randomised
+adjudicator can trade the two error types against each other, but
+cannot reduce both. Only a third output state escapes.
+
+==============================================================================
+E6  MISTAKE vs MALICE -- EVIDENTIAL INDISTINGUISHABILITY
+==============================================================================
+malice  mistake   views identical   situation
+M6      M15       25/25             principal asserts a narrower scope
+M1      M16       0/25              executor acts outside the granted scope
+M7      M17       25/25             principal denies receiving the result
+
+baseline                      over-attributions   reads as
+B0_bearer_executor_log        0                   does not reach these cases
+B1_bilateral_commitment       100                 accuses the mistaken of bad faith
+B2_commitment_only            25                  accuses the mistaken of bad faith
+B3_suspected_exposed          100                 accuses the mistaken of bad faith
+B4_scope_predicates           100                 accuses the mistaken of bad faith
+B5_dispute_driven             100                 accuses the mistaken of bad faith
+B6_accountable_queries        100                 accuses the mistaken of bad faith
+B7_verifiable_adjudication    100                 accuses the mistaken of bad faith
+B6c_under_collusion           100                 accuses the mistaken of bad faith
+B9_non_attributive            0                   makes no culpability claim
+B10_composed                  0                   does not reach these cases
+B11_stateful                  0                   does not reach these cases
+B7r_under_revocation          100                 accuses the mistaken of bad faith
+B15_short_term_keys           0                   does not reach these cases
+B16c_custodial_attestor       0                   does not reach these cases
+B16d_digest_attestor          0                   does not reach these cases
+
+Every attributive scheme -- including B7, which was otherwise perfect --
+marks a sincerely mistaken party as culpable in 100 of 475 scenarios.
+
+THE BOUNDARY (from the M1/M16 row, which does NOT match):
+  M6/M15 and M7/M17 are identical because the malicious version needs
+  only an ASSERTION -- claim a different scope, deny a receipt. Nothing
+  distinguishes a liar from someone who misremembers.
+  M1/M16 differs because the malicious version needs an act of
+  CONCEALMENT -- the liar omits the action from its own record, the
+  good-faith actor reports it. Concealment leaves a trace; belief does not.
+
+  So: mistake is separable from malice exactly when malice requires an
+  additional concealing act. Where malice is purely assertional, no
+  evidence-based scheme can attribute fault.
+
+==============================================================================
+E7  SENSITIVITY TO MISTAKE PREVALENCE  (assumption A1)
+==============================================================================
+mistake rate    B7 correct    B7 over-attrib    harm ratio
+1%              0.585         0.010             0.02
+5%              0.561         0.050             0.09
+10%             0.532         0.100             0.19
+25%             0.443         0.250             0.56
+50%             0.295         0.500             1.69
+
+At a 5% mistake rate, roughly one wrongful attribution for every
+thirteen correct ones. At 25%, one in three. No published figure
+exists for how often principals misremember a delegation -- which is
+itself worth saying: the parameter that decides whether these systems
+are safe to deploy has never been measured.
+
+==============================================================================
+E8  CAPABILITY vs ATTRIBUTION HARM
+==============================================================================
+baseline                      classes handled   over-attrib   dominated by
+B0_bearer_executor_log        9                 0             B9_non_attributive, B10_composed, B11_stateful, B15_short_term_keys, B16c_custodial_attestor, B16d_digest_attestor
+B1_bilateral_commitment       16                100           B6_accountable_queries, B7_verifiable_adjudication, B6c_under_collusion, B9_non_attributive, B10_composed, B11_stateful, B7r_under_revocation, B15_short_term_keys, B16c_custodial_attestor, B16d_digest_attestor
+B2_commitment_only            14                25            B9_non_attributive, B10_composed, B11_stateful, B15_short_term_keys, B16c_custodial_attestor, B16d_digest_attestor
+B3_suspected_exposed          16                100           B6_accountable_queries, B7_verifiable_adjudication, B6c_under_collusion, B9_non_attributive, B10_composed, B11_stateful, B7r_under_revocation, B15_short_term_keys, B16c_custodial_attestor, B16d_digest_attestor
+B4_scope_predicates           16                100           B6_accountable_queries, B7_verifiable_adjudication, B6c_under_collusion, B9_non_attributive, B10_composed, B11_stateful, B7r_under_revocation, B15_short_term_keys, B16c_custodial_attestor, B16d_digest_attestor
+B5_dispute_driven             16                100           B6_accountable_queries, B7_verifiable_adjudication, B6c_under_collusion, B9_non_attributive, B10_composed, B11_stateful, B7r_under_revocation, B15_short_term_keys, B16c_custodial_attestor, B16d_digest_attestor
+B6_accountable_queries        17                100           B7_verifiable_adjudication, B9_non_attributive, B10_composed, B11_stateful, B15_short_term_keys, B16c_custodial_attestor, B16d_digest_attestor
+B7_verifiable_adjudication    18                100           B9_non_attributive, B10_composed, B11_stateful, B15_short_term_keys, B16c_custodial_attestor, B16d_digest_attestor
+B6c_under_collusion           17                100           B7_verifiable_adjudication, B9_non_attributive, B10_composed, B11_stateful, B15_short_term_keys, B16c_custodial_attestor, B16d_digest_attestor
+B9_non_attributive            19                0             B10_composed, B11_stateful, B15_short_term_keys, B16c_custodial_attestor, B16d_digest_attestor
+B10_composed                  20                0             B11_stateful, B16c_custodial_attestor
+B11_stateful                  21                0             B16c_custodial_attestor
+B7r_under_revocation          17                100           B7_verifiable_adjudication, B9_non_attributive, B10_composed, B11_stateful, B15_short_term_keys, B16c_custodial_attestor, B16d_digest_attestor
+B15_short_term_keys           20                0             B11_stateful, B16c_custodial_attestor
+B16c_custodial_attestor       22                0             -- PARETO --
+B16d_digest_attestor          20                0             B11_stateful, B16c_custodial_attestor
+
+The attributive schemes are all dominated. B10 handles more classes
+than B7 with zero over-attribution: the attributive step buys nothing
+here and costs 100 wrongful accusations. That inverts the usual
+assumption that a more capable scheme is a better one.
+
+==============================================================================
+E9  STATEFULNESS: ESCAPE FROM T5, OR T1 AGAIN?
+==============================================================================
+honest base loss rate p0 = 0.25, alpha = 0.05
+
+n disputes  adversary rate  detection power   false-acc on honest
+10          0.30            0.047             0.020
+10          0.40            0.166             0.020
+10          0.60            0.633             0.020
+
+20          0.30            0.113             0.041
+20          0.40            0.404             0.041
+20          0.60            0.943             0.041
+
+50          0.30            0.141             0.029
+50          0.40            0.664             0.029
+50          0.60            0.999             0.029
+
+THE STRATEGIC ADVERSARY
+n       max undetected rate     misconduct per 100 disputes
+10      0.54                    54
+20      0.42                    42
+50      0.37                    37
+100     0.32                    32
+
+Statefulness does NOT escape T5. It converts a MISS into a FALSE
+ACCUSATION -- exactly T1's dichotomy, reproduced at the level of rates
+rather than single disputes. The honest-but-unlucky executor and the
+disciplined offender have overlapping observed distributions, so no
+threshold separates them.
+
+What statefulness DOES buy is a bound: an adversary that stays below
+the detection threshold has capped its own misconduct at roughly the
+honest base failure rate. It cannot hide unlimited concealment -- only
+concealment indistinguishable from bad luck.
+
+T1 is therefore SCALE-INVARIANT: moving from single-dispute evidence
+to pattern evidence does not escape the accuracy/completeness
+dichotomy, it reinstates it one level up.
+
+==============================================================================
+E10  BONDED SUSPICION  (T7's forced alternative)
+==============================================================================
+exposure penalty D = 100, honest loss rate p0 = 0.25
+
+stake S     cost of claiming loss   claiming dominates?   honest tax / dispute
+0           0                       YES                   0.0
+10          10                      YES                   2.5
+25          25                      YES                   6.2
+50          50                      YES                   12.5
+100         100                     no                    25.0
+150         150                     no                    37.5
+
+Deterrence requires S >= D. At S = D = 100 the honest executor pays
+25 per dispute in expectation -- purely for being unlucky.
+
+THE CONSERVATION
+response                  currency of the cost          who pays
+single-state (B1)         false accusations             honest, wrongly blamed
+three-state (B3-B10)      missed detections             victims of concealment
+stateful (B11)            false accusations at rate     honest but unlucky
+bonded (B12)              forfeited stake               honest, taxed p0*D
+
+Bonding does not escape the dichotomy either. It converts a
+CLASSIFICATION ERROR into a TAX. Every response pays for the same
+indistinguishability in a different currency -- and the honest party
+pays in three of the four.
+
+T8 (CONSERVATION): where evidence cannot separate honest failure from
+concealment, the cost of that ambiguity cannot be eliminated, only
+denominated -- in wrongful blame, in undetected misconduct, or in a
+levy on the innocent.
+
+==============================================================================
+E11  DISCLOSURE AS ENTROPY, NOT BYTES  (assumption V6)
+==============================================================================
+vocabulary 64, scope size 8: prior entropy H0 = 32.0 bits
+
+scheme                      revealed              H after     bits leaked   % of H0
+B2 commitment-only          0 in, 0 out           32.0        0.0           0%
+B5/B7 one query             0 in, 1 out           31.9        0.2           1%
+B5/B7 three queries         1 in, 2 out           28.7        3.3           10%
+B4 exhaustive (n queries)   8 in, 56 out          0.0         32.0          100%
+B3 full record              8 in, 0 out           0.0         32.0          100%
+
+Byte counts said B5 leaks ~0.3x of B3. Entropy says B5 leaks 3% of
+the scope's information while B3 leaks 100%. The byte proxy
+UNDERSTATED the advantage of selective adjudication by an order of
+magnitude -- an error in the conservative direction, but an error.
+
+==============================================================================
+E12  STEADY-STATE COST  (assumption V2)
+==============================================================================
+N = 1,000,000 delegations
+
+scheme                      rate 1e-3       rate 1e-5       dispute share
+B0 bearer + log             20 MB           20              1.2102% / 0.0122%
+B3 full-record bilateral    252 MB          250             0.6000% / 0.0060%
+B7 selective + transcript   251 MB          250             0.2072% / 0.0021%
+B11 stateful                291 MB          290             0.1786% / 0.0018%
+
+At a 1-in-100,000 dispute rate, adjudication is under 0.001% of total
+cost. Every optimisation in this project targeted that 0.001%.
+
+The deployed default is ~12x cheaper in steady state, which is the
+actual reason it persists -- not ignorance of the accountability
+literature. A scheme is adopted on its idle cost, not its dispute cost.
+
+==============================================================================
+E13  SENSITIVITY TO p0  (the invented honest-failure rate)
+==============================================================================
+n = 20 disputes, alpha = 0.05
+
+p0      k_crit   FA on honest   power @1.5x p0   power @2x p0   adversary ceiling
+0.05    4        0.0159         0.058            0.133          0.18
+0.10    5        0.0432         0.170            0.370          0.22
+0.15    7        0.0219         0.143            0.392          0.32
+0.25    9        0.0409         0.317            0.748          0.42
+0.35    12       0.0196         0.329            0.887          0.57
+0.50    15       0.0207         0.617            1.000          0.72
+
+QUALITATIVE CLAIM: does statefulness always trade a miss for a
+false accusation, or only near p0 = 0.25?
+
+  false-accusation rate > 0 at every p0 tested : True
+  detection power < 1 at every p0 tested       : True
+  -> T7's qualitative claim is ROBUST
+
+What DOES move with p0 is the adversary's misconduct ceiling: it
+tracks p0 almost proportionally, so the tolerable rate of undetected
+concealment is set entirely by how often honest parties genuinely
+fail. A system with reliable storage bounds its adversary tightly;
+a flaky one hands the adversary the same slack it gives the unlucky.
+
+That is a NEW consequence of T7, not visible at a single p0:
+  the price of unreliable infrastructure is paid twice -- once in
+  honest failures, and again in the concealment those failures cover.
+

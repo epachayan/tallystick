@@ -1,0 +1,59 @@
+================================================================================================
+DISCLOSURE vs RECORD SIZE  (mean bytes actually transmitted)
+================================================================================================
+scope     B3_suspected_exposed          B10_composed                  B5_dispute_driven             B7_verifiable_adjudication    B13_witness_messages        
+2         238                           238                           277                           279                           354                         
+4         277                           277                           288                           290                           355                         
+8         348                           348                           297                           300                           355                         
+16        504                           504                           312                           316                           356                         
+32        799                           799                           322                           327                           357                         
+64        1398                          1398                          333                           339                           358                         
+
+================================================================================================
+SELECTIVE DISCLOSURE AS A FRACTION OF FULL-RECORD BILATERAL (B7 / B3)
+================================================================================================
+  scope=  2  B7_verifiable_adjudication   1.17x   ##############################################
+  scope=  2  B13_witness_messages         1.48x   ###########################################################
+  scope=  4  B7_verifiable_adjudication   1.05x   #########################################
+  scope=  4  B13_witness_messages         1.28x   ###################################################
+  scope=  8  B7_verifiable_adjudication   0.86x   ##################################
+  scope=  8  B13_witness_messages         1.02x   ########################################
+  scope= 16  B7_verifiable_adjudication   0.63x   #########################
+  scope= 16  B13_witness_messages         0.71x   ############################
+  scope= 32  B7_verifiable_adjudication   0.41x   ################
+  scope= 32  B13_witness_messages         0.45x   #################
+  scope= 64  B7_verifiable_adjudication   0.24x   #########
+  scope= 64  B13_witness_messages         0.26x   ##########
+
+================================================================================================
+DOES ACCURACY HOLD ACROSS SCALE?  (full-class solved / false-attribution rate)
+================================================================================================
+protocol                        scope=2         scope=4         scope=8         scope=16        scope=32        scope=64      
+B3_suspected_exposed            21/34 15%       21/34 15%       21/34 15%       21/34 15%       21/34 15%       21/34 15%     
+B10_composed                    26/34 0%        26/34 0%        26/34 0%        26/34 0%        26/34 0%        26/34 0%      
+B5_dispute_driven               20/34 12%       20/34 12%       20/34 12%       20/34 12%       20/34 12%       20/34 12%     
+B7_verifiable_adjudication      22/34 12%       22/34 12%       22/34 12%       22/34 12%       22/34 12%       22/34 12%     
+B13_witness_messages            26/34 0%        26/34 0%        26/34 0%        26/34 0%        26/34 0%        26/34 0%      
+
+================================================================================================
+COST OF RESTORING TWIN INDISTINGUISHABILITY BY PADDING
+================================================================================================
+A cardinality-binding root publishes |set|. Padding hides it, at the
+price of a deeper tree and therefore larger proofs.
+
+   real |set|   pad to   proof bytes    padded   overhead
+            2        8            56       233      4.16x
+            2       16            56       297      5.30x
+            2       64            56       425      7.59x
+            3        8            56       233      4.16x
+            3       16            56       297      5.30x
+            3       64            56       425      7.59x
+            4        8            88       233      2.65x
+            4       16            88       297      3.38x
+            4       64            88       425      4.83x
+            8        8           120       120      1.00x
+            8       16           120       297      2.48x
+            8       64           120       425      3.54x
+           16       16           152       152      1.00x
+           16       64           152       425      2.80x
+

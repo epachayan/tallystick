@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+title: "Tallystick: an adversarial harness for accountability in delegated agentic action"
+message: "If you use this corpus or harness, please cite it as below."
+type: software
+authors:
+  - family-names: Koshy
+    given-names: Nitin Stephen
+    orcid: "https://orcid.org/0009-0009-2690-0588"
+abstract: >-
+  A cryptography-free adversarial scenario corpus and adjudication harness for
+  studying accountability in two-party delegation disputes involving AI agents.
+  850 scenarios across 34 adversarial classes and 18 adjudication baselines,
+  with a derived boundary on what any evidence-determined mechanism can resolve:
+  where two worlds produce identical evidence and differ in whether any account
+  diverges from the record, no mechanism resolves both, and the cost can be
+  denominated but not removed. Includes a documented record of six hardening declaration defects, later
+  publication/reporting drifts, and the build stages written to catch those failure modes.
+keywords:
+  - accountability
+  - delegation
+  - AI agents
+  - non-repudiation
+  - fair exchange
+  - adversarial evaluation
+license: MIT
+date-released: "2026-08-15"
+version: "0.10.2"

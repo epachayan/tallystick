@@ -1,0 +1,169 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/epachayan/tallystick/schema/scenario.v0.2.schema.json",
+  "title": "Tallystick delegation scenario, schema 0.2",
+  "description": "STRUCTURAL validation only: is this a well-formed scenario? Logical coherence (cross-field invariants, mutation semantics, twin consistency) is checked separately by src/validation/coherence.py. Keeping the two apart is deliberate; JSON Schema cannot express the invariants and should not be stretched to try.",
+  "type": "object",
+  "required": [
+    "scenario_id", "schema_version", "seed", "m_class", "mutation_family",
+    "authorization", "execution", "chain", "p_view", "e_view", "adjudicator",
+    "history", "key_claim", "attestor", "ground_truth"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "scenario_id": { "type": "string", "minLength": 1 },
+    "schema_version": { "const": "0.2" },
+    "seed": { "type": "integer" },
+    "m_class": { "type": "string", "pattern": "^M[0-9]+$" },
+    "mutation_family": {
+      "type": "string",
+      "enum": [
+        "control", "behavioural", "record_tampering", "benign_divergence",
+        "no_commitment", "query_abuse", "adjudicator_abuse", "mistake", "mixed",
+        "pattern_abuse", "pattern_benign", "excuse_abuse", "excuse_benign",
+        "attestor_abuse", "attestor_benign", "abort_abuse", "abort_benign"
+      ]
+    },
+
+    "authorization": {
+      "type": "object",
+      "required": ["auth_id", "issued", "committed", "scope", "constraints"],
+      "additionalProperties": false,
+      "properties": {
+        "auth_id": { "type": "string" },
+        "issued": { "type": "boolean" },
+        "committed": { "type": "boolean" },
+        "scope": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+        "constraints": {
+          "type": "object",
+          "description": "Reserved for the later authorization-semantics family (amount <= n, time < expiry, delegation_depth <= k). Empty in 0.2.",
+          "additionalProperties": true
+        }
+      }
+    },
+
+    "chain": {
+      "type": "object",
+      "description": "Which witness messages actually reached the counterparty. A message not sent leaves the intended holder without that commitment (RC-H7).",
+      "required": ["exec_receipt_sent", "delivery_ack_sent"],
+      "additionalProperties": false,
+      "properties": {
+        "exec_receipt_sent": { "type": "boolean" },
+        "delivery_ack_sent": { "type": "boolean" }
+      }
+    },
+
+    "execution": {
+      "type": "object",
+      "required": ["actions", "result_delivered"],
+      "additionalProperties": false,
+      "properties": {
+        "actions": { "type": "array", "items": { "type": "string" } },
+        "result_delivered": { "type": "boolean" }
+      }
+    },
+
+    "p_view": { "$ref": "#/$defs/partyView" },
+    "e_view": { "$ref": "#/$defs/partyView" },
+
+    "adjudicator": {
+      "type": "object",
+      "required": ["colluding"],
+      "additionalProperties": false,
+      "properties": {
+        "colluding": {
+          "type": "boolean",
+          "description": "HIDDEN. Never projected into an EvidenceView."
+        },
+        "favours": { "type": "string", "enum": ["P", "E"] },
+        "favours_blame": {
+          "type": "string",
+          "enum": ["P", "E", "both", "none"],
+          "description": "The verdict the adjudicator PUBLISHES. Visible evidence: a published verdict is public. Why it was published is not."
+        }
+      }
+    },
+
+    "history": {
+      "type": "object",
+      "required": ["e_disputes", "e_suspensions"],
+      "additionalProperties": false,
+      "properties": {
+        "e_disputes": { "type": "integer", "minimum": 0 },
+        "e_suspensions": { "type": "integer", "minimum": 0 },
+        "p_disputes": { "type": "integer", "minimum": 0 },
+        "p_suspensions": { "type": "integer", "minimum": 0 }
+      }
+    },
+
+    "key_claim": {
+      "type": "object",
+      "required": ["revoked", "genuine"],
+      "additionalProperties": false,
+      "properties": {
+        "revoked": { "type": "boolean", "description": "The CLAIM. Visible." },
+        "genuine": { "type": "boolean", "description": "HIDDEN. Whether the compromise was real." }
+      }
+    },
+
+    "attestor": {
+      "type": "object",
+      "required": ["present", "available"],
+      "additionalProperties": false,
+      "properties": {
+        "present": { "type": "boolean" },
+        "available": { "type": "boolean" }
+      }
+    },
+
+    "ground_truth": {
+      "type": "object",
+      "description": "HIDDEN in its entirety. Reaches the scorer and nothing else.",
+      "required": ["dishonest_party", "claim", "actual", "adjudicable", "p_state", "e_state"],
+      "additionalProperties": false,
+      "properties": {
+        "dishonest_party": { "type": "string", "enum": ["P", "E", "J", "both", "none"] },
+        "claim": { "type": "string" },
+        "actual": { "type": "string" },
+        "adjudicable": { "type": "boolean" },
+        "p_state": { "type": "string", "enum": ["honest", "mistaken", "dishonest"] },
+        "e_state": { "type": "string", "enum": ["honest", "mistaken", "dishonest"] }
+      }
+    }
+  },
+
+  "$defs": {
+    "partyView": {
+      "type": "object",
+      "required": [
+        "asserted_scope", "asserted_actions", "asserted_auth_issued",
+        "asserted_result_received", "record_intact", "record_available",
+        "disputed_action"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "asserted_scope": {
+          "oneOf": [
+            { "type": "array", "items": { "type": "string" } },
+            { "type": "null" }
+          ],
+          "description": "null means the party makes no claim about scope."
+        },
+        "asserted_actions": {
+          "oneOf": [
+            { "type": "array", "items": { "type": "string" } },
+            { "type": "null" }
+          ]
+        },
+        "asserted_auth_issued": { "type": "boolean" },
+        "asserted_result_received": { "type": "boolean" },
+        "record_intact": { "type": "boolean" },
+        "record_available": { "type": "boolean" },
+        "disputed_action": {
+          "oneOf": [{ "type": "string" }, { "type": "null" }],
+          "description": "An action this party explicitly names as disputed. The only action a complainant can query that the counterparty did not admit to."
+        }
+      }
+    }
+  }
+}

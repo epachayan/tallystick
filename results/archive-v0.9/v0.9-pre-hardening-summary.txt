@@ -1,0 +1,105 @@
+corpus: 650 scenarios, 26 classes, 25 per class
+
+==============================================================================
+AGGREGATE OUTCOMES
+==============================================================================
+baseline                    correct_blame  false_accusation  over_attribution  missed  correct_abstain  correct_abstain_amb  correct_contradiction  spurious
+B0_bearer_executor_log      0              0                 0                 425     150              25                   50                     0       
+B1_bilateral_commitment     350            100               100               50      25               25                   0                      0       
+B2_commitment_only          150            0                 25                275     175              25                   0                      0       
+B3_suspected_exposed        275            25                100               125     100              25                   0                      0       
+B4_scope_predicates         275            25                100               125     100              25                   0                      0       
+B5_dispute_driven           275            25                100               125     100              25                   0                      0       
+B6_accountable_queries      300            25                100               100     100              25                   0                      0       
+B7_verifiable_adjudication  325            25                100               75      100              25                   0                      0       
+B6c_under_collusion         300            50                100               75      100              25                   0                      0       
+B9_non_attributive          0              25                0                 150     0                0                    475                    0       
+B10_composed                0              25                0                 125     0                0                    500                    0       
+B11_stateful                0              41                0                 107     0                0                    502                    0       
+B7r_under_revocation        300            0                 100               100     100              25                   0                      25      
+B15_short_term_keys         0              25                0                 125     0                0                    500                    0       
+B16c_custodial_attestor     0              25                0                 75      0                0                    550                    0       
+B16d_digest_attestor        0              25                0                 125     0                0                    500                    0       
+
+==============================================================================
+PRINCIPAL-LIAR CLASSES  (M5 M6 M7 M9) -- the regression test
+==============================================================================
+Can a correct executor defend itself when the PRINCIPAL is the one lying?
+
+baseline                    correct_blame   false_accusation    missed  
+B0_bearer_executor_log      0               0                   100     
+B1_bilateral_commitment     100             0                   0       
+B2_commitment_only          75              0                   25      
+B3_suspected_exposed        100             0                   0       
+B4_scope_predicates         100             0                   0       
+B5_dispute_driven           100             0                   0       
+B6_accountable_queries      100             0                   0       
+B7_verifiable_adjudication  100             0                   0       
+B6c_under_collusion         100             0                   0       
+B9_non_attributive          0               0                   0       
+B10_composed                0               0                   0       
+B11_stateful                0               0                   0       
+B7r_under_revocation        100             0                   0       
+B15_short_term_keys         0               0                   0       
+B16c_custodial_attestor     0               0                   0       
+B16d_digest_attestor        0               0                   0       
+
+==============================================================================
+PER-CLASS: who gets blamed
+==============================================================================
+M      family              liar    B0_bearer_executor_log      B1_bilateral_commitment     B2_commitment_only          B3_suspected_exposed        B4_scope_predicates         B5_dispute_driven           B6_accountable_queries      B7_verifiable_adjudication  B6c_under_collusion         B9_non_attributive          B10_composed                B11_stateful                B7r_under_revocation        B15_short_term_keys         B16c_custodial_attestor     B16d_digest_attestor      
+M0     control             none    correct_abstain (25)        correct_abstain (25)        correct_abstain (25)        correct_abstain (25)        correct_abstain (25)        correct_abstain (25)        correct_abstain (25)        correct_abstain (25)        correct_abstain (25)        correct_contradiction (25)  correct_contradiction (25)  correct_contradiction (25)  correct_abstain (25)        correct_contradiction (25)  correct_contradiction (25)  correct_contradiction (25)
+M1     behavioural         E       missed (25)                 correct_blame (25)          missed (25)                 correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_contradiction (25)  correct_contradiction (25)  correct_contradiction (25)  correct_blame (25)          correct_contradiction (25)  correct_contradiction (25)  correct_contradiction (25)
+M2     behavioural         E       missed (25)                 correct_blame (25)          missed (25)                 correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_contradiction (25)  correct_contradiction (25)  correct_contradiction (25)  correct_blame (25)          correct_contradiction (25)  correct_contradiction (25)  correct_contradiction (25)
+M3     record_tampering    E       missed (25)                 correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_contradiction (25)  correct_contradiction (25)  correct_contradiction (25)  correct_blame (25)          correct_contradiction (25)  correct_contradiction (25)  correct_contradiction (25)
+M4     record_tampering    E       missed (25)                 correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_contradiction (25)  correct_contradiction (25)  correct_contradiction (25)  correct_blame (25)          correct_contradiction (25)  correct_contradiction (25)  correct_contradiction (25)
+M5     behavioural         P       missed (25)                 correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_contradiction (25)  correct_contradiction (25)  correct_contradiction (25)  correct_blame (25)          correct_contradiction (25)  correct_contradiction (25)  correct_contradiction (25)
+M6     behavioural         P       missed (25)                 correct_blame (25)          missed (25)                 correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_contradiction (25)  correct_contradiction (25)  correct_contradiction (25)  correct_blame (25)          correct_contradiction (25)  correct_contradiction (25)  correct_contradiction (25)
+M7     behavioural         P       missed (25)                 correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_contradiction (25)  correct_contradiction (25)  correct_contradiction (25)  correct_blame (25)          correct_contradiction (25)  correct_contradiction (25)  correct_contradiction (25)
+M8     behavioural         E       missed (25)                 correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_blame (25)          missed (25)                 missed (25)                 missed (25)                 correct_blame (25)          missed (25)                 missed (25)                 missed (25)               
+M9     record_tampering    P       missed (25)                 correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_contradiction (25)  correct_contradiction (25)  correct_contradiction (25)  correct_blame (25)          correct_contradiction (25)  correct_contradiction (25)  correct_contradiction (25)
+M10    benign_divergence   none    correct_abstain (25)        false_accusation (25)       correct_abstain (25)        correct_abstain (25)        correct_abstain (25)        correct_abstain (25)        correct_abstain (25)        correct_abstain (25)        correct_abstain (25)        correct_contradiction (25)  correct_contradiction (25)  correct_contradiction (25)  correct_abstain (25)        correct_contradiction (25)  correct_contradiction (25)  correct_contradiction (25)
+M11    behavioural         both    missed (25)                 correct_blame (25)          missed (25)                 correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_contradiction (25)  correct_contradiction (25)  correct_contradiction (25)  correct_blame (25)          correct_contradiction (25)  correct_contradiction (25)  correct_contradiction (25)
+M12    no_commitment       both    correct_abstain_amb (25)    correct_abstain_amb (25)    correct_abstain_amb (25)    correct_abstain_amb (25)    correct_abstain_amb (25)    correct_abstain_amb (25)    correct_abstain_amb (25)    correct_abstain_amb (25)    correct_abstain_amb (25)    missed (25)                 missed (25)                 missed (25)                 correct_abstain_amb (25)    missed (25)                 missed (25)                 missed (25)               
+M13    query_abuse         P       missed (25)                 missed (25)                 missed (25)                 missed (25)                 missed (25)                 missed (25)                 correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_contradiction (25)  correct_contradiction (25)  correct_contradiction (25)  correct_blame (25)          correct_contradiction (25)  correct_contradiction (25)  correct_contradiction (25)
+M14    adjudicator_abuse   J       missed (25)                 missed (25)                 missed (25)                 missed (25)                 missed (25)                 missed (25)                 missed (25)                 correct_blame (25)          false_accusation (25)       missed (25)                 correct_contradiction (25)  correct_contradiction (25)  correct_blame (25)          correct_contradiction (25)  correct_contradiction (25)  correct_contradiction (25)
+M15    mistake             none    correct_contradiction (25)  over_attribution (25)       correct_abstain (25)        over_attribution (25)       over_attribution (25)       over_attribution (25)       over_attribution (25)       over_attribution (25)       over_attribution (25)       correct_contradiction (25)  correct_contradiction (25)  correct_contradiction (25)  over_attribution (25)       correct_contradiction (25)  correct_contradiction (25)  correct_contradiction (25)
+M16    mistake             none    correct_abstain (25)        over_attribution (25)       correct_abstain (25)        over_attribution (25)       over_attribution (25)       over_attribution (25)       over_attribution (25)       over_attribution (25)       over_attribution (25)       correct_contradiction (25)  correct_contradiction (25)  correct_contradiction (25)  over_attribution (25)       correct_contradiction (25)  correct_contradiction (25)  correct_contradiction (25)
+M17    mistake             none    correct_contradiction (25)  over_attribution (25)       over_attribution (25)       over_attribution (25)       over_attribution (25)       over_attribution (25)       over_attribution (25)       over_attribution (25)       over_attribution (25)       correct_contradiction (25)  correct_contradiction (25)  correct_contradiction (25)  over_attribution (25)       correct_contradiction (25)  correct_contradiction (25)  correct_contradiction (25)
+M18    mixed               E       missed (25)                 over_attribution (25)       missed (25)                 over_attribution (25)       over_attribution (25)       over_attribution (25)       over_attribution (25)       over_attribution (25)       over_attribution (25)       correct_contradiction (25)  correct_contradiction (25)  correct_contradiction (25)  over_attribution (25)       correct_contradiction (25)  correct_contradiction (25)  correct_contradiction (25)
+M19    record_tampering    E       missed (25)                 correct_blame (25)          missed (25)                 missed (25)                 missed (25)                 missed (25)                 missed (25)                 missed (25)                 missed (25)                 missed (25)                 missed (25)                 missed (25)                 missed (25)                 missed (25)                 correct_contradiction (25)  missed (25)               
+M20    pattern_abuse       E       missed (25)                 correct_blame (25)          missed (25)                 missed (25)                 missed (25)                 missed (25)                 missed (25)                 missed (25)                 missed (25)                 missed (25)                 missed (25)                 correct_contradiction (18)  missed (25)                 missed (25)                 correct_contradiction (25)  missed (25)               
+M21    pattern_benign      none    correct_abstain (25)        false_accusation (25)       correct_abstain (25)        correct_abstain (25)        correct_abstain (25)        correct_abstain (25)        correct_abstain (25)        correct_abstain (25)        correct_abstain (25)        correct_contradiction (25)  correct_contradiction (25)  false_accusation (16)       correct_abstain (25)        correct_contradiction (25)  correct_contradiction (25)  correct_contradiction (25)
+M22    excuse_abuse        E       missed (25)                 correct_blame (25)          missed (25)                 correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_blame (25)          correct_contradiction (25)  correct_contradiction (25)  correct_contradiction (25)  missed (25)                 correct_contradiction (25)  correct_contradiction (25)  correct_contradiction (25)
+M23    excuse_benign       none    correct_abstain (25)        false_accusation (25)       correct_abstain (25)        false_accusation (25)       false_accusation (25)       false_accusation (25)       false_accusation (25)       false_accusation (25)       false_accusation (25)       false_accusation (25)       false_accusation (25)       false_accusation (25)       spurious (25)               false_accusation (25)       false_accusation (25)       false_accusation (25)     
+M24    attestor_abuse      E       missed (25)                 correct_blame (25)          missed (25)                 missed (25)                 missed (25)                 missed (25)                 missed (25)                 missed (25)                 missed (25)                 missed (25)                 missed (25)                 missed (25)                 missed (25)                 missed (25)                 missed (25)                 missed (25)               
+M25    attestor_benign     none    correct_abstain (25)        false_accusation (25)       correct_abstain (25)        correct_abstain (25)        correct_abstain (25)        correct_abstain (25)        correct_abstain (25)        correct_abstain (25)        correct_abstain (25)        correct_contradiction (25)  correct_contradiction (25)  correct_contradiction (25)  correct_abstain (25)        correct_contradiction (25)  correct_contradiction (25)  correct_contradiction (25)
+
+==============================================================================
+DISCLOSURE TO ADJUDICATOR (bytes, mean)
+==============================================================================
+baseline                    mean bytes      adjudicable classes     vs B1             
+B0_bearer_executor_log      67              7/26                    0.24x             
+B1_bilateral_commitment     284             16/26                   1.00x             
+B2_commitment_only          256             14/26                   0.90x             
+B3_suspected_exposed        284             16/26                   1.00x             
+B4_scope_predicates         690             16/26                   2.43x             
+B5_dispute_driven           351             16/26                   1.23x             
+B6_accountable_queries      354             17/26                   1.25x             
+B7_verifiable_adjudication  354             18/26                   1.25x             
+B6c_under_collusion         354             17/26                   1.25x             
+B9_non_attributive          354             0/26                    1.25x             
+B10_composed                354             0/26                    1.25x             
+B11_stateful                354             0/26                    1.25x             
+B7r_under_revocation        354             17/26                   1.25x             
+B15_short_term_keys         482             0/26                    1.70x             
+B16c_custodial_attestor     578             0/26                    2.03x             
+B16d_digest_attestor        578             0/26                    2.03x             
+
+==============================================================================
+WHAT DIES WHEN DISCLOSURE IS WITHHELD  (B1 -> B2)
+==============================================================================
+survives commitment-only adjudication : M3, M4, M5, M7, M8, M9
+lost when contents are withheld       : M1, M2, M6, M11, M19, M20, M22, M24
+
+wrote results/summary.txt and results/per_class.json

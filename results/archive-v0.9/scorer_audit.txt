@@ -1,0 +1,9 @@
+========================================================================
+SCORER AUDIT
+========================================================================
+combinations exercised : 450
+outcome distribution   : {'correct_blame': 50, 'false_accusation': 200, 'missed': 72, 'over_attribution': 110, 'spurious': 4, 'correct_abstain': 9, 'correct_contradiction': 5}
+
+  note: outcome never produced in the attributive sweep: correct_abstain_amb
+
+PASSED -- no property violations

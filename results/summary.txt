@@ -1,0 +1,125 @@
+corpus: 850 scenarios, 34 classes, 25 instances per class
+34 adversarial structures instantiated 25 times each -- NOT 850 independent empirical incidents.
+
+================================================================================================
+SECURITY SUMMARY  (full-class success is the adversarial metric: the attacker picks the input)
+================================================================================================
+protocol                      scenario  full-class   worst class  false attr   missed
+-------------------------------------------------------------------------------------
+B0_bearer_executor_log          38.2%     13/34         0% (M1)       0.0%    61.8%
+B1_bilateral_commitment         61.8%     21/34         0% (M10)      23.5%    14.7%
+B2_commitment_only              52.9%     18/34         0% (M1)       2.9%    44.1%
+B3_suspected_exposed            61.8%     21/34         0% (M13)      14.7%    23.5%
+B4_scope_predicates             58.8%     20/34         0% (M13)      11.8%    29.4%
+B5_dispute_driven               58.8%     20/34         0% (M13)      11.8%    29.4%
+B6_accountable_queries          61.8%     21/34         0% (M14)      11.8%    26.5%
+B7_verifiable_adjudication      64.7%     22/34         0% (M15)      11.8%    23.5%
+B6c_under_collusion             61.8%     21/34         0% (M14)      14.7%    23.5%
+B9_non_attributive              73.5%     25/34         0% (M8)       0.0%    23.5%
+B10_composed                    76.5%     26/34         0% (M8)       0.0%    20.6%
+B11_stateful                    76.7%     24/34         0% (M8)       0.0%    16.1%
+B7r_under_revocation            64.7%     22/34         0% (M15)      11.8%    23.5%
+B15_short_term_keys             76.5%     26/34         0% (M8)       0.0%    20.6%
+B16c_custodial_attestor         82.4%     28/34         0% (M8)       0.0%    14.7%
+B16d_digest_attestor            76.5%     26/34         0% (M8)       0.0%    20.6%
+B13_witness_messages            76.5%     26/34         0% (M19)       0.0%    20.6%
+B17_duty_to_answer              76.5%     26/34         0% (M10)       0.0%     5.9%
+
+================================================================================================
+AGGREGATE OUTCOMES
+================================================================================================
+protocol                      correct_bla  correct_con  correct_abs  correct_abs       missed  false_accus  over_attrib     spurious  unsupported  false_contr
+B0_bearer_executor_log                  0            0          300           25          525            0            0            0            0            0
+B1_bilateral_commitment               375            0          125           25          125          100          100            0            0            0
+B2_commitment_only                    150            0          275           25          375            0           25            0            0            0
+B3_suspected_exposed                  300            0          200           25          200           25          100            0            0            0
+B4_scope_predicates                   250            0          225           25          250            0          100            0            0            0
+B5_dispute_driven                     250            0          225           25          250            0          100            0            0            0
+B6_accountable_queries                275            0          225           25          225            0          100            0            0            0
+B7_verifiable_adjudication            300            0          225           25          200            0          100            0            0            0
+B6c_under_collusion                   275            0          225           25          200           25          100            0            0            0
+B9_non_attributive                      0          400          200           25          200            0            0            0            0           25
+B10_composed                            0          425          200           25          175            0            0            0            0           25
+B11_stateful                            0          463          164           25          137            0            0            0            0           61
+B7r_under_revocation                  300            0          225           25          200            0          100            0            0            0
+B15_short_term_keys                     0          425          200           25          175            0            0            0            0           25
+B16c_custodial_attestor                 0          475          200           25          125            0            0            0            0           25
+B16d_digest_attestor                    0          425          200           25          175            0            0            0            0           25
+B13_witness_messages                    0          400          225           25          175            0            0            0            0           25
+B17_duty_to_answer                      0          525          100           25           50            0            0            0            0          150
+
+================================================================================================
+PRINCIPAL-LIAR CLASSES (M5 M6 M7 M9) -- can a correct executor defend itself?
+================================================================================================
+protocol                      correct_blame  correct_contra  false_accusation   missed
+B0_bearer_executor_log                    0               0                 0      100
+B1_bilateral_commitment                 100               0                 0        0
+B2_commitment_only                       75               0                 0       25
+B3_suspected_exposed                    100               0                 0        0
+B4_scope_predicates                     100               0                 0        0
+B5_dispute_driven                       100               0                 0        0
+B6_accountable_queries                  100               0                 0        0
+B7_verifiable_adjudication              100               0                 0        0
+B6c_under_collusion                     100               0                 0        0
+B9_non_attributive                        0             100                 0        0
+B10_composed                              0             100                 0        0
+B11_stateful                              0             100                 0        0
+B7r_under_revocation                    100               0                 0        0
+B15_short_term_keys                       0             100                 0        0
+B16c_custodial_attestor                   0             100                 0        0
+B16d_digest_attestor                      0             100                 0        0
+B13_witness_messages                      0             100                 0        0
+B17_duty_to_answer                        0             100                 0        0
+
+================================================================================================
+PER-CLASS SUCCESS RATE  (not the modal label: a class is solved only if every instance succeeds)
+================================================================================================
+protocol                       M0   M1   M2   M3   M4   M5   M6   M7   M8   M9  M10  M11  M12  M13  M14  M15  M16  M17  M18  M19  M20  M21  M22  M23  M24  M25  M26  M27  M28  M29  M30  M31  M32  M33
+B0_bearer_executor_log        100    0    0    0    0    0    0    0    0    0  100    0  100    0    0  100  100  100    0    0    0  100    0  100    0  100    0  100    0  100    0  100    0  100
+B1_bilateral_commitment       100  100  100  100  100  100  100  100  100  100    0  100  100    0    0    0    0    0    0  100  100    0  100    0  100    0    0  100    0  100  100  100    0  100
+B2_commitment_only            100    0    0  100  100  100    0  100  100  100  100    0  100    0    0  100  100    0    0    0    0  100    0  100    0  100    0  100    0  100    0  100    0  100
+B3_suspected_exposed          100  100  100  100  100  100  100  100  100  100  100  100  100    0    0    0    0    0    0    0    0  100  100    0    0  100    0  100    0  100  100  100    0  100
+B4_scope_predicates           100  100  100  100  100  100  100  100  100  100  100  100  100    0    0    0    0    0    0    0    0  100    0  100    0  100    0  100    0  100    0  100    0  100
+B5_dispute_driven             100  100  100  100  100  100  100  100  100  100  100  100  100    0    0    0    0    0    0    0    0  100    0  100    0  100    0  100    0  100    0  100    0  100
+B6_accountable_queries        100  100  100  100  100  100  100  100  100  100  100  100  100  100    0    0    0    0    0    0    0  100    0  100    0  100    0  100    0  100    0  100    0  100
+B7_verifiable_adjudication    100  100  100  100  100  100  100  100  100  100  100  100  100  100  100    0    0    0    0    0    0  100    0  100    0  100    0  100    0  100    0  100    0  100
+B6c_under_collusion           100  100  100  100  100  100  100  100  100  100  100  100  100  100    0    0    0    0    0    0    0  100    0  100    0  100    0  100    0  100    0  100    0  100
+B9_non_attributive            100  100  100  100  100  100  100  100    0  100  100  100  100  100    0  100  100  100  100    0    0  100  100    0    0  100    0  100    0  100  100  100    0  100
+B10_composed                  100  100  100  100  100  100  100  100    0  100  100  100  100  100  100  100  100  100  100    0    0  100  100    0    0  100    0  100    0  100  100  100    0  100
+B11_stateful                  100  100  100  100  100  100  100  100    0  100  100  100  100  100  100  100  100  100  100    0   72   36  100    0    0  100    0  100   80   20  100  100    0  100
+B7r_under_revocation          100  100  100  100  100  100  100  100  100  100  100  100  100  100  100    0    0    0    0    0    0  100    0  100    0  100    0  100    0  100    0  100    0  100
+B15_short_term_keys           100  100  100  100  100  100  100  100    0  100  100  100  100  100  100  100  100  100  100    0    0  100  100    0    0  100    0  100    0  100  100  100    0  100
+B16c_custodial_attestor       100  100  100  100  100  100  100  100    0  100  100  100  100  100  100  100  100  100  100  100  100  100  100    0    0  100    0  100    0  100  100  100    0  100
+B16d_digest_attestor          100  100  100  100  100  100  100  100    0  100  100  100  100  100  100  100  100  100  100    0    0  100  100    0    0  100    0  100    0  100  100  100    0  100
+B13_witness_messages          100  100  100  100  100  100  100  100  100  100  100  100  100  100  100  100  100  100  100    0    0  100    0  100    0  100    0  100    0  100    0  100  100    0
+B17_duty_to_answer            100  100  100  100  100  100  100  100  100  100    0  100  100  100  100  100  100  100  100  100  100    0    0  100  100    0  100    0  100    0    0  100  100    0
+
+================================================================================================
+DISCLOSURE TO ADJUDICATOR  (bytes actually transmitted, mean)
+================================================================================================
+protocol                      mean bytes    vs B1  full-class
+B0_bearer_executor_log                65    0.25x      13/34
+B1_bilateral_commitment              257    1.00x      21/34
+B2_commitment_only                   256    1.00x      18/34
+B3_suspected_exposed                 257    1.00x      21/34
+B4_scope_predicates                  377    1.47x      20/34
+B5_dispute_driven                    280    1.09x      20/34
+B6_accountable_queries               283    1.10x      21/34
+B7_verifiable_adjudication           283    1.10x      22/34
+B6c_under_collusion                  283    1.10x      21/34
+B9_non_attributive                   257    1.00x      25/34
+B10_composed                         257    1.00x      26/34
+B11_stateful                         257    1.00x      24/34
+B7r_under_revocation                 283    1.10x      22/34
+B15_short_term_keys                  385    1.50x      26/34
+B16c_custodial_attestor              487    1.90x      28/34
+B16d_digest_attestor                 481    1.87x      26/34
+B13_witness_messages                 354    1.38x      26/34
+B17_duty_to_answer                   354    1.38x      26/34
+
+================================================================================================
+WHAT DIES WHEN CONTENTS ARE WITHHELD  (B1 full disclosure -> B2 commitments only)
+================================================================================================
+survives commitment-only adjudication : M0, M3, M4, M5, M7, M8, M9, M12, M27, M29, M31, M33
+lost when contents are withheld       : M1, M2, M6, M11, M19, M20, M22, M24, M30
+

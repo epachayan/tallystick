@@ -1,0 +1,108 @@
+================================================================================================
+CANONICAL NUMBERS -- corpus.v0.9.jsonl, 850 scenarios, 34 classes, 18 protocols
+hardened harness: evidence-only protocol input, world-first scorer, verified Merkle proofs
+================================================================================================
+
+[F01] can a correct executor defend itself when the principal lies?
+      SCOPE (RC-H12): stated over ASSERTIONAL lies only -- the principal
+      asserts something a signature contradicts. The corpus has four more
+      classes with a dishonest principal and a correct executor where the
+      misconduct is non-assertional, and bilateral commitment does not reach it.
+
+      assertional (M5 M6 M7 M9):
+        B0_bearer_executor_log      0/100 correct blame
+        B1_bilateral_commitment     100/100 correct blame
+
+      non-assertional (M13 M26 M28 M32) -- baseless complaint, withheld record, abort:
+        B0_bearer_executor_log      0/100 handled
+        B1_bilateral_commitment     0/100 handled
+        B13_witness_messages        50/100 handled
+        B17_duty_to_answer          100/100 handled
+
+      B1 scores 0 on the non-assertional set, exactly as B0 does. The
+      original F01 denominator excluded these, which flattered B1.
+
+[F03] over-attribution -- naming a MISTAKEN party as culpable
+  B7_verifiable_adjudication    100/850
+  B10_composed                  0/850
+  B16d_digest_attestor          0/850
+
+[aggregate] every protocol, canonical metrics
+  protocol                        scenario  full-class   worst  false-attr   missed
+  B0_bearer_executor_log            38.2%     13/34       0%        0.0%    61.8%
+  B1_bilateral_commitment           61.8%     21/34       0%       23.5%    14.7%
+  B2_commitment_only                52.9%     18/34       0%        2.9%    44.1%
+  B3_suspected_exposed              61.8%     21/34       0%       14.7%    23.5%
+  B4_scope_predicates               58.8%     20/34       0%       11.8%    29.4%
+  B5_dispute_driven                 58.8%     20/34       0%       11.8%    29.4%
+  B6_accountable_queries            61.8%     21/34       0%       11.8%    26.5%
+  B7_verifiable_adjudication        64.7%     22/34       0%       11.8%    23.5%
+  B6c_under_collusion               61.8%     21/34       0%       14.7%    23.5%
+  B9_non_attributive                73.5%     25/34       0%        0.0%    23.5%
+  B10_composed                      76.5%     26/34       0%        0.0%    20.6%
+  B11_stateful                      76.7%     24/34       0%        0.0%    16.1%
+  B7r_under_revocation              64.7%     22/34       0%       11.8%    23.5%
+  B15_short_term_keys               76.5%     26/34       0%        0.0%    20.6%
+  B16c_custodial_attestor           82.4%     28/34       0%        0.0%    14.7%
+  B16d_digest_attestor              76.5%     26/34       0%        0.0%    20.6%
+  B13_witness_messages              76.5%     26/34       0%        0.0%    20.6%
+  B17_duty_to_answer                76.5%     26/34       0%        0.0%     5.9%
+
+[F07] minimal commitment set: 4 -- C_auth, C_exec, C_recv, C_witness
+      residual classes under that vocabulary: 8 -- M19, M20, M22, M24, M26, M28, M30, M32
+      NOTE: M19 and M20 are separated from their benign twins by the
+      cardinality a sound commitment already binds. T10's residual is
+      narrower than the vocabulary in commitments.py suggests.
+
+[F08] paired test -- catch the adversarial twin WITHOUT condemning the benign one
+  M6/M15      B9_non_attributive, B10_composed, B11_stateful, B15_short_term_keys, B16c_custodial_attestor, B16d_digest_attestor, B13_witness_messages, B17_duty_to_answer
+  M7/M17      B9_non_attributive, B10_composed, B11_stateful, B15_short_term_keys, B16c_custodial_attestor, B16d_digest_attestor, B13_witness_messages, B17_duty_to_answer
+  M19/M10     B16c_custodial_attestor
+  M20/M21     B16c_custodial_attestor
+  M22/M23     NONE
+  M24/M25     NONE
+  M26/M27     NONE
+  M28/M29     NONE
+  M32/M33     NONE
+
+[F09] twin indistinguishability under the projection (observable fingerprint)
+  M15/M6    twin      principal misremembers scope / lies about scope
+  M16/M1    not_twin  M1 CONCEALS the out-of-scope action, M16 admits it. The evidence differs by construction, so this pair never tested intent. generator.TWIN_OF still claims it.
+  M17/M7    twin      misremembers delivery / denies receipt
+  M10/M19   twin      genuine record loss / tamper-then-claim-loss
+  M21/M20   twin      genuine repeated loss / repeated loss as cover
+  M23/M22   twin      thief used the key / false compromise claim
+  M25/M24   twin      genuine attestor outage / guilty executor, attestor down
+  M27/M26   twin      principal genuinely loses its copy / tampers then claims loss
+  M29/M28   twin      principal genuine repeated loss / repeated loss as cover
+  M31/M30   twin_commitment_onlyexecution receipt lost in transit / executor aborts to hide overreach
+  M33/M32   twin      acknowledgement lost in transit / principal aborts to deny receipt
+
+[F10] full-class success with and without the cardinality leak
+      A sound sorted-leaf commitment publishes |set|. Padding hides it.
+      A mechanism that loses classes here was leaning on the leak.
+  protocol                        unpadded   padded   delta
+  B0_bearer_executor_log             13/34    13/34      +0
+  B1_bilateral_commitment            21/34    21/34      +0
+  B2_commitment_only                 18/34    18/34      +0
+  B3_suspected_exposed               21/34    21/34      +0
+  B4_scope_predicates                20/34    18/34      -2
+  B5_dispute_driven                  20/34    18/34      -2
+  B6_accountable_queries             21/34    19/34      -2
+  B7_verifiable_adjudication         22/34    20/34      -2
+  B6c_under_collusion                21/34    19/34      -2
+  B9_non_attributive                 25/34    25/34      +0
+  B10_composed                       26/34    26/34      +0
+  B11_stateful                       24/34    24/34      +0
+  B7r_under_revocation               22/34    20/34      -2
+  B15_short_term_keys                26/34    26/34      +0
+  B16c_custodial_attestor            28/34    28/34      +0
+  B16d_digest_attestor               26/34    26/34      +0
+  B13_witness_messages               26/34    26/34      +0
+  B17_duty_to_answer                 26/34    26/34      +0
+
+================================================================================================
+STALENESS: any published figure of the form 'X of 325/375/475/600' predates
+this corpus (850). Any figure produced before the hardening refactor
+predates the current scorer and the evidence-only protocol input.
+================================================================================================

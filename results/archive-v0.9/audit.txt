@@ -1,0 +1,34 @@
+========================================================================
+LEAK CHECK -- differing verdicts on identical adjudicator views
+========================================================================
+  B0_bearer_executor_log        clean
+  B1_bilateral_commitment       clean
+  B2_commitment_only            clean
+  B3_suspected_exposed          clean
+  B4_scope_predicates           clean
+  B5_dispute_driven             clean
+  B6_accountable_queries        clean
+  B7_verifiable_adjudication    clean
+  B6c_under_collusion           clean
+  B9_non_attributive            clean
+  B10_composed                  clean
+  B11_stateful                  clean  (entitled: history)
+  B7r_under_revocation          clean
+  B15_short_term_keys           clean
+  B16c_custodial_attestor       clean  (entitled: custodial_copy)
+  B16d_digest_attestor          clean
+
+========================================================================
+TWIN CHECK -- declared pairs must be evidentially identical
+========================================================================
+  M6/M15        25/25  ok
+  M7/M17        25/25  ok
+  M19/M10       25/25  ok
+  M20/M21       25/25  ok
+  M22/M23       25/25  ok
+  M24/M25       25/25  ok
+
+  separable pairs (T4's concealment boundary depends on these):
+  M1/M16        0/25  ok -- separable
+
+AUDIT PASSED -- 650 scenarios, 16 baselines

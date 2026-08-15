@@ -1,0 +1,1284 @@
+{
+  "B0_bearer_executor_log": {
+    "M0": {
+      "correct_abstain": 25
+    },
+    "M1": {
+      "missed": 25
+    },
+    "M2": {
+      "missed": 25
+    },
+    "M3": {
+      "missed": 25
+    },
+    "M4": {
+      "missed": 25
+    },
+    "M5": {
+      "missed": 25
+    },
+    "M6": {
+      "missed": 25
+    },
+    "M7": {
+      "missed": 25
+    },
+    "M8": {
+      "missed": 25
+    },
+    "M9": {
+      "missed": 25
+    },
+    "M10": {
+      "correct_abstain": 25
+    },
+    "M11": {
+      "missed": 25
+    },
+    "M12": {
+      "correct_abstain_amb": 25
+    },
+    "M13": {
+      "missed": 25
+    },
+    "M14": {
+      "missed": 25
+    },
+    "M15": {
+      "correct_contradiction": 25
+    },
+    "M16": {
+      "correct_abstain": 25
+    },
+    "M17": {
+      "correct_contradiction": 25
+    },
+    "M18": {
+      "missed": 25
+    },
+    "M19": {
+      "missed": 25
+    },
+    "M20": {
+      "missed": 25
+    },
+    "M21": {
+      "correct_abstain": 25
+    },
+    "M22": {
+      "missed": 25
+    },
+    "M23": {
+      "correct_abstain": 25
+    },
+    "M24": {
+      "missed": 25
+    },
+    "M25": {
+      "correct_abstain": 25
+    }
+  },
+  "B1_bilateral_commitment": {
+    "M0": {
+      "correct_abstain": 25
+    },
+    "M1": {
+      "correct_blame": 25
+    },
+    "M2": {
+      "correct_blame": 25
+    },
+    "M3": {
+      "correct_blame": 25
+    },
+    "M4": {
+      "correct_blame": 25
+    },
+    "M5": {
+      "correct_blame": 25
+    },
+    "M6": {
+      "correct_blame": 25
+    },
+    "M7": {
+      "correct_blame": 25
+    },
+    "M8": {
+      "correct_blame": 25
+    },
+    "M9": {
+      "correct_blame": 25
+    },
+    "M10": {
+      "false_accusation": 25
+    },
+    "M11": {
+      "correct_blame": 25
+    },
+    "M12": {
+      "correct_abstain_amb": 25
+    },
+    "M13": {
+      "missed": 25
+    },
+    "M14": {
+      "missed": 25
+    },
+    "M15": {
+      "over_attribution": 25
+    },
+    "M16": {
+      "over_attribution": 25
+    },
+    "M17": {
+      "over_attribution": 25
+    },
+    "M18": {
+      "over_attribution": 25
+    },
+    "M19": {
+      "correct_blame": 25
+    },
+    "M20": {
+      "correct_blame": 25
+    },
+    "M21": {
+      "false_accusation": 25
+    },
+    "M22": {
+      "correct_blame": 25
+    },
+    "M23": {
+      "false_accusation": 25
+    },
+    "M24": {
+      "correct_blame": 25
+    },
+    "M25": {
+      "false_accusation": 25
+    }
+  },
+  "B2_commitment_only": {
+    "M0": {
+      "correct_abstain": 25
+    },
+    "M1": {
+      "missed": 25
+    },
+    "M2": {
+      "missed": 25
+    },
+    "M3": {
+      "correct_blame": 25
+    },
+    "M4": {
+      "correct_blame": 25
+    },
+    "M5": {
+      "correct_blame": 25
+    },
+    "M6": {
+      "missed": 25
+    },
+    "M7": {
+      "correct_blame": 25
+    },
+    "M8": {
+      "correct_blame": 25
+    },
+    "M9": {
+      "correct_blame": 25
+    },
+    "M10": {
+      "correct_abstain": 25
+    },
+    "M11": {
+      "missed": 25
+    },
+    "M12": {
+      "correct_abstain_amb": 25
+    },
+    "M13": {
+      "missed": 25
+    },
+    "M14": {
+      "missed": 25
+    },
+    "M15": {
+      "correct_abstain": 25
+    },
+    "M16": {
+      "correct_abstain": 25
+    },
+    "M17": {
+      "over_attribution": 25
+    },
+    "M18": {
+      "missed": 25
+    },
+    "M19": {
+      "missed": 25
+    },
+    "M20": {
+      "missed": 25
+    },
+    "M21": {
+      "correct_abstain": 25
+    },
+    "M22": {
+      "missed": 25
+    },
+    "M23": {
+      "correct_abstain": 25
+    },
+    "M24": {
+      "missed": 25
+    },
+    "M25": {
+      "correct_abstain": 25
+    }
+  },
+  "B3_suspected_exposed": {
+    "M0": {
+      "correct_abstain": 25
+    },
+    "M1": {
+      "correct_blame": 25
+    },
+    "M2": {
+      "correct_blame": 25
+    },
+    "M3": {
+      "correct_blame": 25
+    },
+    "M4": {
+      "correct_blame": 25
+    },
+    "M5": {
+      "correct_blame": 25
+    },
+    "M6": {
+      "correct_blame": 25
+    },
+    "M7": {
+      "correct_blame": 25
+    },
+    "M8": {
+      "correct_blame": 25
+    },
+    "M9": {
+      "correct_blame": 25
+    },
+    "M10": {
+      "correct_abstain": 25
+    },
+    "M11": {
+      "correct_blame": 25
+    },
+    "M12": {
+      "correct_abstain_amb": 25
+    },
+    "M13": {
+      "missed": 25
+    },
+    "M14": {
+      "missed": 25
+    },
+    "M15": {
+      "over_attribution": 25
+    },
+    "M16": {
+      "over_attribution": 25
+    },
+    "M17": {
+      "over_attribution": 25
+    },
+    "M18": {
+      "over_attribution": 25
+    },
+    "M19": {
+      "missed": 25
+    },
+    "M20": {
+      "missed": 25
+    },
+    "M21": {
+      "correct_abstain": 25
+    },
+    "M22": {
+      "correct_blame": 25
+    },
+    "M23": {
+      "false_accusation": 25
+    },
+    "M24": {
+      "missed": 25
+    },
+    "M25": {
+      "correct_abstain": 25
+    }
+  },
+  "B4_scope_predicates": {
+    "M0": {
+      "correct_abstain": 25
+    },
+    "M1": {
+      "correct_blame": 25
+    },
+    "M2": {
+      "correct_blame": 25
+    },
+    "M3": {
+      "correct_blame": 25
+    },
+    "M4": {
+      "correct_blame": 25
+    },
+    "M5": {
+      "correct_blame": 25
+    },
+    "M6": {
+      "correct_blame": 25
+    },
+    "M7": {
+      "correct_blame": 25
+    },
+    "M8": {
+      "correct_blame": 25
+    },
+    "M9": {
+      "correct_blame": 25
+    },
+    "M10": {
+      "correct_abstain": 25
+    },
+    "M11": {
+      "correct_blame": 25
+    },
+    "M12": {
+      "correct_abstain_amb": 25
+    },
+    "M13": {
+      "missed": 25
+    },
+    "M14": {
+      "missed": 25
+    },
+    "M15": {
+      "over_attribution": 25
+    },
+    "M16": {
+      "over_attribution": 25
+    },
+    "M17": {
+      "over_attribution": 25
+    },
+    "M18": {
+      "over_attribution": 25
+    },
+    "M19": {
+      "missed": 25
+    },
+    "M20": {
+      "missed": 25
+    },
+    "M21": {
+      "correct_abstain": 25
+    },
+    "M22": {
+      "correct_blame": 25
+    },
+    "M23": {
+      "false_accusation": 25
+    },
+    "M24": {
+      "missed": 25
+    },
+    "M25": {
+      "correct_abstain": 25
+    }
+  },
+  "B5_dispute_driven": {
+    "M0": {
+      "correct_abstain": 25
+    },
+    "M1": {
+      "correct_blame": 25
+    },
+    "M2": {
+      "correct_blame": 25
+    },
+    "M3": {
+      "correct_blame": 25
+    },
+    "M4": {
+      "correct_blame": 25
+    },
+    "M5": {
+      "correct_blame": 25
+    },
+    "M6": {
+      "correct_blame": 25
+    },
+    "M7": {
+      "correct_blame": 25
+    },
+    "M8": {
+      "correct_blame": 25
+    },
+    "M9": {
+      "correct_blame": 25
+    },
+    "M10": {
+      "correct_abstain": 25
+    },
+    "M11": {
+      "correct_blame": 25
+    },
+    "M12": {
+      "correct_abstain_amb": 25
+    },
+    "M13": {
+      "missed": 25
+    },
+    "M14": {
+      "missed": 25
+    },
+    "M15": {
+      "over_attribution": 25
+    },
+    "M16": {
+      "over_attribution": 25
+    },
+    "M17": {
+      "over_attribution": 25
+    },
+    "M18": {
+      "over_attribution": 25
+    },
+    "M19": {
+      "missed": 25
+    },
+    "M20": {
+      "missed": 25
+    },
+    "M21": {
+      "correct_abstain": 25
+    },
+    "M22": {
+      "correct_blame": 25
+    },
+    "M23": {
+      "false_accusation": 25
+    },
+    "M24": {
+      "missed": 25
+    },
+    "M25": {
+      "correct_abstain": 25
+    }
+  },
+  "B6_accountable_queries": {
+    "M0": {
+      "correct_abstain": 25
+    },
+    "M1": {
+      "correct_blame": 25
+    },
+    "M2": {
+      "correct_blame": 25
+    },
+    "M3": {
+      "correct_blame": 25
+    },
+    "M4": {
+      "correct_blame": 25
+    },
+    "M5": {
+      "correct_blame": 25
+    },
+    "M6": {
+      "correct_blame": 25
+    },
+    "M7": {
+      "correct_blame": 25
+    },
+    "M8": {
+      "correct_blame": 25
+    },
+    "M9": {
+      "correct_blame": 25
+    },
+    "M10": {
+      "correct_abstain": 25
+    },
+    "M11": {
+      "correct_blame": 25
+    },
+    "M12": {
+      "correct_abstain_amb": 25
+    },
+    "M13": {
+      "correct_blame": 25
+    },
+    "M14": {
+      "missed": 25
+    },
+    "M15": {
+      "over_attribution": 25
+    },
+    "M16": {
+      "over_attribution": 25
+    },
+    "M17": {
+      "over_attribution": 25
+    },
+    "M18": {
+      "over_attribution": 25
+    },
+    "M19": {
+      "missed": 25
+    },
+    "M20": {
+      "missed": 25
+    },
+    "M21": {
+      "correct_abstain": 25
+    },
+    "M22": {
+      "correct_blame": 25
+    },
+    "M23": {
+      "false_accusation": 25
+    },
+    "M24": {
+      "missed": 25
+    },
+    "M25": {
+      "correct_abstain": 25
+    }
+  },
+  "B7_verifiable_adjudication": {
+    "M0": {
+      "correct_abstain": 25
+    },
+    "M1": {
+      "correct_blame": 25
+    },
+    "M2": {
+      "correct_blame": 25
+    },
+    "M3": {
+      "correct_blame": 25
+    },
+    "M4": {
+      "correct_blame": 25
+    },
+    "M5": {
+      "correct_blame": 25
+    },
+    "M6": {
+      "correct_blame": 25
+    },
+    "M7": {
+      "correct_blame": 25
+    },
+    "M8": {
+      "correct_blame": 25
+    },
+    "M9": {
+      "correct_blame": 25
+    },
+    "M10": {
+      "correct_abstain": 25
+    },
+    "M11": {
+      "correct_blame": 25
+    },
+    "M12": {
+      "correct_abstain_amb": 25
+    },
+    "M13": {
+      "correct_blame": 25
+    },
+    "M14": {
+      "correct_blame": 25
+    },
+    "M15": {
+      "over_attribution": 25
+    },
+    "M16": {
+      "over_attribution": 25
+    },
+    "M17": {
+      "over_attribution": 25
+    },
+    "M18": {
+      "over_attribution": 25
+    },
+    "M19": {
+      "missed": 25
+    },
+    "M20": {
+      "missed": 25
+    },
+    "M21": {
+      "correct_abstain": 25
+    },
+    "M22": {
+      "correct_blame": 25
+    },
+    "M23": {
+      "false_accusation": 25
+    },
+    "M24": {
+      "missed": 25
+    },
+    "M25": {
+      "correct_abstain": 25
+    }
+  },
+  "B6c_under_collusion": {
+    "M0": {
+      "correct_abstain": 25
+    },
+    "M1": {
+      "correct_blame": 25
+    },
+    "M2": {
+      "correct_blame": 25
+    },
+    "M3": {
+      "correct_blame": 25
+    },
+    "M4": {
+      "correct_blame": 25
+    },
+    "M5": {
+      "correct_blame": 25
+    },
+    "M6": {
+      "correct_blame": 25
+    },
+    "M7": {
+      "correct_blame": 25
+    },
+    "M8": {
+      "correct_blame": 25
+    },
+    "M9": {
+      "correct_blame": 25
+    },
+    "M10": {
+      "correct_abstain": 25
+    },
+    "M11": {
+      "correct_blame": 25
+    },
+    "M12": {
+      "correct_abstain_amb": 25
+    },
+    "M13": {
+      "correct_blame": 25
+    },
+    "M14": {
+      "false_accusation": 25
+    },
+    "M15": {
+      "over_attribution": 25
+    },
+    "M16": {
+      "over_attribution": 25
+    },
+    "M17": {
+      "over_attribution": 25
+    },
+    "M18": {
+      "over_attribution": 25
+    },
+    "M19": {
+      "missed": 25
+    },
+    "M20": {
+      "missed": 25
+    },
+    "M21": {
+      "correct_abstain": 25
+    },
+    "M22": {
+      "correct_blame": 25
+    },
+    "M23": {
+      "false_accusation": 25
+    },
+    "M24": {
+      "missed": 25
+    },
+    "M25": {
+      "correct_abstain": 25
+    }
+  },
+  "B9_non_attributive": {
+    "M0": {
+      "correct_contradiction": 25
+    },
+    "M1": {
+      "correct_contradiction": 25
+    },
+    "M2": {
+      "correct_contradiction": 25
+    },
+    "M3": {
+      "correct_contradiction": 25
+    },
+    "M4": {
+      "correct_contradiction": 25
+    },
+    "M5": {
+      "correct_contradiction": 25
+    },
+    "M6": {
+      "correct_contradiction": 25
+    },
+    "M7": {
+      "correct_contradiction": 25
+    },
+    "M8": {
+      "missed": 25
+    },
+    "M9": {
+      "correct_contradiction": 25
+    },
+    "M10": {
+      "correct_contradiction": 25
+    },
+    "M11": {
+      "correct_contradiction": 25
+    },
+    "M12": {
+      "missed": 25
+    },
+    "M13": {
+      "correct_contradiction": 25
+    },
+    "M14": {
+      "missed": 25
+    },
+    "M15": {
+      "correct_contradiction": 25
+    },
+    "M16": {
+      "correct_contradiction": 25
+    },
+    "M17": {
+      "correct_contradiction": 25
+    },
+    "M18": {
+      "correct_contradiction": 25
+    },
+    "M19": {
+      "missed": 25
+    },
+    "M20": {
+      "missed": 25
+    },
+    "M21": {
+      "correct_contradiction": 25
+    },
+    "M22": {
+      "correct_contradiction": 25
+    },
+    "M23": {
+      "false_accusation": 25
+    },
+    "M24": {
+      "missed": 25
+    },
+    "M25": {
+      "correct_contradiction": 25
+    }
+  },
+  "B10_composed": {
+    "M0": {
+      "correct_contradiction": 25
+    },
+    "M1": {
+      "correct_contradiction": 25
+    },
+    "M2": {
+      "correct_contradiction": 25
+    },
+    "M3": {
+      "correct_contradiction": 25
+    },
+    "M4": {
+      "correct_contradiction": 25
+    },
+    "M5": {
+      "correct_contradiction": 25
+    },
+    "M6": {
+      "correct_contradiction": 25
+    },
+    "M7": {
+      "correct_contradiction": 25
+    },
+    "M8": {
+      "missed": 25
+    },
+    "M9": {
+      "correct_contradiction": 25
+    },
+    "M10": {
+      "correct_contradiction": 25
+    },
+    "M11": {
+      "correct_contradiction": 25
+    },
+    "M12": {
+      "missed": 25
+    },
+    "M13": {
+      "correct_contradiction": 25
+    },
+    "M14": {
+      "correct_contradiction": 25
+    },
+    "M15": {
+      "correct_contradiction": 25
+    },
+    "M16": {
+      "correct_contradiction": 25
+    },
+    "M17": {
+      "correct_contradiction": 25
+    },
+    "M18": {
+      "correct_contradiction": 25
+    },
+    "M19": {
+      "missed": 25
+    },
+    "M20": {
+      "missed": 25
+    },
+    "M21": {
+      "correct_contradiction": 25
+    },
+    "M22": {
+      "correct_contradiction": 25
+    },
+    "M23": {
+      "false_accusation": 25
+    },
+    "M24": {
+      "missed": 25
+    },
+    "M25": {
+      "correct_contradiction": 25
+    }
+  },
+  "B11_stateful": {
+    "M0": {
+      "correct_contradiction": 25
+    },
+    "M1": {
+      "correct_contradiction": 25
+    },
+    "M2": {
+      "correct_contradiction": 25
+    },
+    "M3": {
+      "correct_contradiction": 25
+    },
+    "M4": {
+      "correct_contradiction": 25
+    },
+    "M5": {
+      "correct_contradiction": 25
+    },
+    "M6": {
+      "correct_contradiction": 25
+    },
+    "M7": {
+      "correct_contradiction": 25
+    },
+    "M8": {
+      "missed": 25
+    },
+    "M9": {
+      "correct_contradiction": 25
+    },
+    "M10": {
+      "correct_contradiction": 25
+    },
+    "M11": {
+      "correct_contradiction": 25
+    },
+    "M12": {
+      "missed": 25
+    },
+    "M13": {
+      "correct_contradiction": 25
+    },
+    "M14": {
+      "correct_contradiction": 25
+    },
+    "M15": {
+      "correct_contradiction": 25
+    },
+    "M16": {
+      "correct_contradiction": 25
+    },
+    "M17": {
+      "correct_contradiction": 25
+    },
+    "M18": {
+      "correct_contradiction": 25
+    },
+    "M19": {
+      "missed": 25
+    },
+    "M20": {
+      "correct_contradiction": 18,
+      "missed": 7
+    },
+    "M21": {
+      "false_accusation": 16,
+      "correct_contradiction": 9
+    },
+    "M22": {
+      "correct_contradiction": 25
+    },
+    "M23": {
+      "false_accusation": 25
+    },
+    "M24": {
+      "missed": 25
+    },
+    "M25": {
+      "correct_contradiction": 25
+    }
+  },
+  "B7r_under_revocation": {
+    "M0": {
+      "correct_abstain": 25
+    },
+    "M1": {
+      "correct_blame": 25
+    },
+    "M2": {
+      "correct_blame": 25
+    },
+    "M3": {
+      "correct_blame": 25
+    },
+    "M4": {
+      "correct_blame": 25
+    },
+    "M5": {
+      "correct_blame": 25
+    },
+    "M6": {
+      "correct_blame": 25
+    },
+    "M7": {
+      "correct_blame": 25
+    },
+    "M8": {
+      "correct_blame": 25
+    },
+    "M9": {
+      "correct_blame": 25
+    },
+    "M10": {
+      "correct_abstain": 25
+    },
+    "M11": {
+      "correct_blame": 25
+    },
+    "M12": {
+      "correct_abstain_amb": 25
+    },
+    "M13": {
+      "correct_blame": 25
+    },
+    "M14": {
+      "correct_blame": 25
+    },
+    "M15": {
+      "over_attribution": 25
+    },
+    "M16": {
+      "over_attribution": 25
+    },
+    "M17": {
+      "over_attribution": 25
+    },
+    "M18": {
+      "over_attribution": 25
+    },
+    "M19": {
+      "missed": 25
+    },
+    "M20": {
+      "missed": 25
+    },
+    "M21": {
+      "correct_abstain": 25
+    },
+    "M22": {
+      "missed": 25
+    },
+    "M23": {
+      "spurious": 25
+    },
+    "M24": {
+      "missed": 25
+    },
+    "M25": {
+      "correct_abstain": 25
+    }
+  },
+  "B15_short_term_keys": {
+    "M0": {
+      "correct_contradiction": 25
+    },
+    "M1": {
+      "correct_contradiction": 25
+    },
+    "M2": {
+      "correct_contradiction": 25
+    },
+    "M3": {
+      "correct_contradiction": 25
+    },
+    "M4": {
+      "correct_contradiction": 25
+    },
+    "M5": {
+      "correct_contradiction": 25
+    },
+    "M6": {
+      "correct_contradiction": 25
+    },
+    "M7": {
+      "correct_contradiction": 25
+    },
+    "M8": {
+      "missed": 25
+    },
+    "M9": {
+      "correct_contradiction": 25
+    },
+    "M10": {
+      "correct_contradiction": 25
+    },
+    "M11": {
+      "correct_contradiction": 25
+    },
+    "M12": {
+      "missed": 25
+    },
+    "M13": {
+      "correct_contradiction": 25
+    },
+    "M14": {
+      "correct_contradiction": 25
+    },
+    "M15": {
+      "correct_contradiction": 25
+    },
+    "M16": {
+      "correct_contradiction": 25
+    },
+    "M17": {
+      "correct_contradiction": 25
+    },
+    "M18": {
+      "correct_contradiction": 25
+    },
+    "M19": {
+      "missed": 25
+    },
+    "M20": {
+      "missed": 25
+    },
+    "M21": {
+      "correct_contradiction": 25
+    },
+    "M22": {
+      "correct_contradiction": 25
+    },
+    "M23": {
+      "false_accusation": 25
+    },
+    "M24": {
+      "missed": 25
+    },
+    "M25": {
+      "correct_contradiction": 25
+    }
+  },
+  "B16c_custodial_attestor": {
+    "M0": {
+      "correct_contradiction": 25
+    },
+    "M1": {
+      "correct_contradiction": 25
+    },
+    "M2": {
+      "correct_contradiction": 25
+    },
+    "M3": {
+      "correct_contradiction": 25
+    },
+    "M4": {
+      "correct_contradiction": 25
+    },
+    "M5": {
+      "correct_contradiction": 25
+    },
+    "M6": {
+      "correct_contradiction": 25
+    },
+    "M7": {
+      "correct_contradiction": 25
+    },
+    "M8": {
+      "missed": 25
+    },
+    "M9": {
+      "correct_contradiction": 25
+    },
+    "M10": {
+      "correct_contradiction": 25
+    },
+    "M11": {
+      "correct_contradiction": 25
+    },
+    "M12": {
+      "missed": 25
+    },
+    "M13": {
+      "correct_contradiction": 25
+    },
+    "M14": {
+      "correct_contradiction": 25
+    },
+    "M15": {
+      "correct_contradiction": 25
+    },
+    "M16": {
+      "correct_contradiction": 25
+    },
+    "M17": {
+      "correct_contradiction": 25
+    },
+    "M18": {
+      "correct_contradiction": 25
+    },
+    "M19": {
+      "correct_contradiction": 25
+    },
+    "M20": {
+      "correct_contradiction": 25
+    },
+    "M21": {
+      "correct_contradiction": 25
+    },
+    "M22": {
+      "correct_contradiction": 25
+    },
+    "M23": {
+      "false_accusation": 25
+    },
+    "M24": {
+      "missed": 25
+    },
+    "M25": {
+      "correct_contradiction": 25
+    }
+  },
+  "B16d_digest_attestor": {
+    "M0": {
+      "correct_contradiction": 25
+    },
+    "M1": {
+      "correct_contradiction": 25
+    },
+    "M2": {
+      "correct_contradiction": 25
+    },
+    "M3": {
+      "correct_contradiction": 25
+    },
+    "M4": {
+      "correct_contradiction": 25
+    },
+    "M5": {
+      "correct_contradiction": 25
+    },
+    "M6": {
+      "correct_contradiction": 25
+    },
+    "M7": {
+      "correct_contradiction": 25
+    },
+    "M8": {
+      "missed": 25
+    },
+    "M9": {
+      "correct_contradiction": 25
+    },
+    "M10": {
+      "correct_contradiction": 25
+    },
+    "M11": {
+      "correct_contradiction": 25
+    },
+    "M12": {
+      "missed": 25
+    },
+    "M13": {
+      "correct_contradiction": 25
+    },
+    "M14": {
+      "correct_contradiction": 25
+    },
+    "M15": {
+      "correct_contradiction": 25
+    },
+    "M16": {
+      "correct_contradiction": 25
+    },
+    "M17": {
+      "correct_contradiction": 25
+    },
+    "M18": {
+      "correct_contradiction": 25
+    },
+    "M19": {
+      "missed": 25
+    },
+    "M20": {
+      "missed": 25
+    },
+    "M21": {
+      "correct_contradiction": 25
+    },
+    "M22": {
+      "correct_contradiction": 25
+    },
+    "M23": {
+      "false_accusation": 25
+    },
+    "M24": {
+      "missed": 25
+    },
+    "M25": {
+      "correct_contradiction": 25
+    }
+  }
+}
