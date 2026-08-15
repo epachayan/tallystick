@@ -52,6 +52,12 @@ make ext-experiments
 The parity target checks that the adapter preserves B1 verdicts; it is not an independent protocol
 implementation or a new corpus score.
 
+Before adding an extension-backed protocol, consult the
+[`docs/extension-use-map.md`](docs/extension-use-map.md). Prefer projecting the new transport state
+through an existing baseline. Register a new protocol only when the transport changes the available
+evidence or declares a new entitlement; otherwise a second score would count the same mechanism
+twice. Keep concrete SDK parsing and untrusted metadata validation outside `EvidenceView`.
+
 ## Before any commit
 
 ```bash

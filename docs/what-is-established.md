@@ -163,7 +163,9 @@ invisible while it is active.
 
 Every audit here is self-audit, including the audits of the audits. No
 independent implementation, no external review, no third-party test vectors for
-the Merkle code.
+the Merkle code. The A2A extension package is an in-repository reference transport and parity
+adapter, not an independent implementation or deployment. Its internal uses and proposed next
+connections are catalogued in [`extension-use-map.md`](extension-use-map.md).
 
 ---
 

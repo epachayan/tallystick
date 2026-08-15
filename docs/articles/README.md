@@ -82,3 +82,6 @@ its population and the regression that pins it. Detailed mappings live in
 was refreshed again for MCP 2026-07-28 Tasks-as-extension, DRP, HDP, AP2/Verifiable Intent and
 NIST's agent-standards initiative; the novelty claim is now explicitly about adversarial
 adjudication rather than the absence of verifiable delegation evidence.
+The repository-specific implementation boundary is maintained in
+[`../extension-use-map.md`](../extension-use-map.md): B1 carriage is implemented, while B13/B17 and
+abort/loss fixtures remain proposed reuse rather than article evidence or additional scores.

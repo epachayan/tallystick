@@ -20,7 +20,9 @@ Then **[`README.md`](README.md)** for the repository proper. If you're specifica
 with A2A, [`docs/prior-art/a2a-extension-sketch.md`](docs/prior-art/a2a-extension-sketch.md) maps
 the article's bilateral-commitment record onto A2A's extension mechanism, and the
 [`src/extensions/a2a_bilateral/`](src/extensions/a2a_bilateral/README.md) reference library makes
-that mapping runnable. It remains separate from corpus scoring.
+that mapping runnable. [`docs/extension-use-map.md`](docs/extension-use-map.md) explains where it
+already connects to B1 and where it can next exercise B13/B17 and the abort/loss classes. It remains
+separate from corpus scoring.
 
 ## I want to evaluate the research
 

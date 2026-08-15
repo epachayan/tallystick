@@ -897,6 +897,9 @@ since been answered; what remains is ordered by what would change most.
 11. **Whether the T4 concealment criterion is novel** or folklore within the BFT community. Note
     that T4 is now subsumed by the conservation boundary, which may change the answer.
 12. **Semantic scope.** Flat labels make `write:records ⊂ write:*` untestable.
+13. **Transport-state projection.** Extend the A2A adapter across B13/B17 receipt availability and
+    M30-M33 abort/loss fixtures, reusing the existing baselines unless transport changes the
+    evidence projection. See [`docs/extension-use-map.md`](docs/extension-use-map.md).
 
 ---
 

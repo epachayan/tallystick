@@ -78,7 +78,8 @@ The most useful extensions are no longer "invent an authorization receipt." Curr
 1. instantiate a DRP-like authorization receipt as a Tallystick protocol and map exactly which M-classes it resolves;
    [`a2a-extension-sketch.md`](a2a-extension-sketch.md) and the linked reference library implement
    the A2A transport and live-input projection for bilateral commitment, but deliberately stop short
-   of registering a new scored protocol;
+   of registering a new scored protocol; the repository-local B1/B13/B17 and abort/loss reuse plan
+   is explicit in the [extension use map](../extension-use-map.md);
 2. model an HDP-style multi-hop provenance chain and test where provenance helps or merely relocates trust;
 3. add a payment-flavoured AP2/Verifiable-Intent family to test domain-specific intent evidence against withholding and abort;
 4. seek an external implementation or red-team review of the evidence-projection invariant.

@@ -11,6 +11,11 @@ headline statement, and what would have to fail for the statement to stop being 
 claim that 158 tests prove the corpus is complete. They prove specific invariants inside the modelled
 world and are named below.
 
+The A2A reference-library checks are intentionally outside this map's core claim count.
+`make ext-check` tests its API and metadata behavior, while `make ext-experiments` checks exact B1
+projection parity. Neither is an independent protocol score. See the
+[extension use map](extension-use-map.md) for current and proposed repository integration.
+
 ---
 
 ## 1. Corpus integrity and evidence isolation

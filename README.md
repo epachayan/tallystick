@@ -75,6 +75,16 @@ Full ledger, in three tiers: [`docs/what-is-established.md`](docs/what-is-establ
 
 ---
 
+## Where the A2A extension fits
+
+The package under `src/extensions/a2a_bilateral/` makes the abstract B1 message chain runnable as
+A2A-shaped metadata and projects validated exchange facts back into the existing evidence pipeline.
+It is also a natural fixture for future B13/B17 receipt-availability and M30-M33 abort/loss tests.
+Those are reuses of existing mechanisms, not additional scores. The complete implemented-versus-
+proposed map is in [`docs/extension-use-map.md`](docs/extension-use-map.md).
+
+---
+
 ## Quick start
 
 ```bash

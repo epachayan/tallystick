@@ -45,6 +45,7 @@ of what was believed at the time, and are marked as such.
 | document | role |
 |---|---|
 | [`docs/architecture.md`](docs/architecture.md) | module layout, evidence boundary, and extension points |
+| [`docs/extension-use-map.md`](docs/extension-use-map.md) | implemented and proposed uses of the A2A extension inside this repository |
 | [`docs/proofs.md`](docs/proofs.md) | formal statements and proofs for T1–T4 |
 | [`docs/scorer-semantics.md`](docs/scorer-semantics.md) | outcome labels and scoring decisions |
 | [`docs/taxonomy.md`](docs/taxonomy.md) | generated adversarial-class catalogue |
@@ -84,3 +85,4 @@ make ext-experiments  # adapter parity only; no protocol registration or score
 3. A fair-exchange baseline — concrete target is M30
 4. External validation — every audit here is self-audit
 5. The authoritative M-class list — still to be reconciled
+6. Extend the A2A adapter across B13/B17 receipt availability and M30-M33 abort/loss fixtures, without duplicating those scored protocols

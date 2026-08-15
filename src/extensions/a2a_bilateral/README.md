@@ -21,6 +21,15 @@ maps those limits to the research classes. Exact harness results remain solely i
 [`results/canonical.txt`](../../../results/canonical.txt); this library does not generate or alter
 them.
 
+## Uses inside this repository
+
+The implemented use is concrete A2A-shaped carriage and replay for `B1_bilateral_commitment`.
+The same artifact chain can next be used as a fixture for `B13_witness_messages`,
+`B17_duty_to_answer`, and the M30-M33 abort/loss classes. That work should extend the adapter's
+receipt-availability projection and reuse the existing scored functions, not create A2A-labelled
+copies of them. The [extension use map](../../../docs/extension-use-map.md) distinguishes completed
+integration from proposed reuse.
+
 ## Quick start
 
 ```python
@@ -95,3 +104,12 @@ separate from both `make check` and `make experiments`.
 
 `card.EXTENSION_URI` is a placeholder under `https://example.org/`. Mint a URI you control before
 deployment. An A2A extension URI must be unique; it does not need to resolve.
+
+## Deployment gaps
+
+This package does not implement `A2A-Extensions` header negotiation, vendor-SDK parsing, persistent
+receipt storage, or key discovery. Before deployment, replace bare-root signatures with a canonical
+signed envelope that binds purpose, task and authorization IDs, both parties, extension version,
+algorithm, timestamp/expiry/nonce, root, and cardinality. Otherwise a valid signature may be replayed
+across tasks or message purposes. Commitments also do not hide cardinality or protect predictable
+sets from guessing; they are neither encryption nor zero knowledge.

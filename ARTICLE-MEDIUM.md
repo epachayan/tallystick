@@ -199,6 +199,9 @@ channel. `src/extensions/a2a_bilateral/` now contains the dependency-free refere
 standalone adapter-parity check over the existing corpus. It is still not a new scored protocol:
 concrete SDK message parsing remains deployment-specific, and the canonical figures remain those
 produced by the existing harness.
+Within the repository, the same exchange is a concrete transport for B1 and a future fixture for
+B13/B17 receipt availability and the M30-M33 abort/loss cases; `docs/extension-use-map.md` keeps
+implemented reuse separate from proposed work.
 
 ### Why this is cheaper than it looks
 

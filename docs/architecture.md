@@ -71,6 +71,19 @@ The `ext-*` targets are intentionally independent. The A2A library can import th
 and evidence machinery, but it does not register a protocol or contribute tests to `make check`.
 Its parity command checks projection fidelity against B1; it does not create a new research score.
 
+## Extension integration boundary
+
+The A2A package is the concrete carriage layer for the abstract B1 exchange. Its metadata artifacts
+also match the counterparty-held receipts used by B13 and the commitment-triggered obligations used
+by B17. Future adapter work can therefore project completed, aborted, and lost-message exchanges
+through those existing functions. It should not register A2A-labelled copies of them unless A2A
+changes the observable evidence or adds a trust assumption. See the
+[extension use map](extension-use-map.md) for the row-by-row mapping.
+
+The adapter boundary is one-way: concrete messages are authenticated, validated, and reduced to
+scenario facts before `EvidenceView` is built. Protocol functions still receive no SDK object,
+network history, or hidden task state, preserving the evidence/ground-truth separation above.
+
 ## Disclosure policies
 
 | policy | what reaches the adjudicator |

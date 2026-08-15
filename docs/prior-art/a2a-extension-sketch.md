@@ -5,6 +5,8 @@ The standalone code lives in [`src/extensions/a2a_bilateral/`](../../src/extensi
 It is not covered by `make check`, is not a `LIVE_DOCS` staleness target, and carries no new scored
 claim. The boundary between the replay and a corpus-scored protocol is described under
 [Turning this into a scored protocol](#turning-this-into-a-scored-protocol).
+Repository-local reuse across B1, B13, B17, and the abort/loss classes is tracked separately in the
+[extension use map](../extension-use-map.md).
 
 **Dated:** 15 August 2026, against the A2A extension mechanism as documented at
 [`docs/topics/extensions.md`](https://github.com/a2aproject/A2A/blob/main/docs/topics/extensions.md)
@@ -139,6 +141,10 @@ The reference code now demonstrates the first step without changing any gated mo
    copy from.
 4. Run it against the corpus. If the numbers match `B1`'s, the transport mapping was faithful; if
    they don't, the sketch above lost something in translation and that's the interesting finding.
+
+Before registering anything new, first project receipt availability through the existing B13 and
+B17 functions. The metadata messages already correspond to their witness chain; only a transport
+state that changes observable evidence or trust assumptions justifies a separate scored protocol.
 
 [`src/extensions/a2a_bilateral/`](../../src/extensions/a2a_bilateral/README.md) now contains the
 working commitment primitives and metadata carriage: `commit()`, `check_assertion()`, and the
