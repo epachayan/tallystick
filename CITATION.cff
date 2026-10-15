@@ -15,6 +15,10 @@ abstract: >-
   diverges from the record, no mechanism resolves both, and the cost can be
   denominated but not removed. Includes a documented record of six hardening declaration defects, later
   publication/reporting drifts, and the build stages written to catch those failure modes.
+  Version 0.11 adds a three-party phase (principal, intermediary, executor):
+  declarative interaction-protocol specifications, a separate corpus, and a
+  generalisation of the boundary from equal to intersecting divergence sets,
+  with localisation shown to require equality.
 keywords:
   - accountability
   - delegation
@@ -22,6 +26,8 @@ keywords:
   - non-repudiation
   - fair exchange
   - adversarial evaluation
+  - multi-agent systems
+  - interaction protocols
 license: MIT
 date-released: "2026-10-15"
-version: "0.10.2"
+version: "0.11.0"

@@ -1,0 +1,57 @@
+# bearer3 -- the deployed default across one intermediary.
+#
+# The same message flow, carried by bearer tokens and each party's own log.
+# Nothing is signed by a counterparty, so nothing binds any party to a prior
+# statement. This is the floor every other variant is measured against, and
+# the three-party analogue of B0.
+
+[protocol]
+name = "bearer3"
+roles = ["P", "I", "E"]
+description = "bearer tokens and self-written logs; no counterparty signatures"
+
+[objects]
+G = "scope P grants to I"
+S = "scope I sub-delegates to E"
+X = "actions E executed"
+R = "actions I reports to P"
+
+[[message]]
+name = "grant"
+from = "P"
+to = "I"
+signed = false
+binds = []
+forwards = []
+requires = []
+checks = []
+
+[[message]]
+name = "subgrant"
+from = "I"
+to = "E"
+signed = false
+binds = []
+forwards = []
+requires = ["grant"]
+checks = []
+
+[[message]]
+name = "exec_receipt"
+from = "E"
+to = "I"
+signed = false
+binds = []
+forwards = []
+requires = ["subgrant"]
+checks = []
+
+[[message]]
+name = "report"
+from = "I"
+to = "P"
+signed = false
+binds = []
+forwards = []
+requires = ["exec_receipt"]
+checks = []

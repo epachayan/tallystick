@@ -46,6 +46,8 @@ LIVE_DOCS = (
     "../CITATION.cff",
     "articles/02-general-audience.md",
     "test-evidence-map.md",
+    "findings/14-one-hop.md",
+    "protocols/README.md",
 )
 
 #: Claims that have been corrected. Any document asserting the OLD form must
@@ -84,6 +86,17 @@ TEST_COUNT_RE = re.compile(r"\b(\d{2,4})\s+tests\b")
 CLASS_COUNT_RE = re.compile(r"\b(\d{1,2})\s+(?:M-)?classes\b")
 FULL_CLASS_RE = re.compile(r"\b(\d{1,2})/(\d{2})\b")
 
+# -- multi-hop figures --------------------------------------------------------
+# Three-party figures are written in their own forms so the two-party patterns
+# above never read them (and so they are never silently skipped either: these
+# patterns read them instead). A line naming a three-party protocol is checked
+# for "N/D full-class" and "N/D localised" against results computed now.
+MH_SCENARIOS_RE = re.compile(r"\b(\d{2,4})\s+three-party scenarios\b")
+MH_CLASSES_RE = re.compile(r"\b(\d{1,2})\s+H-classes\b")
+MH_PROTO_RE = re.compile(r"\b(B\d+_(?:bearer3|hop3|chain3))\b")
+MH_FULL_RE = re.compile(r"\b(\d{1,2})/(\d{1,2}) full-class\b")
+MH_LOC_RE = re.compile(r"\b(\d{1,2})/(\d{1,2}) localised\b")
+
 
 def collected_test_count() -> int:
     """Number of tests pytest actually collects. Derived, never asserted."""
@@ -111,6 +124,45 @@ def current_facts() -> dict:
         "protocols": len(PROTOCOLS),
         "tests": collected_test_count(),
     }
+
+
+def mh_facts() -> dict:
+    from ..multihop.report import facts
+    return facts()
+
+
+def check_multihop_figures(name: str, text: str, mh: dict) -> list[str]:
+    errs = []
+    for n in {int(m) for m in MH_SCENARIOS_RE.findall(text)} - {mh["scenarios"]}:
+        errs.append(f"{name}: cites {n} three-party scenarios, current is {mh['scenarios']}")
+    for n in {int(m) for m in MH_CLASSES_RE.findall(text)} - {mh["classes"]}:
+        errs.append(f"{name}: cites {n} H-classes, current is {mh['classes']}")
+    # Figures are attributed to the NEAREST PRECEDING three-party protocol name in
+    # the same paragraph, so a sentence wrapped across lines is still read. (A
+    # line-by-line parser would skip "...B17_chain3\nscores 6/9 full-class" --
+    # a check that cannot see, the RC-H16 shape.) A figure with no protocol name
+    # before it in its paragraph is reported rather than skipped.
+    for para in re.split(r"\n\s*\n", text):
+        names = [(m.start(), m.group(1)) for m in MH_PROTO_RE.finditer(para)]
+        for regex, key, den_key, label in (
+                (MH_FULL_RE, "full", "classes", "full-class"),
+                (MH_LOC_RE, "localised_full", "localisable", "localised")):
+            for m in regex.finditer(para):
+                before = [n for pos, n in names if pos < m.start()]
+                if not before:
+                    errs.append(f"{name}: '{m.group(0)}' has no three-party protocol "
+                                f"named before it in its paragraph")
+                    continue
+                p = before[-1]
+                if f"{p}.full" not in mh:
+                    errs.append(f"{name}: names unknown three-party protocol {p}")
+                    continue
+                got = (int(m.group(1)), int(m.group(2)))
+                want = (mh[f"{p}.{key}"], mh[den_key])
+                if got != want:
+                    errs.append(f"{name}: {p} stated {got[0]}/{got[1]} {label}, "
+                                f"current is {want[0]}/{want[1]}")
+    return errs
 
 
 def check_doc(path: Path, facts: dict) -> list[str]:
@@ -259,8 +311,13 @@ def main():
           f"{facts['protocols']} protocols, {facts['tests']} tests\n")
 
     errs: list[str] = []
+    mh = mh_facts()
+    print(f"         {mh['scenarios']} three-party scenarios, {mh['classes']} H-classes, "
+          f"{mh['protocols']} three-party protocols\n")
     for path in sorted(DOCS.rglob("*.md")):
         errs.extend(check_doc(path, facts))
+        errs.extend(check_multihop_figures(str(path.relative_to(DOCS)),
+                                           path.read_text(encoding="utf-8"), mh))
     # Public-facing root documents are checked directly. The technical article is
     # maintained outside the repository, so it is no longer checked here.
     for name in ("README.md", "RESEARCH.md", "INDEX.md",
@@ -268,6 +325,7 @@ def main():
         root_doc = ROOT / name
         if root_doc.exists():
             errs.extend(check_root_doc(root_doc, facts))
+            errs.extend(check_multihop_figures(name, root_doc.read_text(encoding="utf-8"), mh))
 
     claim_errs = check_headline_claims()
 

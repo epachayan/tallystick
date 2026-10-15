@@ -1,7 +1,8 @@
 SHELL := /bin/bash
 .SHELLFLAGS := -eu -o pipefail -c
 
-.PHONY: check ext-check ext-experiments gate-selftest experiments taxonomy docsync links schema coherence visibility twins coverage conservation declarations pruning staleness unit scorer merkle canonical run sweep clean all
+PHONY_MH := freeze mh-conformance mh-boundary mh-specdoc spec-doc mh-corpus mh-report
+.PHONY: $(PHONY_MH) check ext-check ext-experiments gate-selftest experiments taxonomy docsync links schema coherence visibility twins coverage conservation declarations pruning staleness unit scorer merkle canonical run sweep clean all
 
 # ---------------------------------------------------------------------------
 # One command for correctness, one for research.
@@ -11,7 +12,7 @@ SHELL := /bin/bash
 # that a script exited with status zero.
 # ---------------------------------------------------------------------------
 
-check: gate-selftest schema coherence unit visibility twins coverage conservation declarations pruning docsync links staleness
+check: gate-selftest schema coherence unit visibility twins coverage conservation declarations pruning docsync freeze mh-conformance mh-boundary mh-specdoc links staleness
 	@echo
 	@echo "== correctness gate passed =="
 
@@ -90,8 +91,37 @@ staleness:
 	@python3 -m src.validation.staleness | tail -8
 
 # ---------------------------------------------------------------------------
+# Multi-hop phase (P -> I -> E). Separate corpus, protocols and specifications;
+# `freeze` guarantees none of it moves a two-party figure.
+# ---------------------------------------------------------------------------
 
-experiments: check run sweep canonical
+freeze:
+	@python3 -m src.multihop.freeze
+
+mh-conformance:
+	@python3 -m src.multihop.conformance
+
+mh-boundary:
+	@echo "-- three-party twins and conservation boundary (derive, then diff)"
+	@python3 -m src.multihop.boundary | tail -4
+
+mh-specdoc:
+	@echo "-- generated protocol tables match specs/*.toml"
+	@python3 -m src.multihop.specdoc
+
+spec-doc:
+	@python3 -m src.multihop.specdoc --write
+
+mh-corpus:
+	@python3 -m src.multihop.generator
+
+mh-report:
+	@python3 -m src.multihop.report > /dev/null
+	@echo "wrote results/multihop.txt"
+
+# ---------------------------------------------------------------------------
+
+experiments: check run sweep canonical mh-report
 	@echo
 	@echo "== experiments complete; see results/ =="
 
