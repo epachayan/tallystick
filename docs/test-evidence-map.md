@@ -3,12 +3,12 @@
 **Date:** 15 August 2026  
 **Corpus:** 850 deterministic scenarios, 34 adversarial classes, 25 instances per class  
 **Protocols:** 18 adjudication baselines  
-**Pytest suite:** 158 tests  
+**Pytest suite:** 176 tests  
 **Build:** `make check` adds structural validators and a gate-propagation self-test around the pytest suite
 
 This document answers a narrower question than `RESEARCH.md`: **which executable checks support each
 headline statement, and what would have to fail for the statement to stop being true?** It is not a
-claim that 158 tests prove the corpus is complete. They prove specific invariants inside the modelled
+claim that 176 tests prove the corpus is complete. They prove specific invariants inside the modelled
 world and are named below.
 
 The A2A reference-library checks are intentionally outside this map's core claim count.
@@ -278,6 +278,60 @@ cat results/canonical.txt
 
 For claim strength and limitations, read `docs/what-is-established.md` before quoting a result.
 
+
+## 11. Three-party phase (finding 14)
+
+**Claim.** One intermediary: re-signing produces a binding who-diverged twin that forwarding
+removes. The boundary generalises to intersecting divergence sets, and localisation requires equal
+ones. The two-party figures do not move.
+
+**Population.** `corpus/multihop.v0.1.jsonl`, 225 three-party scenarios in 9 H-classes, under the
+`bearer3`, `hop3` and `chain3` specifications.
+
+**Primary checks in `tests/test_multihop.py`.**
+
+- `test_corpus_on_disk_is_the_generator_output`: the corpus file is regenerable, byte for byte in
+  content.
+- `test_only_chain3_puts_executor_signatures_in_principal_hands`: the specification difference the
+  results rest on.
+- `test_cover_story_agreed_before_the_report_reaches_every_copy` and
+  `test_after_the_fact_collusion_cannot_touch_an_honest_holders_copy`: the fabrication rule,
+  including the correction the twin audit forced.
+- `test_re_signing_cannot_localise_and_forwarding_can`, `test_upstream_collusion_is_caught_but_only_fully_named_under_chain3`,
+  `test_downstream_collusion_resists_every_protocol`, `test_extended_duty_frames_an_honest_party_in_both_who_twins`:
+  the headline results.
+- `test_intersection_rule_reproduces_brute_force_and_equality_does_not` and
+  `test_intersection_rule_agrees_with_the_published_two_party_boundary`: C6.
+- `test_multihop_gate_stages_pass`: freeze, conformance and boundary report nothing.
+
+**Gate stages.** `freeze` (two-party hash and per-protocol results pinned), `mh-conformance`
+(ordering, confinement, visibility, prevention), `mh-boundary` (derived twins against declaration;
+boundary against brute force), and `mh-specdoc` (generated protocol tables match the TOML).
+`staleness` now also reads three-party figures, attributing each to the nearest preceding protocol
+name in its paragraph.
+
+**Fault injection (15 October 2026).** Each new stage was broken on purpose, and the gate was
+required to fail. Each break was restored before the next:
+
+| injected fault | caught by |
+|---|---|
+| a two-party pin off by one scenario | `freeze` |
+| withholding ignored when building views | `mh-conformance` (confinement) |
+| a view field made to depend on ground truth | `mh-conformance` (visibility) |
+| a twin declared under a specification where it is not one | `mh-boundary` |
+| a hold-back exempted for one party, creating an undeclared distinction | `mh-boundary` |
+| `chain3`'s receiver check deleted | `mh-conformance` (prevention) |
+| `chain3`'s receiver check changed without regenerating the tables | `mh-specdoc` |
+| a specification forwarding a message the sender never holds | `mh-conformance` (spec validation) |
+| a finding table and a wrapped RESEARCH sentence quoting wrong figures | `staleness` |
+| the overreach rule loosened to fire on an unknown sub-grant | `unit` and `staleness`, not `mh-boundary` |
+
+The last row is correct behaviour, not a gap. The loosened rule changes results without solving
+both sides of a binding pair, so the boundary stage has nothing to report. The tests and the stated
+figures catch it.
+
+**Current result.** See `results/multihop.txt`. The test-to-claim mapping above is exact; the
+figures are deliberately not repeated here.
 
 ## Reporting-derived context (RC-H17)
 

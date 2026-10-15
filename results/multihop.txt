@@ -1,0 +1,44 @@
+====================================================================================================
+THREE-PARTY FIGURES -- multihop.v0.1.jsonl, 225 three-party scenarios, 9 H-classes, 5 protocols
+one intermediary (P -> I -> E); two-party corpus frozen (src/multihop/freeze.py)
+====================================================================================================
+
+[per class] dominant outcome / instances localised (verdict names exactly D(w))
+
+  class  D(w)    B0_bearer3       B1_hop3          B13_hop3         B13_chain3       B17_chain3       
+  H1     {}      abstain 0/25     abstain 0/25     abstain 0/25     abstain 0/25     abstain 0/25     
+  H2     {I}     MISSED 0/25      blame 25/25      contra 25/25     contra 25/25     contra 25/25     
+  H3     {I}     abstain 0/25     OVER-ATTR 0/25   contra 25/25     contra 25/25     contra 25/25     
+  H4     {E}     MISSED 0/25      blame 25/25      MISSED 0/25      contra 25/25     FALSE-CON 0/25   
+  H5     {I}     MISSED 0/25      FALSE-ACC 0/25   MISSED 0/25      contra 25/25     FALSE-CON 0/25   
+  H6     {I,E}   MISSED 0/25      MISSED 0/25      MISSED 0/25      MISSED 0/25      MISSED 0/25      
+  H7     {P}     abstain 0/25     abstain 0/25     abstain 0/25     abstain 0/25     abstain 0/25     
+  H8     {P,I}   MISSED 0/25      FALSE-ACC 0/25   contra 0/25      contra 25/25     contra 25/25     
+  H9     {I}     MISSED 0/25      blame 25/25      contra 25/25     contra 25/25     contra 25/25     
+
+  * mixed outcomes within the class
+
+[aggregate]
+  protocol      spec      full-class  localised  false-attr  false-contra  median bytes
+  B0_bearer3    bearer3   3/9         0/8        0           0             200
+  B1_hop3       hop3      5/9         3/8        75          0             870
+  B13_hop3      hop3      6/9         3/8        0           0             1061
+  B13_chain3    chain3    8/9         6/8        0           0             1521
+  B17_chain3    chain3    6/9         4/8        0           50            1521
+
+  full-class: every instance scored a success outcome. localised: every
+  instance named exactly the diverging parties; out of the 8 classes
+  whose D(w) is non-empty, since an honest world has nothing to localise.
+
+[prevention] classes an honest receiver refuses before the out-of-delegation action
+  bearer3   none
+  hop3      none
+  chain3    H2, H3, H5, H9
+
+[boundary] derived twin pairs
+  pair    D(a)     D(b)     twin under            brute   D&D rule  D==D rule  solved both by
+  H2/H3   {I}      {I}      bearer3,chain3,hop3   esc     esc       esc        B13_chain3, B13_hop3, B17_chain3
+  H4/H5   {E}      {I}      bearer3,hop3          binds   binds     binds      -
+  H6/H7   {I,E}    {P}      bearer3,chain3,hop3   binds   binds     binds      -
+  H8/H9   {P,I}    {I}      bearer3,hop3          esc     esc       binds      B13_hop3
+

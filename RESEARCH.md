@@ -2,7 +2,7 @@
 
 **Author:** Nitin Stephen Koshy · ORCID [0009-0009-2690-0588](https://orcid.org/0009-0009-2690-0588)
 **Status:** working research record, August 2026 (revised after the hardening phase)
-**Artifacts:** 850-scenario corpus, 34 adversarial classes, 18 adjudication baselines, 158 tests
+**Artifacts:** 850-scenario corpus, 34 adversarial classes, 18 adjudication baselines, 176 tests
 **Canonical figures:** `results/canonical.txt` (regenerate with `make experiments`)
 **Claim strength:** `docs/what-is-established.md` — three tiers; read it before quoting anything
 **Reproducibility:** deterministic from seed `20260808`; Python 3.12+ runtime, standard library only; `pytest` is the test/development dependency
@@ -890,7 +890,10 @@ since been answered; what remains is ordered by what would change most.
 6. **`key ≡ party` (T9)** as a separate line — the one impossibility here that attestation of
    *identity* rather than *records* might close.
 7. **Cross-dispute profiling as a disclosure channel.** Invisible to every measurement taken here.
-8. **Multi-party chains.** Equivocation stops being degenerate; T2's bound changes shape.
+8. **Multi-party chains.** *Partly answered for one hop (§13, finding 14).* Equivocation is no
+   longer degenerate: H8 is caught by it under `chain3`. Still open: more than one hop, fan-out,
+   and downstream collusion (H6), which no protocol in the set handles. T2's bound across hops is
+   unmeasured.
 9. **Time and revocation** as a dimension; the compromise window measured against dispute arrival
    rate rather than scored as removed outright.
 10. **Rate-adaptive adversaries** against the binomial test.
@@ -942,3 +945,49 @@ likely to change what practitioners do.
 3. **State prevalence as unmeasured in the abstract**, not only in the limitations. It is the
    parameter that decides whether any of this matters in deployment, and burying it invites the
    overclaim this study exists to criticise.
+
+---
+
+## 13. The multi-hop phase: one intermediary
+
+Added October 2026. Full account: [`docs/findings/14-one-hop.md`](docs/findings/14-one-hop.md).
+Figures: `results/multihop.txt`. Design: [`docs/protocols/README.md`](docs/protocols/README.md).
+
+**Setting.** A principal P delegates to an intermediary I, which sub-delegates to an executor E and
+reports back. The phase has its own corpus of 225 three-party scenarios in 9 H-classes, kept
+separate so the two-party corpus and every figure above stay fixed. `src/multihop/freeze.py` pins
+them by hash and value as a gate stage.
+
+**Method change.** Each protocol is a declared interaction specification (`specs/*.toml`: messages,
+signers, bound commitments, forwarded copies, required predecessors, receiver checks) paired with
+an adjudicator. The harness derives every signed copy, and who holds it, from the specification.
+`B13_hop3` and `B13_chain3` share one adjudicator, so the difference between them is the protocol
+alone. Conformance (ordering, confinement, visibility, prevention) and the twin and boundary
+analyses are derived and diffed in `make check`.
+
+**Results, in one line each.**
+
+- The witness adjudicator composes unchanged: B13_chain3 reaches 8/9 full-class with no false
+  attribution or false contradiction.
+- Re-signing produces a who-diverged twin (H4/H5) that binds. Forwarding the executor's own
+  signatures removes the twin, and B13_chain3 localises both worlds.
+- Upstream collusion (H8) is fully named only under `chain3`, because E holds P's original
+  signature. Downstream collusion agreed before reporting (H6) defeats every protocol in the set.
+- **The boundary generalises.** A pair is escapable iff the diverging sets intersect, or abstention
+  is correct in both worlds. It is localisable iff the sets are equal. Finding 12's equality rule is
+  the localisation boundary. It equalled the correctness boundary only because there were two
+  parties. Both rules are checked against brute-force enumeration of verdicts, on all three-party
+  and two-party twin pairs.
+- The two-party duty to answer, extended to a party outside the dispute, frames the honest. B17_chain3
+  scores 6/9 full-class, against 8/9 without the duty.
+- `chain3`'s receiver check prevents four widening classes before execution. Prevention is
+  reported separately and is not scored.
+
+**A defect found and fixed.** The first fabrication rule left P's acknowledgement over a report P
+never received. The derived twin audit caught it, not the author's reasoning. Recorded in finding
+14, alongside §9a.
+
+**Limits.** One hop, linear. Classes were written to probe stated predictions. The adjudicator is
+assumed to receive copies from a party outside the dispute. No transport or timing model.
+Prevalence is still unmeasured.
+

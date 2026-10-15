@@ -34,6 +34,14 @@ separate from corpus scoring.
 4. **[`RESEARCH.md`](RESEARCH.md)** - the full record; §12 covers publication readiness
 5. **[`docs/test-evidence-map.md`](docs/test-evidence-map.md)** - exactly which tests support each headline result
 
+## I work on multi-agent interaction protocols
+
+**[`docs/findings/14-one-hop.md`](docs/findings/14-one-hop.md)** covers the three-party phase, in
+which a principal delegates through an intermediary to an executor. Protocols there are declarative
+interaction specifications ([`specs/`](specs/), explained in
+[`docs/protocols/README.md`](docs/protocols/README.md)), and a separate adjudicator reads the
+evidence they produce. The finding also generalises the conservation boundary beyond two parties.
+
 ---
 
 ## Two things to check before publishing anything
@@ -52,7 +60,7 @@ public repository URL caveat.
 
 ```bash
 python3 -m pip install -e ".[dev]"
-make check         # thirteen gate stages; must pass before experiments will run
+make check         # seventeen gate stages; must pass before experiments will run
 make experiments   # regenerates results/
 make taxonomy      # regenerates docs/taxonomy.md from the code
 make ext-check     # standalone A2A reference-library tests

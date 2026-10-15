@@ -1,0 +1,107 @@
+# chain3 -- witness-carrying delegation across one intermediary.
+#
+# This file is the protocol. The harness reads it to decide which signed
+# artifacts exist and who holds them, and `make check` verifies that every
+# adjudicator touched only artifacts this file declares (src/multihop/spec.py).
+#
+# Roles      P principal, I intermediary, E executor.
+# Objects    committed sets; a message "binds" an object when it carries that
+#            object's commitment root under the sender's signature.
+#
+#   G  scope P grants to I
+#   S  scope I sub-delegates to E
+#   X  actions E executed
+#   R  actions I reports to P
+#
+# What makes this the CHAIN variant, against hop3.toml:
+#   * subgrant carries P's signed grant (forwards) and binds G as well as S,
+#     so E can check S against G before acting, and E holds P's signature
+#   * subgrant_ack and exec_receipt bind the parent object (G, S), so a
+#     receipt for X says which grant it was executed under
+#   * report forwards E's own signatures to P, so P holds evidence signed by
+#     the party it never talks to, instead of I's restatement of it
+#   * R must equal X: I may not restate the execution, only forward it
+
+[protocol]
+name = "chain3"
+roles = ["P", "I", "E"]
+description = "witness-carrying delegation; intermediary forwards, never restates"
+
+[objects]
+G = "scope P grants to I"
+S = "scope I sub-delegates to E"
+X = "actions E executed"
+R = "actions I reports to P"
+
+[[message]]
+name = "grant"
+from = "P"
+to = "I"
+signed = true
+binds = ["G"]
+forwards = []
+requires = []
+checks = []
+
+[[message]]
+name = "grant_ack"
+from = "I"
+to = "P"
+signed = true
+binds = ["G"]
+forwards = []
+requires = ["grant"]
+checks = []
+
+[[message]]
+name = "subgrant"
+from = "I"
+to = "E"
+signed = true
+binds = ["S", "G"]
+forwards = ["grant"]
+requires = ["grant"]
+# E verifies, from the forwarded grant, that every element of S is in G before
+# acknowledging. An honest E refuses a subgrant that fails this.
+checks = ["subset:S:G"]
+
+[[message]]
+name = "subgrant_ack"
+from = "E"
+to = "I"
+signed = true
+binds = ["S", "G"]
+forwards = []
+requires = ["subgrant"]
+checks = []
+
+[[message]]
+name = "exec_receipt"
+from = "E"
+to = "I"
+signed = true
+binds = ["X", "S"]
+forwards = []
+requires = ["subgrant_ack"]
+checks = []
+
+[[message]]
+name = "report"
+from = "I"
+to = "P"
+signed = true
+binds = ["R"]
+forwards = ["subgrant_ack", "exec_receipt"]
+requires = ["exec_receipt"]
+# I may forward the execution, not restate it.
+checks = ["equal:R:X"]
+
+[[message]]
+name = "report_ack"
+from = "P"
+to = "I"
+signed = true
+binds = ["R"]
+forwards = []
+requires = ["report"]
+checks = []

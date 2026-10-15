@@ -31,7 +31,8 @@ The left branch never touches the right one. `evaluate()` in
 ```
 tallystick/
     schema/scenario.v0.2.schema.json
-    corpus/corpus.v0.9.jsonl
+    corpus/corpus.v0.9.jsonl   corpus/multihop.v0.1.jsonl
+    specs/          bearer3.toml  hop3.toml  chain3.toml
     src/
         model/      dispute.py  evidence.py  types.py
         crypto/     merkle.py
@@ -40,6 +41,9 @@ tallystick/
         validation/ coherence.py  conservation.py  coverage.py  declarations.py  pruning.py  schema.py  staleness.py  twins.py  visibility.py
         reporting/  harness.py  regression.py  run.py  sweep.py
         extensions/ a2a_bilateral/  (standalone reference library and adapter)
+        multihop/   model.py  spec.py  generator.py  evidence.py  protocols.py  harness.py
+                    boundary.py  conformance.py  freeze.py  report.py  specdoc.py
+                    (three-party phase; see docs/protocols/README.md)
         generator.py  commitments.py
     tests/          test_scorer.py  test_merkle.py  test_metrics.py  test_integration.py
     examples/       a2a_bilateral_demo.py  a2a_harness_replay_demo.py
