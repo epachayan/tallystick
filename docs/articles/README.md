@@ -14,9 +14,10 @@ so its figures must be re-verified by hand against `results/canonical.txt` befor
 
 ## Before publishing either
 
-1. **Add the verified public repository URL at publication time.** The packaged drafts intentionally
-   omit a hard-coded public URL. The private repository exists at `github.com/epachayan/tallystick`;
-   add the link only after it resolves while signed out.
+1. **Link the public repository and the archive.** The repository is public at
+   `github.com/epachayan/tallystick` and archived on Zenodo under the concept DOI
+   `10.5281/zenodo.23401182`, which resolves to the latest version. Cite the DOI rather than a
+   release-specific URL.
 2. **Check every number against `results/canonical.txt`.** The articles quote figures in prose,
    where the staleness checker cannot parse them. The quoted claims are listed below so they can be
    re-verified by hand.

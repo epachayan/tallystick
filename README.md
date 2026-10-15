@@ -2,6 +2,8 @@
 
 **An adversarial harness for accountability in delegated agentic action.**
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23401182.svg)](https://doi.org/10.5281/zenodo.23401182)
+
 850 scenarios · 34 adversarial classes · 18 adjudication baselines · 178 tests · 17 gate stages
 
 Three-party phase: 225 three-party scenarios · 9 H-classes · 5 protocols over 3 declarative interaction specifications
