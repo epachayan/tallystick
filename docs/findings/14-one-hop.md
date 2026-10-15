@@ -119,15 +119,19 @@ contradicted. It was, however, broader than the scorer supports.
 
 The equality rule survives as something else, and the second boundary is just as short:
 
-> **A twin pair can be *localised* in both worlds iff D(a) == D(b).**
+> **A twin pair can be *localised* in both worlds iff D(a) == D(b) and D is non-empty.**
 
-One verdict names one set, and localising means that set is D in both worlds. So with two parties,
+One verdict names one set, and localising means that set is D in both worlds. (An honest world has
+nothing to localise, hence non-empty.) So with two parties,
 correctness and localisation share a boundary. With three they come apart. H8/H9 is the pair where
 the right answer is available but the complete answer is not.
 
 As with finding 12, these are one-line arguments once stated, and they should not be presented as
 deep theorems. The contribution is that both are checked by a build stage against brute force and
-against the harness.
+against the harness. The brute-force check covers the corpus twin pairs and, independently of the
+corpus, every pair of adjudicable three-party worlds: each party honest, mistaken or dishonest, giving
+27 worlds and 729 pairs. Non-adjudicable worlds are outside both rules, because the scorer marks
+every contradiction false there.
 
 ### 5. A duty to answer, extended to a third party, frames the honest
 
@@ -182,6 +186,10 @@ defects in RESEARCH §9a: reasoning about the model missed a case that deriving 
   mechanism behaves as reasoned. What is independent of the author's expectations is the
   brute-force boundary check, the cross-check against the two-party pairs, the derived twin and
   prevention audits, and the defect above.
+- **The 225 three-party scenarios are nine structural cases.** The 25 instances of a class share
+  who withholds, who is unavailable, what each party claims and who fabricates. They vary only in
+  which operation labels are drawn. Every per-class result is therefore 0/25 or 25/25, and should
+  be read as one case per class, not as a sample of 25.
 - **The forum is assumed.** The adjudicator receives every copy any party produces, including E's,
   even though E is not a party to P's dispute with I. Where no such forum exists, `hop3` and
   `chain3` differ more than measured here, since only `chain3` puts E's signatures in P's hands.

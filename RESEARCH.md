@@ -1,8 +1,8 @@
 # Accountability for Delegated Agentic Action: An Experimental Study
 
 **Author:** Nitin Stephen Koshy · ORCID [0009-0009-2690-0588](https://orcid.org/0009-0009-2690-0588)
-**Status:** working research record, August 2026 (revised after the hardening phase)
-**Artifacts:** 850-scenario corpus, 34 adversarial classes, 18 adjudication baselines, 176 tests
+**Status:** working research record, August 2026 (revised after the hardening phase; three-party phase added October 2026)
+**Artifacts:** 850-scenario corpus, 34 adversarial classes, 18 adjudication baselines, 177 tests
 **Canonical figures:** `results/canonical.txt` (regenerate with `make experiments`)
 **Claim strength:** `docs/what-is-established.md` — three tiers; read it before quoting anything
 **Reproducibility:** deterministic from seed `20260808`; Python 3.12+ runtime, standard library only; `pytest` is the test/development dependency
@@ -974,10 +974,11 @@ analyses are derived and diffed in `make check`.
 - Upstream collusion (H8) is fully named only under `chain3`, because E holds P's original
   signature. Downstream collusion agreed before reporting (H6) defeats every protocol in the set.
 - **The boundary generalises.** A pair is escapable iff the diverging sets intersect, or abstention
-  is correct in both worlds. It is localisable iff the sets are equal. Finding 12's equality rule is
-  the localisation boundary. It equalled the correctness boundary only because there were two
-  parties. Both rules are checked against brute-force enumeration of verdicts, on all three-party
-  and two-party twin pairs.
+  is correct in both worlds. It is localisable iff the sets are equal and non-empty. Finding 12's
+  equality rule is the localisation boundary. It equalled the correctness boundary only because
+  there were two parties. Both rules are checked against brute-force enumeration of verdicts, on
+  every pair of adjudicable three-party worlds as well as the corpus twin pairs; the escapability
+  rule is also checked on all two-party twin pairs.
 - The two-party duty to answer, extended to a party outside the dispute, frames the honest. B17_chain3
   scores 6/9 full-class, against 8/9 without the duty.
 - `chain3`'s receiver check prevents four widening classes before execution. Prevention is
@@ -987,7 +988,9 @@ analyses are derived and diffed in `make check`.
 never received. The derived twin audit caught it, not the author's reasoning. Recorded in finding
 14, alongside §9a.
 
-**Limits.** One hop, linear. Classes were written to probe stated predictions. The adjudicator is
+**Limits.** One hop, linear. Classes were written to probe stated predictions, and the 25 instances
+of a class vary only in operation labels, so the per-class results are nine structural cases rather
+than 225 independent samples. The adjudicator is
 assumed to receive copies from a party outside the dispute. No transport or timing model.
 Prevalence is still unmeasured.
 

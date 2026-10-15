@@ -26,16 +26,27 @@ Two things are DERIVED here rather than declared:
    every pair (three-party AND two-party), reports where the equality rule
    disagrees, and checks the empirical side: no protocol solves both worlds of
    a binding pair for which the pair is a twin.
+
+3. Whether a twin pair is localisable: some single verdict names exactly D in
+   both worlds. The rule is
+
+       localisable  iff  D(a) == D(b), and D is non-empty
+
+   (an honest world has nothing to localise). Also computed by brute force.
+
+Both rules are additionally checked on every pair of adjudicable three-party
+worlds (each party honest, mistaken or dishonest: 27 worlds, 729 pairs), so
+they do not rest on the four pairs the corpus happens to contain.
 """
 
 from __future__ import annotations
 
-from itertools import combinations
+from itertools import combinations, product
 
 from ..model.types import SUCCESS_OUTCOMES
 from .evidence import build_view
 from .generator import H_CLASSES, load_corpus
-from .model import PARTIES, Status3, Truth3, Verdict3, fmt, score3
+from .model import PARTIES, State, Status3, Truth3, Verdict3, fmt, localised, score3
 from .protocols import PROTOCOLS3
 
 #: (honest-or-mistaken class, guilty class) -> protocols' specs under which the
@@ -129,6 +140,35 @@ def rule_equality(dg, dh) -> bool:
     return dg == dh
 
 
+def brute_localisable3(ta: Truth3, tb: Truth3) -> bool:
+    return any(localised(ta, v) and localised(tb, v) for v in all_verdicts3())
+
+
+def rule_localisation(da, db) -> bool:
+    return bool(da) and da == db
+
+
+def all_worlds3():
+    """Every adjudicable three-party world: each party honest, mistaken or dishonest."""
+    for states in product(State, repeat=len(PARTIES)):
+        yield Truth3(tuple(zip(PARTIES, states)))
+
+
+def exhaustive_rule_check() -> list[str]:
+    """Both boundary rules against brute force on every pair of adjudicable
+    three-party worlds, not only on the pairs the corpus contains."""
+    errs = []
+    for ta, tb in product(all_worlds3(), repeat=2):
+        if rule_intersection(ta.diverges, ta.mistaken, ta.dishonest,
+                             tb.diverges, tb.mistaken, tb.dishonest) != brute_escapable3(ta, tb):
+            errs.append(f"world pair {ta.states}/{tb.states}: intersection rule disagrees "
+                        f"with brute force")
+        if rule_localisation(ta.diverges, tb.diverges) != brute_localisable3(ta, tb):
+            errs.append(f"world pair {ta.states}/{tb.states}: localisation rule disagrees "
+                        f"with brute force")
+    return errs
+
+
 def _truth_of(scenarios, h) -> Truth3:
     ts = {Truth3.from_scenario(s) for s in scenarios if s["h_class"] == h}
     if len(ts) != 1:
@@ -212,14 +252,19 @@ def check(scenarios=None, reps=None) -> tuple[list[tuple], list[str]]:
     reps = reps or reports(scenarios)
     rows = classify(scenarios)
     errs = list(twin_audit(scenarios))
-    for a, b, protos, brute, inter, _eq, _da, _db in rows:
+    for a, b, protos, brute, inter, _eq, da, db in rows:
         if inter != brute:
             errs.append(f"{a}/{b}: intersection rule says {inter}, brute force {brute}")
+        loc = brute_localisable3(_truth_of(scenarios, a), _truth_of(scenarios, b))
+        if rule_localisation(da, db) != loc:
+            errs.append(f"{a}/{b}: localisation rule says {rule_localisation(da, db)}, "
+                        f"brute force {loc}")
         both = solved_both(scenarios, reps, a, b, protos)
         if not brute and both:
             errs.append(f"{a}/{b}: binding pair solved in both worlds by {both} -- "
                         f"something reads outside the view")
     errs.extend(two_party_rule_check())
+    errs.extend(exhaustive_rule_check())
     return rows, errs
 
 
@@ -233,7 +278,7 @@ def main():
     print("THREE-PARTY TWINS AND THE CONSERVATION BOUNDARY")
     print("=" * 96)
     print(f"\n  {'pair':<8}{'D(a)':<9}{'D(b)':<9}{'twin under spec':<24}"
-          f"{'brute':<8}{'D∩D':<8}{'D==D':<8}solved both by")
+          f"{'brute':<8}{'D&D':<8}{'D==D':<8}solved both by")
     for a, b, protos, brute, inter, eq, da, db in rows:
         both = solved_both(scs, reps, a, b, protos)
         specs = ",".join(sorted({PROTOCOLS3[n].spec_name for n in protos}))
@@ -253,7 +298,9 @@ def main():
         for e in errs:
             print(f"    {e}")
         raise SystemExit("MULTIHOP BOUNDARY: failed")
-    print("\n  twins match their declaration; boundary holds on every derived pair")
+    print("\n  both rules (escapable iff D&D, localisable iff D==D and non-empty) match")
+    print("  brute force on every pair of adjudicable three-party worlds (729 pairs)")
+    print("  twins match their declaration; boundary holds on every derived pair")
 
 
 if __name__ == "__main__":

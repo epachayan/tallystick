@@ -162,6 +162,10 @@ def test_intersection_rule_reproduces_brute_force_and_equality_does_not(scs):
     assert disagree == {("H8", "H9")}
 
 
+def test_both_boundary_rules_hold_on_every_pair_of_three_party_worlds():
+    assert boundary.exhaustive_rule_check() == []
+
+
 def test_intersection_rule_agrees_with_the_published_two_party_boundary():
     assert boundary.two_party_rule_check() == []
 

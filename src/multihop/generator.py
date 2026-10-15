@@ -22,7 +22,7 @@ variant and only the protocol differs.
 Twin pairs are generated from the guilty class's random stream, so the two
 worlds share every value and differ only where the class definition says.
 Whether they are actually indistinguishable to an adjudicator, and under which
-specification, is not declared here -- src/multihop/twins.py derives it.
+specification, is not declared here -- src/multihop/boundary.py derives it.
 """
 
 from __future__ import annotations

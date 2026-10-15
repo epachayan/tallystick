@@ -2,7 +2,7 @@
 
 **An adversarial harness for accountability in delegated agentic action.**
 
-850 scenarios · 34 adversarial classes · 18 adjudication baselines · 176 tests · 17 gate stages
+850 scenarios · 34 adversarial classes · 18 adjudication baselines · 177 tests · 17 gate stages
 
 Three-party phase: 225 three-party scenarios · 9 H-classes · 5 protocols over 3 declarative interaction specifications
 
@@ -56,8 +56,9 @@ each protocol a declared interaction specification ([`specs/`](specs/), explaine
   (B13_chain3: 8/9 full-class, 6/8 localised, against B13_hop3: 6/9 full-class).
 - **The boundary generalises, and the two-party rule was its special case.** A twin pair is
   escapable iff the diverging sets *intersect* (or nobody is dishonest in either world). It is
-  *localisable* iff they are *equal*. With two parties these coincide. With three they do not, and
-  a build stage checks both against brute force.
+  *localisable* iff they are *equal* (and non-empty). With two parties these coincide. With three
+  they do not, and a build stage checks both rules against brute force on every pair of possible
+  three-party worlds.
 - **Collusion is asymmetric.** Forwarding protects a downstream party from upstream collusion and
   not the reverse. An intermediary and executor who agree a cover story before reporting defeat
   every protocol in the set.

@@ -1,14 +1,14 @@
 # Test and result evidence map
 
-**Date:** 15 August 2026  
+**Date:** 15 August 2026; three-party section 15 October 2026  
 **Corpus:** 850 deterministic scenarios, 34 adversarial classes, 25 instances per class  
 **Protocols:** 18 adjudication baselines  
-**Pytest suite:** 176 tests  
+**Pytest suite:** 177 tests  
 **Build:** `make check` adds structural validators and a gate-propagation self-test around the pytest suite
 
 This document answers a narrower question than `RESEARCH.md`: **which executable checks support each
 headline statement, and what would have to fail for the statement to stop being true?** It is not a
-claim that 176 tests prove the corpus is complete. They prove specific invariants inside the modelled
+claim that 177 tests prove the corpus is complete. They prove specific invariants inside the modelled
 world and are named below.
 
 The A2A reference-library checks are intentionally outside this map's core claim count.
@@ -300,7 +300,9 @@ ones. The two-party figures do not move.
 - `test_re_signing_cannot_localise_and_forwarding_can`, `test_upstream_collusion_is_caught_but_only_fully_named_under_chain3`,
   `test_downstream_collusion_resists_every_protocol`, `test_extended_duty_frames_an_honest_party_in_both_who_twins`:
   the headline results.
-- `test_intersection_rule_reproduces_brute_force_and_equality_does_not` and
+- `test_intersection_rule_reproduces_brute_force_and_equality_does_not`,
+  `test_both_boundary_rules_hold_on_every_pair_of_three_party_worlds` (729 world pairs, both the
+  escapability and localisation rules) and
   `test_intersection_rule_agrees_with_the_published_two_party_boundary`: C6.
 - `test_multihop_gate_stages_pass`: freeze, conformance and boundary report nothing.
 
