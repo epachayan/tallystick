@@ -12,9 +12,10 @@ Two things are DERIVED here rather than declared:
 
        escapable  iff  D(guilty) == D(honest)
 
-   derived when every world had D in {}, {P}, {E} or {P,E}. The underlying
-   statement is more general -- a pair is escapable iff SOME verdict is scored
-   correct in both worlds -- and with three parties the equality rule is no
+   derived on twin pairs in which every world had at most one diverging party.
+   The underlying statement is more general -- a pair is escapable iff SOME
+   verdict is scored correct in both worlds -- and once a world can have two
+   diverging parties (with or without an intermediary) the equality rule is no
    longer equivalent to it. The general condition, read off the scorer:
 
        escapable  iff  D(g) & D(h) is non-empty         (contradict the overlap)
@@ -169,6 +170,57 @@ def exhaustive_rule_check() -> list[str]:
     return errs
 
 
+def _single_divergence(t: Truth3) -> bool:
+    return len(t.diverges) <= 1
+
+
+def _abstain_both(ta: Truth3, tb: Truth3) -> bool:
+    return (_abstain_ok(ta.diverges, ta.mistaken, ta.dishonest)
+            and _abstain_ok(tb.diverges, tb.mistaken, tb.dishonest))
+
+
+def coincidence_check() -> list[str]:
+    """Where the equality rule (findings/12) and the intersection rule agree.
+
+    They agree on every pair of adjudicable worlds in which each world has at
+    most one diverging party, apart from pairs where abstention is correct in
+    both worlds. They can disagree as soon as one world has two diverging
+    parties, and that already happens with the intermediary honest, i.e. with
+    only two parties active. So the condition under which finding 12's rule is
+    exact is single divergence, not two parties. Also pinned: every published
+    two-party twin pair is single-divergence, which is why finding 12 was never
+    contradicted.
+    """
+    errs = []
+    split_two_active = False
+    for ta, tb in product(all_worlds3(), repeat=2):
+        brute = brute_escapable3(ta, tb)
+        eq = rule_equality(ta.diverges, tb.diverges)
+        if _single_divergence(ta) and _single_divergence(tb) and not _abstain_both(ta, tb):
+            if eq != brute:
+                errs.append(f"world pair {ta.states}/{tb.states}: single divergence, "
+                            f"but equality rule disagrees with brute force")
+        i_honest = all(dict(t.states)[PARTIES[1]] is State.HONEST for t in (ta, tb))
+        if i_honest and eq != brute and not _abstain_both(ta, tb):
+            split_two_active = True
+    if not split_two_active:
+        errs.append("expected a two-active-party pair (I honest) where the equality rule "
+                    "and brute force disagree; the coincidence claim needs rewording")
+    errs.extend(_two_party_pairs_single_divergence())
+    return errs
+
+
+def _two_party_pairs_single_divergence() -> list[str]:
+    from ..reporting.harness import load_corpus as load2
+    from ..validation.conservation import classify as classify2
+    errs = []
+    for guilty, honest, _verdict, dg, dh in classify2(load2()):
+        if len(dg) > 1 or len(dh) > 1:
+            errs.append(f"two-party {guilty}/{honest}: a world has more than one diverging "
+                        f"party; finding 12's equality rule is not guaranteed there")
+    return errs
+
+
 def _truth_of(scenarios, h) -> Truth3:
     ts = {Truth3.from_scenario(s) for s in scenarios if s["h_class"] == h}
     if len(ts) != 1:
@@ -265,6 +317,7 @@ def check(scenarios=None, reps=None) -> tuple[list[tuple], list[str]]:
                         f"something reads outside the view")
     errs.extend(two_party_rule_check())
     errs.extend(exhaustive_rule_check())
+    errs.extend(coincidence_check())
     return rows, errs
 
 
@@ -292,7 +345,8 @@ def main():
         print("  The two-party equality rule disagrees with brute force on: "
               + ", ".join(f"{a}/{b}" for a, b in disagree))
         print("  The intersection rule reproduces brute force on every pair, two-party")
-        print("  and three-party. Equality was the special case of two parties.")
+        print("  and three-party. Equality is exact only while each world has at most")
+        print("  one diverging party (abstention-in-both aside).")
     if errs:
         print("\n  GATE FAILURES:")
         for e in errs:
@@ -300,6 +354,9 @@ def main():
         raise SystemExit("MULTIHOP BOUNDARY: failed")
     print("\n  both rules (escapable iff D&D, localisable iff D==D and non-empty) match")
     print("  brute force on every pair of adjudicable three-party worlds (729 pairs)")
+    print("  equality and intersection agree on every single-divergence pair and split")
+    print("  on two-divergence pairs even with I honest; every two-party twin pair is")
+    print("  single-divergence")
     print("  twins match their declaration; boundary holds on every derived pair")
 
 

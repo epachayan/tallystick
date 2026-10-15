@@ -4,6 +4,11 @@
 **Module:** `src/validation/conservation.py` · **Tests:** `tests/test_conservation.py`
 **Corrects:** finding 10's claim that M22 resists every mechanism
 **Status of T8:** no longer a conjecture supported by examples. A boundary with a proof and a check.
+**Scope note (October 2026):** the equality rule below is exact on every two-party twin pair,
+all of which have at most one diverging party per world. Its general form, and the one edge where
+the plain "whether" wording overreaches (every divergence a sincere mistake), are in
+[finding 14 §4](14-one-hop.md#4-the-two-party-boundary-was-the-special-case-the-general-rule-is-intersection)
+and C6 of [`what-is-established.md`](../what-is-established.md).
 
 ---
 

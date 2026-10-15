@@ -54,7 +54,7 @@ tallystick/
 ## Command boundaries
 
 ```
-make check         13-stage core correctness gate, including tests, structural
+make check         17-stage core correctness gate, including tests, structural
                    audits, document synchronization, links, and staleness
 make experiments   depends on check; writes results/
 make taxonomy      regenerates docs/taxonomy.md from M_CLASSES

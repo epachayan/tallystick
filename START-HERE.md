@@ -44,9 +44,9 @@ evidence they produce. The finding also generalises the conservation boundary be
 
 ## Two things to check before publishing anything
 
-1. **Add a verified public repository URL only at publication time.** The repository currently
-   exists privately at `github.com/epachayan/tallystick`; add that link to the packaged article only
-   after it resolves while signed out.
+1. **Link the public repository by a release, not by `main`.** The repository is public at
+   `github.com/epachayan/tallystick`. Cite a tagged release (or its archived DOI) so a reader sees
+   the figures the text quotes.
 2. **The phase-1 article drafts are now wrong.** They predate the hardening phase and state the
    conservation property unbounded, F01 unscoped, and a claim about M22 that was later refuted. If
    either is already live, it needs correcting or withdrawing.

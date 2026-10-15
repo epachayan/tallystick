@@ -2,7 +2,7 @@
 
 **An adversarial harness for accountability in delegated agentic action.**
 
-850 scenarios · 34 adversarial classes · 18 adjudication baselines · 177 tests · 17 gate stages
+850 scenarios · 34 adversarial classes · 18 adjudication baselines · 178 tests · 17 gate stages
 
 Three-party phase: 225 three-party scenarios · 9 H-classes · 5 protocols over 3 declarative interaction specifications
 
@@ -26,7 +26,8 @@ documented account of six hardening-time declaration defects and a seventh decla
 ### The headline result
 
 > **The conservation boundary.** Where two worlds produce identical evidence **and differ in
-> whether any account diverges from the record**, no evidence-determined mechanism resolves both.
+> whether any account diverges from the record**, and someone is dishonest in the world where one
+> does, no evidence-determined mechanism resolves both.
 > The cost can be denominated - as false accusation, as missed detection, as disclosure, as
 > padding - but not removed. Where the worlds differ only in the *intent* behind a divergence both
 > exhibit, a non-attributive vocabulary resolves both at no cost.
@@ -34,7 +35,7 @@ documented account of six hardening-time declaration defects and a seventh decla
 Plainly:
 
 > Twins differing only in **why** a divergence occurred are escapable.
-> Twins differing in **whether** one occurred are not.
+> Twins differing in **whether** one occurred are not, unless every divergence is a sincere mistake.
 
 The proof is one line - identical evidence yields one verdict, so the only question is whether one
 verdict can be correct in both worlds. The useful part is not the proof but the **boundary**: it
@@ -56,9 +57,10 @@ each protocol a declared interaction specification ([`specs/`](specs/), explaine
   (B13_chain3: 8/9 full-class, 6/8 localised, against B13_hop3: 6/9 full-class).
 - **The boundary generalises, and the two-party rule was its special case.** A twin pair is
   escapable iff the diverging sets *intersect* (or nobody is dishonest in either world). It is
-  *localisable* iff they are *equal* (and non-empty). With two parties these coincide. With three
-  they do not, and a build stage checks both rules against brute force on every pair of possible
-  three-party worlds.
+  *localisable* iff they are *equal* (and non-empty). The two coincide while each world has at most
+  one diverging party, which held for every two-party twin pair. They separate once two parties can
+  diverge together, as when they collude. A build stage checks both rules against brute force on
+  every pair of possible three-party worlds, and checks where they coincide.
 - **Collusion is asymmetric.** Forwarding protects a downstream party from upstream collusion and
   not the reverse. An intermediary and executor who agree a cover story before reporting defeat
   every protocol in the set.
@@ -110,7 +112,7 @@ proposed map is in [`docs/extension-use-map.md`](docs/extension-use-map.md).
 
 ```bash
 python3 -m pip install -e ".[dev]"   # installs the test dependency (pytest)
-make check                         # 13-stage correctness gate
+make check                         # 17-stage correctness gate
 make experiments                   # depends on check; regenerates results/
 make taxonomy                      # regenerates docs/taxonomy.md from the code
 make ext-check                     # standalone A2A reference-library tests

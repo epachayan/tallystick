@@ -81,3 +81,57 @@ Write `specs/<name>.toml`, add the name to `SPEC_NAMES` in `src/multihop/spec.py
 adjudicator against it in `src/multihop/protocols.py`, and run `make spec-doc` and `make check`. If
 the new protocol changes which pairs are twins or which classes are prevented, the gate will say
 so. Update `EXPECTED_TWINS` or `EXPECTED_PREVENTED` deliberately, never to make the gate pass.
+
+## Relation to multiagent interaction-protocol work
+
+The specification format was written for this harness, but it sits in a recognisable line of
+multiagent-systems work, and the differences are the point.
+
+**Information protocols (BSPL).** Singh's BSPL declares a protocol as roles, messages and
+parameters, with each parameter adorned as supplied from outside (`in`), produced (`out`) or
+possibly unbound (`nil`). Message order is not written down; it follows from which bindings a
+message needs before it can be sent. Its properties are about correct enactment: integrity of
+bindings, uniqueness per key, immutability, and the absence of ordering, knowledge and occurrence
+conflicts [1]. The specifications here are close in spirit and simpler in form:
+
+| here | nearest BSPL notion | difference |
+|---|---|---|
+| `from`, `to` | roles and messages | same idea |
+| `binds` | the parameters a message carries | here only commitment roots, and only under a signature |
+| `requires` | causality from `in` dependencies | here written as explicit predecessor messages, not derived from information |
+| holdings derived from `to` and `forwards` | a role's local view of bindings | here the view is an evidential record that a party may withhold or fabricate |
+| `checks` | integrity constraints | here enforced by an honest receiver, which yields prevention |
+
+BSPL assumes agents enact the protocol. Tallystick assumes they may lie, withhold, abort or
+collude, and asks a different question of the same kind of declaration: from the copies each
+party can produce, what can an adjudicator correctly conclude, and when can it name who diverged?
+
+**Commitment protocols.** Commitment-based work gives messages a normative meaning: who owes what
+to whom, and how that evolves [2]. Chopra and Singh show that a debtor's and a creditor's views of
+a commitment can diverge through asynchrony alone, and give message patterns and semantics that
+restore alignment, explicitly setting trust aside [3]. That divergence is the analogue here of a
+*mistaken* party (an honest account that differs from the record). The dishonest case, which the
+alignment work rules out by assumption, is where the twins and the boundary in finding 14 live.
+
+**Computational accountability.** Baldoni and colleagues treat accountability as a directed
+relation, built into an agent organisation through commitments made when an agent adopts a role
+or accepts a goal (the ADOPT protocol) [4]. That work designs who answers to whom. This harness
+measures what the evidence a protocol leaves behind can establish when the parties disagree about
+whether the account was kept.
+
+**Open in this direction.** Expressing `hop3` and `chain3` in BSPL and deriving holdings from BSPL
+role views rather than from `forwards`; asking whether BSPL's enactment analysis can be extended
+with an evidential layer, so that a specification can be checked for which twins it admits; and
+connecting the mistaken/dishonest split to commitment alignment, where honest divergence already
+has a theory.
+
+1. M. P. Singh. Information-driven interaction-oriented programming: BSPL, the Blindingly Simple
+   Protocol Language. *AAMAS 2011*, 491-498.
+2. M. P. Singh. An ontology for commitments in multiagent systems: toward a unification of
+   normative concepts. *Artificial Intelligence and Law* 7 (1999), 97-113.
+3. A. K. Chopra and M. P. Singh. Multiagent commitment alignment. *AAMAS 2009*.
+4. M. Baldoni, C. Baroglio, K. M. May, R. Micalizio and S. Tedeschi. Computational accountability
+   in MAS organizations with ADOPT. *Applied Sciences* 8 (2018), 489.
+
+These readings are summaries for orientation, not a survey. Check them against the papers before
+citing.

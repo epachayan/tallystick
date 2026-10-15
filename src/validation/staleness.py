@@ -83,6 +83,7 @@ CORPUS_SIZE_RE = re.compile(r"\b(\d{3,4})\s+scenarios\b")
 #: passing the numeric gate cleanly, because the gate did not parse this shape.
 #: Same lesson as RC-H15: a check is only as wide as the forms it can read.
 TEST_COUNT_RE = re.compile(r"\b(\d{2,4})\s+tests\b")
+STAGE_COUNT_RE = re.compile(r"\b(\d{1,2})(?:-stage\b|\s+gate stages\b)")
 CLASS_COUNT_RE = re.compile(r"\b(\d{1,2})\s+(?:M-)?classes\b")
 FULL_CLASS_RE = re.compile(r"\b(\d{1,2})/(\d{2})\b")
 
@@ -112,6 +113,22 @@ def collected_test_count() -> int:
     raise SystemExit("STALENESS: could not determine the collected test count")
 
 
+def gate_stage_count() -> int:
+    """Number of prerequisites of `make check`, read from the Makefile."""
+    for line in (ROOT / "Makefile").read_text(encoding="utf-8").splitlines():
+        if line.startswith("check:"):
+            return len(line.split(":", 1)[1].split())
+    raise AssertionError("Makefile has no check target")
+
+
+def _stage_errs(name, text: str, facts: dict) -> list[str]:
+    wrong = {int(m) for m in STAGE_COUNT_RE.findall(text)} - {facts["stages"]}
+    if wrong:
+        return [f"{name}: cites gate stage count(s) {sorted(wrong)}, "
+                f"current is {facts['stages']}"]
+    return []
+
+
 def current_facts() -> dict:
     from ..generator import M_CLASSES
     from ..protocols.baselines import PROTOCOLS
@@ -123,6 +140,7 @@ def current_facts() -> dict:
         "classes": len(M_CLASSES),
         "protocols": len(PROTOCOLS),
         "tests": collected_test_count(),
+        "stages": gate_stage_count(),
     }
 
 
@@ -188,6 +206,7 @@ def check_doc(path: Path, facts: dict) -> list[str]:
         if wrong_tests:
             errs.append(f"{rel}: live doc cites test count(s) {sorted(wrong_tests)}, "
                         f"current is {facts['tests']}")
+        errs.extend(_stage_errs(rel, text, facts))
         denominators = {int(d) for _n, d in FULL_CLASS_RE.findall(text)}
         wrong_denom = {d for d in denominators if d in (26, 30) and d != facts["classes"]}
         # 25 is the per-class instance count and is legitimate; only flag class
@@ -224,6 +243,7 @@ def check_root_doc(path, facts: dict) -> list[str]:
     if tests:
         errs.append(f"{path.name}: cites test count(s) {sorted(tests)}, "
                     f"current is {facts['tests']}")
+    errs.extend(_stage_errs(path.name, text, facts))
     for _tag, old_form, _correction, pointer in CORRECTED_CLAIMS:
         if old_form in text and pointer not in text:
             errs.append(f"{path.name}: asserts a corrected claim ({old_form!r}) "
@@ -308,7 +328,8 @@ def main():
     print("DOCUMENTATION STALENESS CHECK")
     print("=" * 88)
     print(f"\ncurrent: {facts['scenarios']} scenarios, {facts['classes']} classes, "
-          f"{facts['protocols']} protocols, {facts['tests']} tests\n")
+          f"{facts['protocols']} protocols, {facts['tests']} tests, "
+          f"{facts['stages']} gate stages\n")
 
     errs: list[str] = []
     mh = mh_facts()
@@ -320,7 +341,7 @@ def main():
                                            path.read_text(encoding="utf-8"), mh))
     # Public-facing root documents are checked directly. The technical article is
     # maintained outside the repository, so it is no longer checked here.
-    for name in ("README.md", "RESEARCH.md", "INDEX.md",
+    for name in ("README.md", "RESEARCH.md", "INDEX.md", "START-HERE.md",
                  "CONTRIBUTING.md", "CITATION.cff"):
         root_doc = ROOT / name
         if root_doc.exists():

@@ -3,12 +3,12 @@
 **Date:** 15 August 2026; three-party section 15 October 2026  
 **Corpus:** 850 deterministic scenarios, 34 adversarial classes, 25 instances per class  
 **Protocols:** 18 adjudication baselines  
-**Pytest suite:** 177 tests  
+**Pytest suite:** 178 tests  
 **Build:** `make check` adds structural validators and a gate-propagation self-test around the pytest suite
 
 This document answers a narrower question than `RESEARCH.md`: **which executable checks support each
 headline statement, and what would have to fail for the statement to stop being true?** It is not a
-claim that 177 tests prove the corpus is complete. They prove specific invariants inside the modelled
+claim that 178 tests prove the corpus is complete. They prove specific invariants inside the modelled
 world and are named below.
 
 The A2A reference-library checks are intentionally outside this map's core claim count.
@@ -304,6 +304,10 @@ ones. The two-party figures do not move.
   `test_both_boundary_rules_hold_on_every_pair_of_three_party_worlds` (729 world pairs, both the
   escapability and localisation rules) and
   `test_intersection_rule_agrees_with_the_published_two_party_boundary`: C6.
+- `test_equality_rule_is_exact_only_for_single_divergence`: the equality and intersection rules
+  agree on every single-divergence pair of worlds (abstention-in-both aside), split on some
+  two-divergence pair with I honest, and every two-party twin pair is single-divergence. Added in
+  0.11.1 after the earlier wording ("with two parties these coincide") was found to overstate this.
 - `test_multihop_gate_stages_pass`: freeze, conformance and boundary report nothing.
 
 **Gate stages.** `freeze` (two-party hash and per-protocol results pinned), `mh-conformance`
@@ -327,6 +331,7 @@ required to fail. Each break was restored before the next:
 | a specification forwarding a message the sender never holds | `mh-conformance` (spec validation) |
 | a finding table and a wrapped RESEARCH sentence quoting wrong figures | `staleness` |
 | the overreach rule loosened to fire on an unknown sub-grant | `unit` and `staleness`, not `mh-boundary` |
+| single divergence widened to two diverging parties in the coincidence check (0.11.1) | `mh-boundary` |
 
 The last row is correct behaviour, not a gap. The loosened rule changes results without solving
 both sides of a binding pair, so the boundary stage has nothing to report. The tests and the stated

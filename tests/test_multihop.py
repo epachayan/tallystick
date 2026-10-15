@@ -166,6 +166,10 @@ def test_both_boundary_rules_hold_on_every_pair_of_three_party_worlds():
     assert boundary.exhaustive_rule_check() == []
 
 
+def test_equality_rule_is_exact_only_for_single_divergence():
+    assert boundary.coincidence_check() == []
+
+
 def test_intersection_rule_agrees_with_the_published_two_party_boundary():
     assert boundary.two_party_rule_check() == []
 

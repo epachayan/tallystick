@@ -2,7 +2,7 @@
 
 **Author:** Nitin Stephen Koshy · ORCID [0009-0009-2690-0588](https://orcid.org/0009-0009-2690-0588)
 **Status:** working research record, August 2026 (revised after the hardening phase; three-party phase added October 2026)
-**Artifacts:** 850-scenario corpus, 34 adversarial classes, 18 adjudication baselines, 177 tests
+**Artifacts:** 850-scenario corpus, 34 adversarial classes, 18 adjudication baselines, 178 tests
 **Canonical figures:** `results/canonical.txt` (regenerate with `make experiments`)
 **Claim strength:** `docs/what-is-established.md` — three tiers; read it before quoting anything
 **Reproducibility:** deterministic from seed `20260808`; Python 3.12+ runtime, standard library only; `pytest` is the test/development dependency
@@ -446,6 +446,12 @@ DRP signs and logs authorization before execution; HDP carries signed delegation
 FIDO's AP2/Verifiable Intent work treats user intent as portable cryptographic evidence. These do
 not erase the fair-exchange comparison. They narrow it: the open question here is what such
 artifacts can settle under adversarial disagreement, not whether verifiable authorization exists.
+
+**Multiagent interaction protocols.** The three-party specifications sit next to information
+protocols (BSPL), commitment-based protocols and commitment alignment, and computational
+accountability in agent organisations. That work largely assumes agents enact the protocol;
+this harness asks what the resulting evidence settles when they do not. Positioning and references:
+[`docs/protocols/README.md`](docs/protocols/README.md#relation-to-multiagent-interaction-protocol-work).
 
 ---
 
@@ -975,8 +981,10 @@ analyses are derived and diffed in `make check`.
   signature. Downstream collusion agreed before reporting (H6) defeats every protocol in the set.
 - **The boundary generalises.** A pair is escapable iff the diverging sets intersect, or abstention
   is correct in both worlds. It is localisable iff the sets are equal and non-empty. Finding 12's
-  equality rule is the localisation boundary. It equalled the correctness boundary only because
-  there were two parties. Both rules are checked against brute-force enumeration of verdicts, on
+  equality rule is the localisation boundary. It equalled the correctness boundary because every
+  two-party twin pair had at most one diverging party per world, not because there were two
+  parties; two diverging parties separate the rules even without an intermediary, and a gate check
+  pins this. Both rules are checked against brute-force enumeration of verdicts, on
   every pair of adjudicable three-party worlds as well as the corpus twin pairs; the escapability
   rule is also checked on all two-party twin pairs.
 - The two-party duty to answer, extended to a party outside the dispute, frames the honest. B17_chain3
