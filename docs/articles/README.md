@@ -1,14 +1,15 @@
 # Articles
 
-Public-facing write-ups, kept **in the repository** so they are covered by the same staleness
-checks as everything else. The technical Medium article has one canonical copy at
-[`../../ARTICLE-MEDIUM.md`](../../ARTICLE-MEDIUM.md); the former duplicate under this directory was
-removed to eliminate a drift surface. An article published from a stale copy is the most expensive
-kind of drift: unlike a findings note, it cannot be quietly corrected after the fact.
+Public-facing write-ups. The general-audience draft is kept **in the repository** so it is covered
+by the same staleness checks as everything else. The technical Medium article, "The Execution
+Record Is Not Evidence", is maintained outside the repository and is not part of a release; the
+history below is kept as the record of its checks. An article published from a stale copy is the
+most expensive kind of drift: unlike a findings note, it cannot be quietly corrected after the fact,
+so its figures must be re-verified by hand against `results/canonical.txt` before it goes out.
 
 | file | audience | status |
 |---|---|---|
-| [`../../ARTICLE-MEDIUM.md`](../../ARTICLE-MEDIUM.md) | practitioners building agent infrastructure | **canonical technical/Medium draft.** Written as a sequel to the May 2026 durable-execution piece and opens by correcting it. |
+| technical article (outside the repository) | practitioners building agent infrastructure | **canonical technical/Medium draft.** Written as a sequel to the May 2026 durable-execution piece and opens by correcting it. |
 | [`02-general-audience.md`](02-general-audience.md) | no technical background assumed | draft, unpublished |
 
 ## Before publishing either
@@ -37,7 +38,7 @@ kind of drift: unlike a findings note, it cannot be quietly corrected after the 
 
 ## Patched 12 August 2026
 
-`../../ARTICLE-MEDIUM.md` had two correctness problems during drafting, both now fixed:
+The technical article had two correctness problems during drafting, both now fixed:
 
 1. **An unqualified universal claim** - "none of them is cited by the 2024-2026 agentic-identity
    literature." That is the exact shape of statement that produced six defects in this project.
@@ -52,7 +53,7 @@ Background for both: [`../prior-art/2026-protocol-landscape.md`](../prior-art/20
 
 ## The reframe (14 August 2026)
 
-`../../ARTICLE-MEDIUM.md` was retitled and reopened as **"The Execution Record Is Not Evidence"**, a
+The technical article was retitled and reopened as **"The Execution Record Is Not Evidence"**, a
 self-correction of the May 2026 article
 [*Agent Workflows Are Rediscovering Durable Execution*](https://nittikkin.medium.com/agent-workflows-are-rediscovering-durable-execution-be110661ed8c),
 which asserted that the run record "is not just a debug log, it is evidence."

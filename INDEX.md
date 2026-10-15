@@ -59,10 +59,9 @@ of what was believed at the time, and are marked as such.
 
 ## Public-facing drafts
 
-[`ARTICLE-MEDIUM.md`](ARTICLE-MEDIUM.md) is the **single canonical technical/Medium draft**.
-[`docs/articles/02-general-audience.md`](docs/articles/02-general-audience.md) is the separate
-general-audience draft. The former duplicate technical copy under `docs/articles/` was removed to
-eliminate a drift surface.
+[`docs/articles/02-general-audience.md`](docs/articles/02-general-audience.md) is the
+general-audience draft. The technical/Medium article is maintained outside this repository and is
+not part of a release.
 
 Read [`docs/articles/README.md`](docs/articles/README.md) before publishing either; it records the
 publication-specific checks and the public-repository-URL caveat.

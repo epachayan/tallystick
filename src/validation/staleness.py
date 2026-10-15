@@ -261,11 +261,10 @@ def main():
     errs: list[str] = []
     for path in sorted(DOCS.rglob("*.md")):
         errs.extend(check_doc(path, facts))
-    # Public-facing root documents are checked directly. ARTICLE-MEDIUM.md is the
-    # single canonical technical article; keeping a duplicate under docs/articles/
-    # created a needless drift surface.
+    # Public-facing root documents are checked directly. The technical article is
+    # maintained outside the repository, so it is no longer checked here.
     for name in ("README.md", "RESEARCH.md", "INDEX.md",
-                 "CONTRIBUTING.md", "CITATION.cff", "ARTICLE-MEDIUM.md"):
+                 "CONTRIBUTING.md", "CITATION.cff"):
         root_doc = ROOT / name
         if root_doc.exists():
             errs.extend(check_root_doc(root_doc, facts))

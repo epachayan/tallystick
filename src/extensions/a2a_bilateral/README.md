@@ -5,8 +5,7 @@ The Merkle commitment implementation it calls is covered by the project's existi
 this extension and metadata layer has separate tests under this directory.
 
 This is the working code for the design in
-[`docs/prior-art/a2a-extension-sketch.md`](../../../docs/prior-art/a2a-extension-sketch.md) and
-[`ARTICLE-MEDIUM.md`](../../../ARTICLE-MEDIUM.md). Both parties commit to authorization scope and
+[`docs/prior-art/a2a-extension-sketch.md`](../../../docs/prior-art/a2a-extension-sketch.md). Both parties commit to authorization scope and
 execution records before either can later deny them. The commitments travel through A2A's own
 extension mechanism—`AgentCard.capabilities.extensions` and namespaced message `metadata`—rather
 than a bespoke channel.

@@ -12,13 +12,11 @@ About 1,700 words.
 
 ## I build agent infrastructure and want the practical version
 
-**[`ARTICLE-MEDIUM.md`](ARTICLE-MEDIUM.md)** - "The Execution Record Is
-Not Evidence". The measured findings, the historical argument, the implementation sketch, and the
-publication-review correction that caught a masked build failure.
-
-Then **[`README.md`](README.md)** for the repository proper. If you're specifically integrating
+Start with **[`README.md`](README.md)** for the measured findings and the repository proper. (The
+practitioner article, "The Execution Record Is Not Evidence", is published separately and is not
+kept in this repository.) If you're specifically integrating
 with A2A, [`docs/prior-art/a2a-extension-sketch.md`](docs/prior-art/a2a-extension-sketch.md) maps
-the article's bilateral-commitment record onto A2A's extension mechanism, and the
+the bilateral-commitment record onto A2A's extension mechanism, and the
 [`src/extensions/a2a_bilateral/`](src/extensions/a2a_bilateral/README.md) reference library makes
 that mapping runnable. [`docs/extension-use-map.md`](docs/extension-use-map.md) explains where it
 already connects to B1 and where it can next exercise B13/B17 and the abort/loss classes. It remains

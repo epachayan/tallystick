@@ -15,7 +15,7 @@ against the current spec before relying on them.
 
 ## The gap this fills
 
-[`ARTICLE-MEDIUM.md`](../../ARTICLE-MEDIUM.md) shows a minimal JSON shape for bilateral delegation
+The technical article (kept outside this repository) shows a minimal JSON shape for bilateral delegation
 evidence — both parties commit to the authorization and the execution record before either can
 later deny them — and [`2026-protocol-landscape.md`](2026-protocol-landscape.md) notes that A2A
 leaves authorization *policy* agent-defined and does not itself define a counterparty-held
