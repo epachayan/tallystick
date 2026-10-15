@@ -4,6 +4,9 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23401182.svg)](https://doi.org/10.5281/zenodo.23401182)
 
+Research note: [*Tallystick: which account survives a delegation dispute*](https://doi.org/10.5281/zenodo.23401440)
+(preprint, Zenodo, 2026). Cite the note for the results and the software DOI for the harness.
+
 850 scenarios · 34 adversarial classes · 18 adjudication baselines · 178 tests · 17 gate stages
 
 Three-party phase: 225 three-party scenarios · 9 H-classes · 5 protocols over 3 declarative interaction specifications

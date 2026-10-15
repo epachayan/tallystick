@@ -43,3 +43,17 @@ identifiers:
     value: 10.5281/zenodo.23401183
     description: Version 0.11.1.
 repository-code: "https://github.com/epachayan/tallystick"
+preferred-citation:
+  type: article
+  status: preprint
+  title: "Tallystick: which account survives a delegation dispute"
+  authors:
+    - family-names: Koshy
+      given-names: Nitin Stephen
+      orcid: "https://orcid.org/0009-0009-2690-0588"
+  publisher:
+    name: Zenodo
+  year: 2026
+  month: 10
+  doi: 10.5281/zenodo.23401440
+  url: "https://doi.org/10.5281/zenodo.23401440"
