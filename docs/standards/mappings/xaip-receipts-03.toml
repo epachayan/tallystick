@@ -1,0 +1,25 @@
+# Mapping manifest, NOT an executable Tallystick protocol specification.
+[draft]
+id = "draft-xkumakichi-xaip-receipts-03"
+url = "https://datatracker.ietf.org/doc/html/draft-xkumakichi-xaip-receipts-03"
+published = "2026-07-02"
+kind = "individual-internet-draft"
+
+[mapping]
+status = "partial-blocked"
+model = "executor-claimed-per-call-receipts"
+projected_objects = ["X"]
+unmodelled_objects = ["G", "S", "R"]
+required_extensions = ["signed-typed-per-call-facts", "optional-caller-cosignature", "receipt-delivery-and-custody", "input-output-digests", "wire-verification"]
+notes = "A valid executor signature binds its claim about a tool call, not independently observed physical execution or an authorized parent delegation. Optional co-signature is a distinct variant."
+
+[[artifact]]
+name = "tool-call-receipt"
+actor = "executor-agent"
+binds = ["caller-identity", "tool-identity", "outcome", "input-output-identifiers"]
+
+[[artifact]]
+name = "caller-cosignature"
+actor = "caller"
+binds = ["same-canonical-per-call-record"]
+optional_profile = true

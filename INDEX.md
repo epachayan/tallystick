@@ -48,6 +48,8 @@ of what was believed at the time, and are marked as such.
 | [`docs/architecture.md`](docs/architecture.md) | module layout, evidence boundary, and extension points |
 | [`docs/protocols/README.md`](docs/protocols/README.md) | three-party interaction-protocol specifications: roles, objects, fields, and what the gate checks |
 | [`docs/protocols/specs.md`](docs/protocols/specs.md) | message tables generated from `specs/*.toml` |
+| [`docs/standards/README.md`](docs/standards/README.md) | unscored mapping study: what three current agent-delegation Internet-Drafts commit to, and what the model must add before any of them can be scored |
+| [`docs/standards/case-index.md`](docs/standards/case-index.md) | the nine three-party dispute classes in plain language, for standards authors |
 | [`docs/extension-use-map.md`](docs/extension-use-map.md) | implemented and proposed uses of the A2A extension inside this repository |
 | [`docs/proofs.md`](docs/proofs.md) | formal statements and proofs for T1–T4 |
 | [`docs/scorer-semantics.md`](docs/scorer-semantics.md) | outcome labels and scoring decisions |

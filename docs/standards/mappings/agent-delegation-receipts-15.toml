@@ -1,0 +1,30 @@
+# Mapping manifest, NOT an executable Tallystick protocol specification.
+[draft]
+id = "draft-nelson-agent-delegation-receipts-15"
+url = "https://datatracker.ietf.org/doc/html/draft-nelson-agent-delegation-receipts-15"
+published = "2026-10-21"
+kind = "individual-internet-draft"
+
+[mapping]
+status = "partial-blocked"
+model = "authorization-evidence-and-optional-preexecution-gate"
+projected_objects = ["G", "S"]
+unmodelled_objects = ["X", "R"]
+required_extensions = ["holder-bound-signatures", "instruction-hash", "time-window", "revocation", "preexecution-gate-observations", "wire-verification"]
+notes = "A grant receipt is not automatically a signed observation of the effect. Content-profile evidence is separate. Holder-bound sub-receipt verification is required by rev -15."
+
+[[artifact]]
+name = "root-receipt"
+actor = "authorizing-key-holder"
+binds = ["authorized-scope", "boundaries", "time-window", "instructions-hash"]
+
+[[artifact]]
+name = "sub-receipt"
+actor = "bound-delegatee"
+binds = ["parent-receipt-id", "attenuated-scope", "delegatee-key"]
+
+[[artifact]]
+name = "preexecution-gate-decision"
+actor = "deployment-defined-gate"
+binds = ["specific-action", "grant-check-result"]
+optional_profile = true

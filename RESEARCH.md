@@ -2,7 +2,7 @@
 
 **Author:** Nitin Stephen Koshy · ORCID [0009-0009-2690-0588](https://orcid.org/0009-0009-2690-0588)
 **Status:** working research record, August 2026 (revised after the hardening phase; three-party phase added October 2026)
-**Artifacts:** 850-scenario corpus, 34 adversarial classes, 18 adjudication baselines, 178 tests
+**Artifacts:** 850-scenario corpus, 34 adversarial classes, 18 adjudication baselines, 186 tests
 **Canonical figures:** `results/canonical.txt` (regenerate with `make experiments`)
 **Claim strength:** `docs/what-is-established.md` — three tiers; read it before quoting anything
 **Reproducibility:** deterministic from seed `20260808`; Python 3.12+ runtime, standard library only; `pytest` is the test/development dependency

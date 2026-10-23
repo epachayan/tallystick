@@ -1,0 +1,24 @@
+# Mapping manifest, NOT an executable Tallystick protocol specification.
+[draft]
+id = "draft-helixar-hdp-agentic-delegation-03"
+url = "https://datatracker.ietf.org/doc/html/draft-helixar-hdp-agentic-delegation-03"
+published = "2026-10-06"
+kind = "individual-internet-draft"
+
+[mapping]
+status = "blocked"
+model = "issuer-signed-provenance-not-authorization"
+projected_objects = ["G"]
+unmodelled_objects = ["S", "X", "R"]
+required_extensions = ["distinct-issuer-and-presenter", "signer-not-sender", "cumulative-hop-signatures", "suffix-truncation", "off-record-actions", "declared-action-vs-effect"]
+notes = "HDP v0.1's issuer signs each cumulative hop using the issuer key. The named agent is not the hop signer; the token is not an access credential. Modelling it as chain3 would invent per-agent counterparty receipts and enforcement."
+
+[[artifact]]
+name = "root-token"
+actor = "issuer"
+binds = ["principal", "recorded-scope", "session-metadata"]
+
+[[artifact]]
+name = "signed-cumulative-hop"
+actor = "issuer"
+binds = ["prior-signed-hops", "declared-agent-action"]

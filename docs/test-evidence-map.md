@@ -3,12 +3,12 @@
 **Date:** 15 August 2026; three-party section 15 October 2026  
 **Corpus:** 850 deterministic scenarios, 34 adversarial classes, 25 instances per class  
 **Protocols:** 18 adjudication baselines  
-**Pytest suite:** 178 tests  
+**Pytest suite:** 186 tests  
 **Build:** `make check` adds structural validators and a gate-propagation self-test around the pytest suite
 
 This document answers a narrower question than `RESEARCH.md`: **which executable checks support each
 headline statement, and what would have to fail for the statement to stop being true?** It is not a
-claim that 178 tests prove the corpus is complete. They prove specific invariants inside the modelled
+claim that 186 tests prove the corpus is complete. They prove specific invariants inside the modelled
 world and are named below.
 
 The A2A reference-library checks are intentionally outside this map's core claim count.
@@ -352,3 +352,26 @@ helper to produce exactly that narrative. The old 26/650 literals are explicitly
 
 **Current result.** The context line is derived from live corpus structure; corpus growth cannot
 leave the explanatory line behind without failing the test suite.
+
+## 12. Standards mapping study (unscored)
+
+**Claim.** [`standards/`](standards/README.md) maps three revision-pinned Internet-Drafts to the
+three-party model without scoring them, and its plain-language case index describes the generator
+it summarises.
+
+**Regression.** `tests/test_standards_mapping.py`:
+
+| check | test |
+|---|---|
+| each manifest names a numbered revision, links exactly that revision, and is `blocked` or `partial-blocked` | `test_manifest_is_pinned_unscored_and_partitions_objects` |
+| every committed object (G, S, X, R) is either projected or explicitly unmodelled, never both | `test_manifest_is_pinned_unscored_and_partitions_objects` |
+| no manifest is registered as a scored protocol or has an executable spec in `specs/` | `test_no_manifest_is_wired_in_as_a_scored_protocol` |
+| the case index lists each H-class exactly once | `test_case_index_lists_every_class_once` |
+| its "accounts that diverge" column equals the generator's D(w) | `test_case_index_divergence_matches_generator` |
+| its "honest mistake?" column equals the generator's mistake declaration | `test_case_index_mistakes_match_generator` |
+
+Fault-injected when added: a wrong divergence set, a manifest marked `scored`, a manifest copied
+into `specs/`, and a renamed class row each fail exactly one test.
+
+**Not claimed.** Nothing here says what any draft settles. The manifests describe what a draft
+commits to and what the model must add before a projection can be run.
