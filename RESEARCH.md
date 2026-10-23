@@ -2,7 +2,7 @@
 
 **Author:** Nitin Stephen Koshy · ORCID [0009-0009-2690-0588](https://orcid.org/0009-0009-2690-0588)
 **Status:** working research record, August 2026 (revised after the hardening phase; three-party phase added October 2026)
-**Artifacts:** 850-scenario corpus, 34 adversarial classes, 18 adjudication baselines, 178 tests
+**Artifacts:** 850-scenario corpus, 34 adversarial classes, 18 adjudication baselines, 186 tests
 **Canonical figures:** `results/canonical.txt` (regenerate with `make experiments`)
 **Claim strength:** `docs/what-is-established.md` — three tiers; read it before quoting anything
 **Reproducibility:** deterministic from seed `20260808`; Python 3.12+ runtime, standard library only; `pytest` is the test/development dependency
@@ -909,6 +909,11 @@ since been answered; what remains is ordered by what would change most.
 13. **Transport-state projection.** Extend the A2A adapter across B13/B17 receipt availability and
     M30-M33 abort/loss fixtures, reusing the existing baselines unless transport changes the
     evidence projection. See [`docs/extension-use-map.md`](docs/extension-use-map.md).
+14. **What current agent-delegation drafts settle.** *Started, unscored.*
+    [`docs/standards/`](docs/standards/README.md) maps Agent Delegation Receipts -15, XAIP
+    Receipts -03 and HDP -03 onto the three-party model. None can be scored yet: the model needs a
+    signer distinct from the sender, observer and holder roles, and typed claims first. An
+    independent observer role is also what downstream collusion (H6) needs.
 
 ---
 

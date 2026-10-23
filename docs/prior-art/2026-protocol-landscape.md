@@ -84,6 +84,17 @@ The most useful extensions are no longer "invent an authorization receipt." Curr
 3. add a payment-flavoured AP2/Verifiable-Intent family to test domain-specific intent evidence against withholding and abort;
 4. seek an external implementation or red-team review of the evidence-projection invariant.
 
+### October 2026 update
+
+Items 1 and 2 have a first step: [`../standards/README.md`](../standards/README.md) maps Agent
+Delegation Receipts (revision -15), HDP (revision -03) and XAIP Receipts (revision -03) onto the
+three-party model, without scoring them. The mapping found that none can be represented faithfully
+as a `specs/` file yet; in particular, HDP v0.1 hops are signed by the issuer, not by the agents
+they name. Since this review was written, individual drafts on signed agent action receipts,
+audit records and evidence requests have multiplied, and an IETF BoF request on agent auditing
+(AUDIT) has been approved. None of these is an adopted standard; the sources above remain dated
+15 August 2026 unless stated otherwise.
+
 ## Scope note
 
 This is **not a systematic survey**. It is a dated positioning review using sources checked through 15 August 2026. DRP and HDP are individual Internet-Drafts and therefore works in progress, not IETF-endorsed standards. AP2/Verifiable Intent are active FIDO workstreams. Claims about what a literature does *not* contain are exactly the shape of statement that produced multiple defects in this project, so any negative claim here is intentionally scoped to the sources reviewed.

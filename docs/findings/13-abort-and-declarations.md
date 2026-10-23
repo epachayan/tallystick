@@ -1,7 +1,7 @@
 # 13 — Abort, and the last four declarations
 
 **Date:** 11 August 2026 · **Closes:** RC-H7, RC-H12
-**Corpus:** 34 classes / 850 scenarios · **Gate:** 178 tests + gate non-vacuity
+**Corpus:** 34 classes / 850 scenarios · **Gate:** 186 tests + gate non-vacuity
 
 Two items, done together because the first changed what the second had to check.
 

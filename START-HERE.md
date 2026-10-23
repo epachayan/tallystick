@@ -40,6 +40,11 @@ interaction specifications ([`specs/`](specs/), explained in
 [`docs/protocols/README.md`](docs/protocols/README.md)), and a separate adjudicator reads the
 evidence they produce. The finding also generalises the conservation boundary beyond two parties.
 
+If you work on an agent-delegation or audit draft, [`docs/standards/`](docs/standards/README.md)
+maps three current Internet-Drafts onto that model (unscored), and
+[`docs/standards/case-index.md`](docs/standards/case-index.md) states the nine three-party
+dispute cases in plain language.
+
 ---
 
 ## Two things to check before publishing anything
