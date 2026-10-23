@@ -204,6 +204,8 @@ independent implementation, no external review, no third-party test vectors for
 the Merkle code. The A2A extension package is an in-repository reference transport and parity
 adapter, not an independent implementation or deployment. Its internal uses and proposed next
 connections are catalogued in [`extension-use-map.md`](extension-use-map.md).
+Nothing is established about what any current Internet-Draft settles: the
+[standards mapping study](standards/README.md) is deliberately unscored.
 
 
 ### N8. Anything beyond one hop

@@ -909,6 +909,11 @@ since been answered; what remains is ordered by what would change most.
 13. **Transport-state projection.** Extend the A2A adapter across B13/B17 receipt availability and
     M30-M33 abort/loss fixtures, reusing the existing baselines unless transport changes the
     evidence projection. See [`docs/extension-use-map.md`](docs/extension-use-map.md).
+14. **What current agent-delegation drafts settle.** *Started, unscored.*
+    [`docs/standards/`](docs/standards/README.md) maps Agent Delegation Receipts -15, XAIP
+    Receipts -03 and HDP -03 onto the three-party model. None can be scored yet: the model needs a
+    signer distinct from the sender, observer and holder roles, and typed claims first. An
+    independent observer role is also what downstream collusion (H6) needs.
 
 ---
 

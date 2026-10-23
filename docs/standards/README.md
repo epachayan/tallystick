@@ -2,7 +2,9 @@
 
 **Status:** unscored research design, 23 October 2026. This document does **not** claim conformance to any cited Internet-Draft, and no draft results have been obtained.
 
-This study maps three version-pinned individual Internet-Drafts to Tallystick's three-party dispute model (P → I → E). The intended deliverable is a **defensible evidence-projection comparison**, not a score table inferred from prose. The attached TOML files are **mapping manifests**, not Tallystick executable protocol specifications; they deliberately sit outside `specs/`.
+This study maps three version-pinned individual Internet-Drafts to Tallystick's three-party dispute model (P → I → E). The intended deliverable is a **defensible evidence-projection comparison**, not a score table inferred from prose. The TOML files in [`mappings/`](mappings/) are **mapping manifests**, not Tallystick executable protocol specifications; they deliberately sit outside `specs/`.
+
+`tests/test_standards_mapping.py` keeps this study honest: every manifest must stay revision-pinned and unscored, none may be registered as a scored protocol or placed in `specs/`, and the plain-language [case index](case-index.md) is recomputed against the generator. See [`../test-evidence-map.md`](../test-evidence-map.md) section 12.
 
 ## The architectural obstacle
 

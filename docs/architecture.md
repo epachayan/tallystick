@@ -46,6 +46,8 @@ tallystick/
                     (three-party phase; see docs/protocols/README.md)
         generator.py  commitments.py
     tests/          test_scorer.py  test_merkle.py  test_metrics.py  test_integration.py
+                    test_b13.py  test_b17.py  test_conservation.py  test_claim_regressions.py
+                    test_multihop.py  test_standards_mapping.py
     examples/       a2a_bilateral_demo.py  a2a_harness_replay_demo.py
     results/
     docs/
